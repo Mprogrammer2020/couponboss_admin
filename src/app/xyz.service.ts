@@ -79,6 +79,10 @@ export class XyzService {
     this.username = null;
   }
  
+  public updattoken() {
+    this.token =  localStorage.getItem('login_token');
+  }
+
   private updateData(token, user) {
     this.token =  localStorage.getItem('login_token');
     this.errors = [];

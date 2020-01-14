@@ -11,12 +11,14 @@ import {NgForm} from '@angular/forms';
 export class XyzComponent implements OnInit {
 
   public user: any;
-  public logintoken: string;
+  public logintoken: any;
  
   constructor(private _xyzService: XyzService) { }
  
   ngOnInit() {
-    this.logintoken = localStorage.getItem('login_token')
+    this.logintoken = localStorage.getItem('login_token');
+    this._xyzService.updattoken()
+    console.log("sncfjdsb"+this.logintoken)
     this.user = {
       username: '',
       password: '',
