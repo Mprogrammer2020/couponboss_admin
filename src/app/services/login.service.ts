@@ -53,8 +53,9 @@ export class LoginService {
         console.log(data.data['user']['username'])
         this.updateData(data.data['token'], data.data['user']['first_name']);
       },
-      err => {
-        this.errors = err['error'];
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
       }
     );
   }
@@ -67,8 +68,11 @@ export class LoginService {
         localStorage.setItem('user', JSON.stringify(data.data['user']))
         this.updateData(data.data['token'], data.data['user']['first_name']);
       },
-      err => {
-        this.errors = err['error'];
+      (err:any) => {
+        this.errors = err.error.message;
+      },
+      () => {
+        // No errors, route to new page
       }
     );
   }
