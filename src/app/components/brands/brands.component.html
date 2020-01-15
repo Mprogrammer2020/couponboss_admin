@@ -1,0 +1,58 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Basic Table</h4>
+            </div>
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                <button class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light" routerLink="/addbrand/new" >Add New</button>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title">Brands List</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Url</th>
+                                    <th>Countries</th>
+                                    <th>Coupons</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let item of _dataService.brandslist; let myIndex = index">
+                                <tr>
+                                    <td>{{item.id}}</td>
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.url}}</td>
+                                    <td>
+                                        <ul  *ngFor="let country of item.brand_countries; let myIndex1 = index1">
+                                        <li>{{country.name}}</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul  *ngFor="let coupon of item.brand_coupons; let myIndex2 = index2">
+                                        <li>{{coupon.code}}</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+    <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by wrappixel.com</footer>
+</div>
+
+<app-footer></app-footer>

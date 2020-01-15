@@ -13,14 +13,17 @@ import { Injectable } from '@angular/core';
 // import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+
 const API_URL="http://192.168.2.91:8001/apis/"; 
 @Injectable({
   providedIn: 'root'
 })
+
 export class XyzService {
  
   // http options used for making API calls
   private httpOptions: any;
+
  
   // the actual JWT token
   public token: any;
@@ -95,5 +98,6 @@ export class XyzService {
     // this.token_expires = new Date(token_decoded.exp * 1000);
     this.username = user;
   }
+
  
 }

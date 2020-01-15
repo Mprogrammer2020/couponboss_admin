@@ -7,11 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { XyzService } from './xyz.service';
 import { HttpClientModule } from '@angular/common/http';    // add this
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderComponent } from './components/commons/header/header.component';
 import { SidebarComponent } from './components/commons/sidebar/sidebar.component';
-import { FooterComponent } from './components/commons/footer/footer.component'; 
+import { FooterComponent } from './components/commons/footer/footer.component';
+import { BrandsComponent } from './components/brands/brands.component';
+import { AddbrandComponent } from './components/brands/addbrand/addbrand.component'; 
 
 @NgModule({
   declarations: [
@@ -21,14 +24,17 @@ import { FooterComponent } from './components/commons/footer/footer.component';
     DashboardComponent,
     HeaderComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    BrandsComponent,
+    AddbrandComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [XyzService],
   bootstrap: [AppComponent]

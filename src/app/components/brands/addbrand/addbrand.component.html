@@ -1,0 +1,86 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="page-wrapper">
+
+<div class="container-fluid">
+    <div class="row bg-title">
+        <h2 class="page_heading">Add Brand</h2>
+    </div>
+    <!-- /.row -->
+    <!-- .row -->
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div class="white-box"> 
+                <div class="add_formarea">
+                    <form   [formGroup]="addFilterForm" (ngSubmit)="onSubmit()" name="addFilterForm">               
+                        <div class="row">
+                            <aside class="col-sm-10">
+                                <div class="form-group">
+                                <label class="text-uppercase">Name</label>
+                                <input value="" class="form-control" formControlName="name" type="text" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                            <div *ngIf="f.name.errors.required">This field is required</div>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                        <div class="row">
+                            <aside class="col-sm-10">
+                                <div class="form-group">
+                                        <label class="text-uppercase">Website Url </label>
+                                        <input value="" class="form-control " formControlName="website_url" type="text" [ngClass]="{ 'is-invalid': submitted && f.website_url.errors }">
+                                        <div *ngIf="submitted && f.website_url.errors" class="invalid-feedback">
+                                                <div *ngIf="f.website_url.errors.required">This field is required</div>
+                                        </div>
+                                </div>
+                            </aside>
+        
+                        </div>
+                        <div class="row">
+                                <aside class="col-sm-10">
+                                    <div class="form-group">
+                                            <label class="text-uppercase">Image</label>
+                                            <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" />
+                                            <div *ngIf="submitted && f.logo.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.logo.errors.required">This field is required</div>
+                                            </div>
+                                    </div>
+                                </aside>
+            
+                            </div>
+                            <div class="row">
+                                    <aside class="col-sm-10">
+                                        <div class="form-group">
+                                                <label class="text-uppercase">Select Country</label>
+
+                                                <select multiple class="custom-select" formControlName="country">
+                                                    <option value="">Choose your city</option>
+                                                    <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" (change)="changeCity($event)">{{city.name}}</option>
+                                                </select>
+                                                <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
+                                                <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.country.errors.required">This field is required</div>
+                                                </div>
+                                        </div>
+                                    </aside>
+                            </div>
+            
+        
+                        
+        
+                        <div class="row">
+        
+                        <aside class="col-sm-5">
+                            <button type="submit" id="upload" class="blue_btn yellow_btn big_yellow text-uppercase" >Add Brand</button>
+        
+                        </aside>
+                        </div>
+                        </form>
+                        </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+</div>
+<app-footer></app-footer>
