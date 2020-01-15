@@ -1,0 +1,130 @@
+<div class="row" *ngIf="!_loginService.token">
+    <div class="login_form">
+        <div class="text-center logo_img" >
+            <img src="" alt="home" class="light-logo" />
+        </div>
+        
+        <img src="">
+        <h2>Log in</h2>
+    
+        <input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="RrVEeQaJ+8HbrPxTq6u7oZh1/JHUlFAG5/IbnmXSOZpI2YUCTv/8yxLbJALD7KasNBSrsLRG18vXiN1XZz0LDw==">
+        <div class="field form-group">
+            <label for="user_email">Email</label><br>
+            <input autofocus="autofocus" autocomplete="email" type="text" name="login-username" [(ngModel)]="user.username" id="user_email">
+            <span *ngFor="let error of _loginService.errors.username"><br />
+            {{ error }}</span>
+        </div>
+    
+        <div class="field form-group">
+            <label for="user_password">Password</label><br>
+            <input autocomplete="current-password" type="password" name="login-password" [(ngModel)]="user.password" id="user_password">
+            <span *ngFor="let error of _loginService.errors.password"><br />
+            {{ error }}</span>
+        </div>
+    
+            <div class="field check_box">
+            <input name="user[remember_me]" type="hidden" value="0"><input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me">
+            <label for="user_remember_me">Remember me</label>
+            </div>
+    
+        <div class="actions">
+            <input type="submit" name="commit" (click)="login()" value="Log in" data-disable-with="Log in">
+            <!-- <button (click)="login()" class="btn btn-primary">Log In</button> -->
+        </div>
+        <div class="col-sm-12">
+            <span *ngFor="let error of _loginService.errors.non_field_errors">{{ error }}<br /></span>
+        </div>
+    </div>
+</div>
+
+
+  <div class="row" *ngIf="_loginService.token">
+    <div class="col-sm-12">You are logged in as {{ _loginService.username }}.<br />
+      <!-- Token Expires: {{ _loginService.token_expires }}<br /> -->
+      <button (click)="refreshToken()" class="btn btn-primary">Refresh Token</button>
+      <button (click)="logout()" class="btn btn-primary">Log Out</button>
+      <button (click)="test()" class="btn btn-primary">get data</button>
+    </div>
+  </div>
+
+
+<style>
+  body{
+    background: #fff;
+  }
+  .login_form h2 {
+  font-size: 30px;
+  font-weight: 600;
+}
+.login_form {
+max-width: 550px;
+margin: 150px auto 0;
+box-shadow: 0 0 6px #ccc;
+padding: 20px;
+background: #fff;
+border-radius: 4px;
+}
+
+.login_form a {
+color: #000;
+font-size: 18px;
+}
+.login_form a:hover{background: none;}
+.field.form-group input {
+  height: 45px;
+    border-radius: 60px !important;
+    padding: 13px 20px;
+    background-color:#fffcc8;
+    color:#000;
+    font-weight: bold;
+    border:none;
+    width: 100%;
+}
+.actions input {
+   background-color:#cdde68;
+border-radius: 60px;
+padding: 10px;
+font-size: 20px;
+color:#000;
+border: none;
+height: 40px;
+width: 97%;
+
+}
+.check_box input {
+    display: ;
+    float: ;
+    display: inline-block;
+    vertical-align: middle;
+}
+.check_box label{
+  display: inline-block;
+}
+.login_form a {
+   color:#000;
+    font-size: 18px;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+.login_form {    
+    box-shadow: inherit;
+}
+.text-center.logo_img img {
+  width: 300px;
+}
+.text-center.logo_img {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.alert.alert-success.alert-dismissible.fade.show {
+    position: relative;
+    padding:5px;
+}
+.close{
+  position: absolute;
+  top:0px;
+  right:0px;
+}
+</style>
+
