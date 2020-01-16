@@ -26,7 +26,6 @@ export class LoginService {
   public username: any;
 
   public data: any;
- 
   // error messages received from the login attempt
   public errors: any = [];
  
@@ -60,18 +59,6 @@ export class LoginService {
     );
   }
 
-
-  public dashboard() {
-    this.http.get(API_URL+'dashboard', this.authhttpOptions).subscribe(
-      (data: any)  => {
-        this.data = data
-      },
-      (err:any)  => {
-        console.log("errrrrrr"+err.error.message)
-        this.errors = err.error.message;
-      }
-    );
-  }
  
   // Refreshes the JWT token, to extend the time the user is logged in
   public refreshToken() {

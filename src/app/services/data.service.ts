@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, JsonpInterceptor} from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -14,6 +14,7 @@ export class DataService {
   public errors:any;
   public brandslist:any;
   public countrieslist:any;
+  public dashboarddata:any;
   public router: Router;
 
   constructor(private http: HttpClient) {
@@ -34,6 +35,20 @@ export class DataService {
     );
    }
 
+   public dashboard() {
+    this.http.get(API_URL+'dashboard', this.authhttpOptions).subscribe(
+      (dashdata: any)  => {
+        console.log("dashdata---->")
+        console.log(dashdata)
+        this.dashboarddata = dashdata
+      },
+      (err:any)  => {
+        console.log("errrrrrr----->"+err.error.message)
+        this.errors = err.error.message;
+      }
+    );
+  }
+
    public addBrand(brand){
     this.http.post(API_URL+'add_brands', JSON.stringify(brand), this.authhttpOptions).subscribe(
       (data: any)  => {
@@ -42,7 +57,7 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-         this.router.navigate(['']);
+        //  this.router.navigate(['']);
       }
     );
      

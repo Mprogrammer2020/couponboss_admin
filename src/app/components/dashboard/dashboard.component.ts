@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
-import { LoginService } from '../../services/login.service';
+import { DataService } from '../../services/data.service';
 import {throwError} from 'rxjs';
 import {NgForm} from '@angular/forms'; 
 import { Router } from '@angular/router';
@@ -13,22 +13,14 @@ export class DashboardComponent implements OnInit {
   public logintoken: any;
   public data: any;
 
-  constructor(private _loginService: LoginService) {
+  constructor(private _loginService: DataService) {
     this.logintoken = localStorage.getItem('login_token');
+
+    this._loginService.dashboard();
    }
 
   ngOnInit() {
-    this.data = {
-      coupons_added: '',
-      coupons_used: '',
-    };
-
-    this._loginService.dashboard();
-    this.set_data()
+  
   }
 
-    set_data(){
-      this.data.coupons_added = this._loginService.data.total_coupons
-      this.data.coupons_used = this._loginService.data.total_used_copons
-    }
 }
