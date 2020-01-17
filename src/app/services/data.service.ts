@@ -16,6 +16,9 @@ export class DataService {
   public countrieslist:any;
   public dashboarddata:any;
   public router: Router;
+  public branddetail:any;
+  public brandcountries:any;
+  public userslist:any;
 
   constructor(private http: HttpClient) {
     this.authhttpOptions = {
@@ -49,10 +52,25 @@ export class DataService {
     );
   }
 
-   public addBrand(brand){
+  public addBrand(brand){
     this.http.post(API_URL+'add_brands', JSON.stringify(brand), this.authhttpOptions).subscribe(
       (data: any)  => {
         window.location.href = '/brands'
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+        //  this.router.navigate(['']);
+      }
+    );     
+  }
+
+  public getUsers(){
+    this.http.get(API_URL+'getusers', this.authhttpOptions).subscribe(
+      (data: any)  => {
+        console.log("xfxcgfcgccg")
+        this.userslist = data.response
+        // window.location.href = '/brands'
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
@@ -73,6 +91,89 @@ export class DataService {
         this.errors = err.error.message;
       }
     );
+  }
+
+  public deleteBrand(data){
+    this.http.post(API_URL+'delete_brand',JSON.stringify(data), this.authhttpOptions).subscribe(
+      (data: any)  => {
+       alert("Brand Deleted Successfully")
+       this.getBrandsList()
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+      }
+    );
+  }
+
+  public editBrand(data){
+    this.http.put(API_URL+'edit_brands',JSON.stringify(data), this.authhttpOptions).subscribe(
+      (data: any)  => {
+       alert("Brand edited Successfully")
+       window.location.href = '/brands'
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+      }
+    );
+  }
+
+  public getBrand(data){
+    this.http.post(API_URL+'show_brand',{"brandId":data}, this.authhttpOptions).subscribe(
+      (data: any)  => {
+        this.branddetail = data.brand;
+        this.brandcountries = data.brands_country
+        
+        console.log("scdgsavef")
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+      }
+    );
+  }
+
+  public sendNotification(data){
+    this.http.post(API_URL+'sendnotification',JSON.stringify(data), this.authhttpOptions).subscribe(
+      (data: any)  => {
+       alert("Notification Send Successfully")
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        alert(err.error.Message)
+        window.location.href = '/sendnotifications'
+      }
+    );
+  }
+
+  public contactuslist(){
+    this.http.get(API_URL+'countactuslist', this.authhttpOptions).subscribe(
+      (data: any)  => {
+        this.brandslist = data.countactuslist
+      //  alert("Notification Send Successfully")
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        alert(err.error.Message)
+        // window.location.href = '/sendnotifications'
+      }
+    );
+  }
+
+  public sendResponse(data){
+    this.http.post(API_URL+'sendresponse',JSON.stringify(data), this.authhttpOptions).subscribe(
+      (data: any)  => {
+        alert("Response Send Successfully")
+        window.location.href = '/contactus'
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        alert(err.error.Message)
+        window.location.href = '/sendnotifications'
+      }
+    );
+
   }
 
 }

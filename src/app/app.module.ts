@@ -14,7 +14,10 @@ import { HeaderComponent } from './components/commons/header/header.component';
 import { SidebarComponent } from './components/commons/sidebar/sidebar.component';
 import { FooterComponent } from './components/commons/footer/footer.component';
 import { BrandsComponent } from './components/brands/brands.component';
-import { AddbrandComponent } from './components/brands/addbrand/addbrand.component'; 
+import { AddbrandComponent } from './components/brands/addbrand/addbrand.component';
+import { EditbrandComponent } from './components/brands/editbrand/editbrand.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { ContactusComponent } from './components/contactus/contactus.component'; 
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { AddbrandComponent } from './components/brands/addbrand/addbrand.compone
     SidebarComponent,
     FooterComponent,
     BrandsComponent,
-    AddbrandComponent
+    AddbrandComponent,
+    EditbrandComponent,
+    NotificationsComponent,
+    ContactusComponent
   ],
   imports: [
     BrowserModule,

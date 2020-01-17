@@ -12,10 +12,17 @@ import { Router } from '@angular/router';
 })
 export class BrandsComponent implements OnInit {
 
-  constructor(private _dataService: DataService) { this._dataService.getBrandsList();}
-
+  constructor(private _dataService: DataService,private router: Router) { this._dataService.getBrandsList();}
   ngOnInit() {
 
+  }
+
+  public editBrand(id){
+    this.router.navigate(['/editbrand/'+id]);
+  }
+
+  public deleteBrand(id){
+    this._dataService.deleteBrand({"brandId": id})
   }
 
 }

@@ -25,6 +25,7 @@
                                     <th>Url</th>
                                     <th>Countries</th>
                                     <th>Coupons</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody *ngFor="let item of _dataService.brandslist; let myIndex = index">
@@ -42,6 +43,7 @@
                                         <li>{{coupon.code}}</li>
                                         </ul>
                                     </td>
+                                    <td><button (click)="editBrand(item.id)" >Edit</button  ><button (click)="deleteBrand(item.id)">Delete</button></td>
                                 </tr>
                             </tbody>
                         </table>

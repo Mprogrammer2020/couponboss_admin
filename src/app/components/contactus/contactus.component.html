@@ -1,0 +1,100 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <!-- <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title"></h4>
+            </div>
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                <button class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light" routerLink="/addbrand/new" >Add New</button>
+            </div> -->
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title">Contact Us List</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Email</th>
+                                    <th>Subject</th>
+                                    <th>Message</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let item of _dataService.brandslist; let myIndex = index">
+                                <tr>
+                                    <td>{{item.id}}</td>
+                                    <td>{{item.email}}</td>
+                                    <td>{{item.subject}}</td>
+                                    <td>{{item.message}}</td>
+                                    <!-- <td><button (click)="editBrand(item.id)" >Send Response</button  ></td> -->
+                                    <td><button type="button"  data-toggle="modal" [attr.data-target]="'#exampleModal' + item.id">
+                                        Send Response
+                                          </button>
+                                    </td>
+                                </tr>
+
+                                <!-- Modal Start -->
+                                <div class="modal fade" [attr.id]="'exampleModal' + item.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form [formGroup]="addFilterForm" (ngSubmit)="onSubmit()" name="addFilterForm"> 
+                                                <input [ngModel]="item.email" class="form-control" formControlName="email" type="hidden" >
+                                                <div class="row">
+                                                    <aside class="col-sm-10">
+                                                        <div class="form-group">
+                                                        <label class="text-uppercase">Response</label>
+                                                        <input value="" class="form-control" formControlName="response" type="text" [ngClass]="{ 'is-invalid': submitted && f.response.errors }">
+                                                            <div *ngIf="submitted && f.response.errors" class="invalid-feedback">
+                                                                    <div *ngIf="f.response.errors.required">This field is required</div>
+                                                            </div>
+                                                        </div>
+                                                    </aside>
+                                                </div>
+                                                <div class="row">
+        
+                                                    <aside class="col-sm-5">
+                                                        <button type="submit" id="upload" class="blue_btn yellow_btn big_yellow text-uppercase" >Send Response</button>
+                                    
+                                                    </aside>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <!-- Modal End -->
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+    <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by wrappixel.com</footer>
+</div>
+
+
+
+
+<app-footer></app-footer>
