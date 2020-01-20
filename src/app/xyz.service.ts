@@ -50,9 +50,9 @@ export class XyzService {
     this.http.post(API_URL+'login', JSON.stringify(user), this.httpOptions).subscribe(
       (data: any)  => {
 
-        localStorage.setItem('login_token',  JSON.stringify(data.data['token']))
+        localStorage.setItem('token',  JSON.stringify(data.data['token']))
         localStorage.setItem('user', JSON.stringify(data.data['user']))
-        this.token =  localStorage.getItem('login_token');
+        this.token =  localStorage.getItem('token');
         console.log(data.data['user']['username'])
         this.updateData(data.data['token'], data.data['user']['first_name']);
       },
@@ -66,7 +66,7 @@ export class XyzService {
   public refreshToken() {
     this.http.post(API_URL+'login', JSON.stringify({token: this.token}), this.httpOptions).subscribe(
       (data: any)  => {
-        localStorage.setItem('login_token',  JSON.stringify(data.data['token']))
+        localStorage.setItem('token',  JSON.stringify(data.data['token']))
         localStorage.setItem('user', JSON.stringify(data.data['user']))
         this.updateData(data.data['token'], data.data['user']['first_name']);
       },
@@ -83,11 +83,11 @@ export class XyzService {
   }
  
   public updattoken() {
-    this.token =  localStorage.getItem('login_token');
+    this.token =  localStorage.getItem('token');
   }
 
   private updateData(token, user) {
-    this.token =  localStorage.getItem('login_token');
+    this.token =  localStorage.getItem('token');
     this.errors = [];
  
     // decode the token to read the username and expiration timestamp

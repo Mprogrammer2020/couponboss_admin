@@ -37,6 +37,28 @@
   <!-- color CSS -->
   <link href="./assets/css/colors/default.css" id="theme" rel="stylesheet">
 
+<script src="./assets/css/admin/bower_components/jquery/dist/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js">
+</script>
+<script>
+  $(document).ready(function(){
+    var token = localStorage.getItem('token');
+    var jwt_token = localStorage.getItem('jwt_token');
+    if (token && !jwt_token){
+      create_jwt_token()
+    }
+  });
+
+  /** $(document).on('ready', function(){
+    var token = localStorage.getItem('token');
+    var jwt_token = localStorage.getItem('jwt_token');
+    if (token && !jwt_token){
+      create_jwt_token()
+    }
+  }) **/
+
+</script>
 
 
 </head>
@@ -45,7 +67,7 @@
     <app-root></app-root>
   </div>
 </body>
-<script src="./assets/css/admin/bower_components/jquery/dist/jquery.min.js"></script>
+
 <!-- Bootstrap Core JavaScript -->
 <script src="./assets/css/admin/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- Menu Plugin JavaScript -->
@@ -66,4 +88,65 @@
 <script src="./assets/js/custom.min.js"></script>
 <script src="./assets/js/dashboard1.js"></script>
 <script src="./assets/css/admin/bower_components/toast-master/js/jquery.toast.js"></script>
+
 </html>
+
+<script>
+
+  function base64url(source) {
+    // Encode in classical base64
+    encodedSource = CryptoJS.enc.Base64.stringify(source);
+  
+    // Remove padding equal characters
+    encodedSource = encodedSource.replace(/=+$/, '');
+  
+    // Replace characters according to base64url specifications
+    encodedSource = encodedSource.replace(/\+/g, '-');
+    encodedSource = encodedSource.replace(/\//g, '_');
+  
+    return encodedSource;
+  }
+
+ /** $(document).ready(function(){
+    var token = localStorage.get('token');
+    var jwt_token = localStorage.get('jwt_token');
+    debugger
+    if (token && !jwt_token){
+      create_jwt_token()
+    }
+
+  }) **/
+
+
+  function create_jwt_token(){
+    var header = {
+      "alg": "HS256",
+      "typ": "JWT"
+    };
+    
+    var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));
+    var encodedHeader = base64url(stringifiedHeader);
+    
+    var data = {
+      "id": 1337,
+      "username": "john.doe"
+    };
+    
+    var stringifiedData = CryptoJS.enc.Utf8.parse(JSON.stringify(data));
+    var encodedData = base64url(stringifiedData);
+    
+    var token = encodedHeader + "." + encodedData;
+
+    var secret = "My very confidential secret!";
+
+    var signature = CryptoJS.HmacSHA256(token, secret);
+    signature = base64url(signature);
+
+    var signedToken = token + "." + signature;
+
+    localStorage.setItem('jwt_token', signedToken)
+    
+  }
+  
+
+</script>

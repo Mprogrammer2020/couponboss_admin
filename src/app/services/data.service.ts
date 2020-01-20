@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, JsonpInterceptor} from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 
 const API_URL="http://192.168.2.91:8001/apis/"; 
 
@@ -20,11 +22,18 @@ export class DataService {
   public brandcountries:any;
   public userslist:any;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, public jwtHelper: JwtHelperService) {
     this.authhttpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json','Access-Control-Allow-Origin': '*', 'access-control-allow-origin': '*', 'AUTHORIZATION':  localStorage.getItem('login_token')})
+      headers: new HttpHeaders({'Content-Type': 'application/json','Access-Control-Allow-Origin': '*', 'access-control-allow-origin': '*', 'AUTHORIZATION':  localStorage.getItem('token')})
     };
    }
+
+  // Check whether the token is expired and return
+  public isAuthenticated(): boolean {   
+    const token = localStorage.getItem('jwt_token'); 
+    return !this.jwtHelper.isTokenExpired(token);
+  }
+   
 
    public getBrandsList(){
     this.http.get(API_URL+'getbrands', this.authhttpOptions).subscribe(
@@ -170,10 +179,11 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         alert(err.error.Message)
-        window.location.href = '/sendnotifications'
+        window.location.href = '/contactus'
       }
     );
 
   }
+
 
 }

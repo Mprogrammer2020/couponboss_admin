@@ -16,7 +16,7 @@ export class XyzComponent implements OnInit {
   constructor(private _xyzService: XyzService) { }
  
   ngOnInit() {
-    this.logintoken = localStorage.getItem('login_token');
+    this.logintoken = localStorage.getItem('token');
     this._xyzService.updattoken()
     console.log("sncfjdsb"+this.logintoken)
     this.user = {

@@ -3,6 +3,7 @@ import { LoginService } from '../../services/login.service';
 import {throwError} from 'rxjs';
 import {NgForm} from '@angular/forms'; 
 import { Router } from '@angular/router';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -15,13 +16,16 @@ export class LoginComponent implements OnInit {
   public logintoken: any;
   public apiresult: any;
 
-  constructor(private _loginService: LoginService) {}
+  constructor(public auth: DataService,private _loginService: LoginService, public router: Router) {}
  
   ngOnInit() {
     this.user = {
       username: '',
       password: '',
     };
+    if (this.auth.isAuthenticated()) {
+      this.router.navigate(['dashboard']);
+    }
   }
 
  

@@ -18,6 +18,18 @@ import { AddbrandComponent } from './components/brands/addbrand/addbrand.compone
 import { EditbrandComponent } from './components/brands/editbrand/editbrand.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ContactusComponent } from './components/contactus/contactus.component'; 
+import { JwtHelperService, JwtModuleOptions, JWT_OPTIONS } from '@auth0/angular-jwt';
+
+const yourTokenGetter: any = localStorage.getItem('token');
+const yourWhitelistedDomains: any = "localhost:4200";
+
+
+const JWT_Module_Options: JwtModuleOptions = {
+  config: {
+      tokenGetter: yourTokenGetter,
+      whitelistedDomains: yourWhitelistedDomains
+  }
+};
 
 @NgModule({
   declarations: [
@@ -42,7 +54,8 @@ import { ContactusComponent } from './components/contactus/contactus.component';
     BrowserAnimationsModule,
     ReactiveFormsModule
   ],
-  providers: [XyzService],
+  providers: [XyzService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

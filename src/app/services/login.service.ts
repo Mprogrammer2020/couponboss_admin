@@ -36,7 +36,7 @@ export class LoginService {
 
 
     this.authhttpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json','Access-Control-Allow-Origin': '*', 'access-control-allow-origin': '*', 'AUTHORIZATION':  localStorage.getItem('login_token')})
+      headers: new HttpHeaders({'Content-Type': 'application/json','Access-Control-Allow-Origin': '*', 'access-control-allow-origin': '*', 'AUTHORIZATION':  localStorage.getItem('token')})
     };
   }
  
@@ -45,12 +45,12 @@ export class LoginService {
     this.http.post(API_URL+'login', JSON.stringify(user), this.httpOptions).subscribe(
       (data: any)  => {
 
-        localStorage.setItem('login_token',  data.data['token'])
-        localStorage.setItem('user', data.data['user'])
-        this.token =  localStorage.getItem('login_token');
+        localStorage.setItem('token',  data.data['token'])
+        localStorage.setItem('user', JSON.stringify(data.data['user']))
+        this.token =  localStorage.getItem('token');
         console.log(data.data['user']['username'])
         this.updateData(data.data['token'], data.data['user']['first_name']);
-        this.router.navigate(['dashboard']);
+        window.location.href='dashboard';
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
@@ -64,7 +64,7 @@ export class LoginService {
   public refreshToken() {
     this.http.post(API_URL+'login', JSON.stringify({token: this.token}), this.httpOptions).subscribe(
       (data: any)  => {
-        localStorage.setItem('login_token',  JSON.stringify(data.data['token']))
+        localStorage.setItem('token',  JSON.stringify(data.data['token']))
         localStorage.setItem('user', JSON.stringify(data.data['user']))
         this.updateData(data.data['token'], data.data['user']['first_name']);
       },
@@ -84,11 +84,11 @@ export class LoginService {
   }
  
   public updattoken() {
-    this.token =  localStorage.getItem('login_token');
+    this.token =  localStorage.getItem('token');
   }
 
   private updateData(token, user) {
-    this.token =  localStorage.getItem('login_token');
+    this.token =  localStorage.getItem('token');
     this.errors = [];
  
     // decode the token to read the username and expiration timestamp
@@ -102,7 +102,7 @@ export class LoginService {
 
 
   public authorized_user(){
-    this.token =  localStorage.getItem('login_token');
+    this.token =  localStorage.getItem('token');
     if (this.token){
      window.location.href='dashboard';
     }

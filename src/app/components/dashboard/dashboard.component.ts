@@ -13,14 +13,17 @@ export class DashboardComponent implements OnInit {
   public logintoken: any;
   public data: any;
 
-  constructor(private _loginService: DataService) {
-    this.logintoken = localStorage.getItem('login_token');
+  constructor(private _loginService: DataService, public router: Router) {
+    this.logintoken = localStorage.getItem('token');
 
     this._loginService.dashboard();
    }
 
   ngOnInit() {
-  
+    if (!localStorage.getItem('token')) {
+      this.router.navigate(['login']);
+    }
+
   }
 
 }

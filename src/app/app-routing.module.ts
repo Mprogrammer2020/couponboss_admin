@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule,CanActivate } from '@angular/router';
 import { XyzComponent } from './xyz/xyz.component';
 import {LoginComponent} from './components/login/login.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
@@ -9,44 +9,50 @@ import {EditbrandComponent} from './components/brands/editbrand/editbrand.compon
 import {NotificationsComponent} from './components/notifications/notifications.component';
 import {ContactusComponent} from './components/contactus/contactus.component';
 
+import { 
+  AuthGuardService as AuthGuard 
+} from './auth/auth-guard.service';
+
  
 
 const routes: Routes = [
   { 
     path: '', 
-    component: LoginComponent,
-    pathMatch:'full'
+    component: LoginComponent
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
     pathMatch:'full'
+    // canActivate: [AuthGuard] 
   },
   {
     path: 'brands',
     component: BrandsComponent,
-    pathMatch:'full'
+    canActivate: [AuthGuard] 
   },
   {
     path: 'addbrand/new',
     component: AddbrandComponent,
-    pathMatch:'full'
+    canActivate: [AuthGuard] 
   },
   {
     path: 'editbrand/:id',
     component: EditbrandComponent,
-    pathMatch:'full',
+    canActivate: [AuthGuard] 
   },
   {
     path: 'sendnotifications',
     component: NotificationsComponent,
-    pathMatch:'full',
+    canActivate: [AuthGuard] 
   },
   {
     path: 'contactus',
     component: ContactusComponent,
     pathMatch:'full',
-  }
+    canActivate: [AuthGuard] 
+  },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
@@ -56,4 +62,5 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 export const routingComponents = [LoginComponent]
+
 
