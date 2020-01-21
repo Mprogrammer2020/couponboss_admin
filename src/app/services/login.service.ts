@@ -46,9 +46,10 @@ export class LoginService {
       (data: any)  => {
 
         localStorage.setItem('token',  data.data['token'])
-        localStorage.setItem('user', JSON.stringify(data.data['user']))
+        localStorage.setItem('token_first', 'true')
+        // localStorage.setItem('user', JSON.stringify(data.data['user']))
         this.token =  localStorage.getItem('token');
-        console.log(data.data['user']['username'])
+        // console.log(data.data['user']['username'])
         this.updateData(data.data['token'], data.data['user']['first_name']);
         window.location.href='dashboard';
       },

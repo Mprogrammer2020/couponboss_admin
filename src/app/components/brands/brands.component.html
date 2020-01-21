@@ -33,12 +33,12 @@
                                     <td>{{item.id}}</td>
                                     <td>{{item.name}}</td>
                                     <td>{{item.url}}</td>
-                                    <td>
-                                        <ul  *ngFor="let country of item.brand_countries; let myIndex1 = index1">
-                                        <li>{{country.name}}</li>
+                                    <td class="brands_countries">
+                                        <ul *ngFor="let country of item.brand_countries; let myIndex1 = index1">
+                                        <li><span><img src="https://efx-staging-resources.s3.amazonaws.com/flag_images/india.png"></span> {{country.name}}</li> 
                                         </ul>
                                     </td>
-                                    <td>
+                                    <td class="brands_countries">
                                         <ul  *ngFor="let coupon of item.brand_coupons; let myIndex2 = index2">
                                         <li>{{coupon.code}}</li>
                                         </ul>
@@ -53,8 +53,7 @@
         </div>
         <!-- /.row -->
     </div>
-    <!-- /.container-fluid -->
-    <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by wrappixel.com</footer>
+
 </div>
 
 <app-footer></app-footer>

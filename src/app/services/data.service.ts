@@ -17,12 +17,12 @@ export class DataService {
   public brandslist:any;
   public countrieslist:any;
   public dashboarddata:any;
-  public router: Router;
+  // public router: Router;
   public branddetail:any;
   public brandcountries:any;
   public userslist:any;
 
-  constructor(private http: HttpClient, public jwtHelper: JwtHelperService) {
+  constructor(private http: HttpClient, public jwtHelper: JwtHelperService, public router: Router) {
     this.authhttpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json','Access-Control-Allow-Origin': '*', 'access-control-allow-origin': '*', 'AUTHORIZATION':  localStorage.getItem('token')})
     };
@@ -57,6 +57,8 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr----->"+err.error.message)
         this.errors = err.error.message;
+        localStorage.clear();
+        this.router.navigate(['']);
       }
     );
   }
@@ -64,12 +66,14 @@ export class DataService {
   public addBrand(brand){
     this.http.post(API_URL+'add_brands', JSON.stringify(brand), this.authhttpOptions).subscribe(
       (data: any)  => {
-        window.location.href = '/brands'
+        // window.location.href = '/brands'
+        alert("Brand Created Successfully")
+        this.router.navigate(['brands']);
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        //  this.router.navigate(['']);
+        this.router.navigate(['']);
       }
     );     
   }
@@ -84,7 +88,7 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        //  this.router.navigate(['']);
+         this.router.navigate(['']);
       }
     );
      
@@ -119,11 +123,13 @@ export class DataService {
     this.http.put(API_URL+'edit_brands',JSON.stringify(data), this.authhttpOptions).subscribe(
       (data: any)  => {
        alert("Brand edited Successfully")
-       window.location.href = '/brands'
+      //  window.location.href = '/brands'
+       this.router.navigate(['brands']);
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
+        this.router.navigate(['']);
       }
     );
   }
@@ -151,7 +157,10 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         alert(err.error.Message)
-        window.location.href = '/sendnotifications'
+        if (err.error.Message == undefined){
+          this.router.navigate(['sendnotifications']);
+        }
+        // window.location.href = '/sendnotifications'
       }
     );
   }
@@ -175,11 +184,12 @@ export class DataService {
       (data: any)  => {
         alert("Response Send Successfully")
         window.location.href = '/contactus'
+        // this.router.navigate(['contactus']);
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         alert(err.error.Message)
-        window.location.href = '/contactus'
+        this.router.navigate(['']);
       }
     );
 
