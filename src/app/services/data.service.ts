@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 
-const API_URL="http://192.168.2.91:8001/apis/"; 
+const API_URL="http://192.168.2.57:8000/apis/"; 
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +21,8 @@ export class DataService {
   public branddetail:any;
   public brandcountries:any;
   public userslist:any;
+  public couponslist:any;
+  public couponcountries:any;
 
   constructor(private http: HttpClient, public jwtHelper: JwtHelperService, public router: Router) {
     this.authhttpOptions = {
@@ -34,20 +36,7 @@ export class DataService {
     return !this.jwtHelper.isTokenExpired(token);
   }
    
-
-   public getBrandsList(){
-    this.http.get(API_URL+'getbrands', this.authhttpOptions).subscribe(
-      (data: any)  => {
-        this.brandslist = data.response
-      },
-      (err:any)  => {
-        console.log("errrrrrr"+err.error.message)
-        this.errors = err.error.message;
-      }
-    );
-   }
-
-   public dashboard() {
+  public dashboard() {
     this.http.get(API_URL+'dashboard', this.authhttpOptions).subscribe(
       (dashdata: any)  => {
         console.log("dashdata---->")
@@ -63,27 +52,29 @@ export class DataService {
     );
   }
 
-  public addBrand(brand){
-    this.http.post(API_URL+'add_brands', JSON.stringify(brand), this.authhttpOptions).subscribe(
+   public getBrandsList(){
+    this.http.get(API_URL+'getbrands', this.authhttpOptions).subscribe(
       (data: any)  => {
         // window.location.href = '/brands'
-        alert("Brand Created Successfully")
-        this.router.navigate(['brands']);
+        //alert("Brand Created Successfully")
+        // this.router.navigate(['brands']);
+        this.brandslist = data.response
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
         this.router.navigate(['']);
       }
-    );     
-  }
+    );
+   }
 
-  public getUsers(){
-    this.http.get(API_URL+'getusers', this.authhttpOptions).subscribe(
+   public getBrand(data){
+    this.http.post(API_URL+'show_brand',{"brandId":data}, this.authhttpOptions).subscribe(
       (data: any)  => {
-        console.log("xfxcgfcgccg")
-        this.userslist = data.response
-        // window.location.href = '/brands'
+        this.branddetail = data.brand;
+        this.brandcountries = data.brands_country
+        
+        console.log("scdgsavef")
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
@@ -91,19 +82,20 @@ export class DataService {
          this.router.navigate(['']);
       }
     );
-     
-   }
+  }
 
-   public getCountries(){
-    this.http.get(API_URL+'get_countries', this.authhttpOptions).subscribe(
+
+  public addBrand(brand){
+    this.http.post(API_URL+'add_brands', JSON.stringify(brand), this.authhttpOptions).subscribe(
       (data: any)  => {
-        this.countrieslist = data.response
+        window.location.href = '/brands'
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
+        //  this.router.navigate(['']);
       }
-    );
+    );     
   }
 
   public deleteBrand(data){
@@ -111,7 +103,7 @@ export class DataService {
       (data: any)  => {
        alert("Brand Deleted Successfully")
        this.getBrandsList()
-      },
+     },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
@@ -134,22 +126,23 @@ export class DataService {
     );
   }
 
-  public getBrand(data){
-    this.http.post(API_URL+'show_brand',{"brandId":data}, this.authhttpOptions).subscribe(
+  public getUsers(){
+    this.http.get(API_URL+'getusers', this.authhttpOptions).subscribe(
       (data: any)  => {
-        this.branddetail = data.brand;
-        this.brandcountries = data.brands_country
-        
-        console.log("scdgsavef")
+        console.log("xfxcgfcgccg")
+        this.userslist = data.response
+        // window.location.href = '/brands'
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
+        //  this.router.navigate(['']);
       }
     );
-  }
+     
+   }
 
-  public sendNotification(data){
+   public sendNotification(data){
     this.http.post(API_URL+'sendnotification',JSON.stringify(data), this.authhttpOptions).subscribe(
       (data: any)  => {
        alert("Notification Send Successfully")
@@ -195,5 +188,95 @@ export class DataService {
 
   }
 
+   public getCountries(){
+    this.http.get(API_URL+'get_countries', this.authhttpOptions).subscribe(
+      (data: any)  => {
+        this.countrieslist = data.response
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+      }
+    );
+  }
+
+
+  public addCountry(country){
+    this.http.post(API_URL+'add_country', JSON.stringify(country), this.authhttpOptions).subscribe(
+      (data: any)  => {
+        window.location.href = '/country'
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+      }
+    );
+  }
+
+  public deleteCountry(data){
+    this.http.post(API_URL+'delete_country',JSON.stringify(data), this.authhttpOptions).subscribe(
+      (data: any)  => {
+       alert("Country Deleted Successfully")
+       this.getCountries()
+     },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+      }
+    );
+  }
+   
+  public getCoupons(){
+    this.http.get(API_URL+'get_coupons', this.authhttpOptions).subscribe(
+      (data: any) => {
+        this.couponslist = data.response;
+        this.couponcountries = data.coupon_country
+      },
+      (err:any) => {
+        console.log("error"+err.error.message)
+        this.errors = err.error.message;
+      }
+    );
+  }
+
+  public addCoupon(coupon){
+    this.http.post(API_URL+'add_coupon', JSON.stringify(coupon), this.authhttpOptions).subscribe(
+      (data: any)  => {
+        window.location.href = '/coupon'
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+        //  this.router.navigate(['']);
+      }
+    );     
+  }
+
+
+  public deleteCoupon(data){
+    this.http.post(API_URL+'delete_coupon',JSON.stringify(data), this.authhttpOptions).subscribe(
+      (data: any)  => {
+       alert("Coupon Deleted Successfully")
+       this.getCountries()
+     },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+      }
+    );
+  }
+
+  public editCoupon(data){
+    this.http.put(API_URL+'edit_coupon',JSON.stringify(data), this.authhttpOptions).subscribe(
+      (data: any)  => {
+       alert("coupon edited Successfully")
+       window.location.href = '/coupon'
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+      }
+    );
+  }
 
 }

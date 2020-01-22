@@ -18,7 +18,15 @@ import { AddbrandComponent } from './components/brands/addbrand/addbrand.compone
 import { EditbrandComponent } from './components/brands/editbrand/editbrand.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ContactusComponent } from './components/contactus/contactus.component'; 
+import { CountryComponent } from './components/country/country.component';
+import { CouponComponent } from './components/coupon/coupon.component';
+import { AddcouponComponent } from './components/coupon/addcoupon/addcoupon.component';
+import { EditcouponComponent } from './components/coupon/editcoupon/editcoupon.component';
+import { AddcountryComponent } from './components/country/addcountry/addcountry.component';
+import { RequestsComponent } from './components/requests/requests.component';
+import { ViewcouponComponent } from './components/coupon/viewcoupon/viewcoupon.component'; 
 import { JwtHelperService, JwtModuleOptions, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { SettingsComponent } from './components/settings/settings.component';
 
 const yourTokenGetter: any = localStorage.getItem('token');
 const yourWhitelistedDomains: any = "localhost:4200";
@@ -44,7 +52,16 @@ const JWT_Module_Options: JwtModuleOptions = {
     AddbrandComponent,
     EditbrandComponent,
     NotificationsComponent,
-    ContactusComponent
+    ContactusComponent,
+
+    CountryComponent,
+    CouponComponent,
+    AddcouponComponent,
+    EditcouponComponent,
+    AddcountryComponent,
+    RequestsComponent,
+    ViewcouponComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,60 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="page-wrapper">
+
+<div class="container-fluid">
+    <div class="row bg-title">
+        <h2 class="page_heading">Add Country</h2>
+    </div>
+    <!-- /.row -->
+    <!-- .row -->
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div class="white-box"> 
+                <div class="add_formarea">
+                    <form   [formGroup]="addFilterForm" (ngSubmit)="onSubmit()" name="addFilterForm">               
+                        <div class="row">
+                            <aside class="col-sm-10">
+                                <div class="form-group">
+                                <label class="text-uppercase">Name</label>
+                                <input value="" class="form-control" formControlName="name" type="text" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                            <div *ngIf="f.name.errors.required">This field is required</div>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                        
+                        <div class="row">
+                                <aside class="col-sm-10">
+                                    <div class="form-group">
+                                            <label class="text-uppercase">Image</label>
+                                            <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" />
+                                            <div *ngIf="submitted && f.logo.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.logo.errors.required">This field is required</div>
+                                            </div>
+                                    </div>
+                                </aside>
+            
+                            </div>
+                            
+        
+                        
+        
+                        <div class="row">
+        
+                        <aside class="col-sm-5">
+                            <button type="submit" id="upload" class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light" >Add Country</button>
+        
+                        </aside>
+                        </div>
+                        </form>
+                        </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+</div>
+<app-footer></app-footer>
+
