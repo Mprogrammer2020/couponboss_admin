@@ -25,4 +25,8 @@ export class CouponComponent implements OnInit {
     this._dataService.deleteCoupon({"id": id})
   }
 
+  public ViewCoupon(id){
+    this.router.navigate(['/coupon-detail/'+id]);
+  }
+
 }

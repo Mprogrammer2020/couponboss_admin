@@ -23,14 +23,14 @@ export class LoginComponent implements OnInit {
       username: '',
       password: '',
     };
-    if (this.auth.isAuthenticated()) {
-      this.router.navigate(['dashboard']);
+    if (!localStorage.getItem('token')) {
+      this.router.navigate(['']);
     }
   }
 
  
   login() {
-    this._loginService.login({'email': this.user.username, 'password': this.user.password, "device_id": "1546541xcfdf4521", "deviceType": "a"});
+    this._loginService.login({'email': this.user.username, 'password': this.user.password, "device_id": "12452451215245", "deviceType": "a"});
   }
  
   refreshToken() {
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   test(){
 
     console.log("_loginService.token")
-    console.log(this._loginService.tok_data)
+    // console.log(this._loginService.tok_data)
   }
 
 }

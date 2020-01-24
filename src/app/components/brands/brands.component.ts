@@ -22,7 +22,10 @@ export class BrandsComponent implements OnInit {
   }
 
   public deleteBrand(id){
+   let a = confirm("Are you Sure?")
+   if (a == true){
     this._dataService.deleteBrand({"brandId": id})
+   }
   }
 
 }

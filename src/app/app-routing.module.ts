@@ -16,6 +16,7 @@ import { AddcouponComponent } from './components/coupon/addcoupon/addcoupon.comp
 import { EditcouponComponent } from './components/coupon/editcoupon/editcoupon.component';
 import { RequestsComponent } from './components/requests/requests.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import {ViewcouponComponent} from './components/coupon/viewcoupon/viewcoupon.component'
 
  
 
@@ -83,6 +84,12 @@ const routes: Routes = [
   {
     path: 'coupon/edit/:id',
     component: EditcouponComponent,
+    pathMatch:'full',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'coupon-detail/:id',
+    component: ViewcouponComponent,
     pathMatch:'full',
     canActivate: [AuthGuard]
   },

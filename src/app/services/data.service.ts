@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 
-const API_URL="http://192.168.2.57:8000/apis/"; 
+const API_URL="http://192.168.2.91:8001/apis/"; 
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ const API_URL="http://192.168.2.57:8000/apis/";
 export class DataService {
 
   private authhttpOptions: any;
+  private authhttpOptionsupload: any;
   public errors:any;
   public brandslist:any;
   public countrieslist:any;
@@ -27,6 +28,10 @@ export class DataService {
   constructor(private http: HttpClient, public jwtHelper: JwtHelperService, public router: Router) {
     this.authhttpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json','Access-Control-Allow-Origin': '*', 'access-control-allow-origin': '*', 'AUTHORIZATION':  localStorage.getItem('token')})
+    };
+
+    this.authhttpOptionsupload = {
+      headers: new HttpHeaders({'Access-Control-Allow-Origin': '*', 'AUTHORIZATION':  localStorage.getItem('token')})
     };
    }
 
@@ -46,8 +51,8 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr----->"+err.error.message)
         this.errors = err.error.message;
-        localStorage.clear();
-        this.router.navigate(['']);
+        // localStorage.clear();
+        // this.router.navigate(['']);
       }
     );
   }
@@ -63,6 +68,7 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
+        alert("Something Went Wrong.")
         this.router.navigate(['']);
       }
     );
@@ -79,21 +85,50 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-         this.router.navigate(['']);
+        alert("Something Went Wrong.")
+        //  this.router.navigate(['']);
       }
     );
   }
 
 
-  public addBrand(brand){
-    this.http.post(API_URL+'add_brands', JSON.stringify(brand), this.authhttpOptions).subscribe(
+  public getCoupon(data){
+    this.http.post(API_URL+'dc',{"couponId":data}, this.authhttpOptions).subscribe(
       (data: any)  => {
-        window.location.href = '/brands'
+        this.branddetail = data.coupon;
+        console.log(this.branddetail)
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
+        alert("Something Went Wrong.")
         //  this.router.navigate(['']);
+      }
+    );
+  }
+
+
+  public addBrand(brand, formdata){
+    var is_file=brand["is_file"]
+    this.http.post(API_URL+'add_brands', JSON.stringify(brand), this.authhttpOptions).subscribe(
+      (data: any)  => {
+        debugger
+        formdata.append('id' ,data["brand"]);
+        if(is_file == true)
+        {
+          this.upload_file(formdata)
+        }else{
+          alert("Brand Added Successfully");
+          this.router.navigate(['brands']);
+        }
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+
+        //  this.router.navigate(['']);
+
+        alert("Something Went Wrong.")
       }
     );     
   }
@@ -107,20 +142,46 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
+        alert("Something Went Wrong.")
       }
     );
   }
 
-  public editBrand(data){
-    this.http.put(API_URL+'edit_brands',JSON.stringify(data), this.authhttpOptions).subscribe(
+  public upload_file(image_data){
+    this.http.post(API_URL+'uploadfile',image_data, this.authhttpOptionsupload).subscribe(
       (data: any)  => {
-       alert("Brand edited Successfully")
+      alert("Brand edited Successfully")
       //  window.location.href = '/brands'
-       this.router.navigate(['brands']);
+      this.router.navigate(['brands']);
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
+        alert("Something Went Wrong.")
+        this.router.navigate(['']);
+      }
+    );
+
+
+  }
+
+  public editBrand(editdata, formdata){
+    var is_file=editdata["is_file"]
+    this.http.put(API_URL+'edit_brands',JSON.stringify(editdata), this.authhttpOptions).subscribe(
+      (data: any)  => {
+        formdata.append('id' ,data["brand"]);
+        if(is_file == true)
+        {
+          this.upload_file(formdata)
+        }else{
+          alert("Brand edited Successfully");
+          this.router.navigate(['brands']);
+        }
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+        alert("Something Went Wrong.")
         this.router.navigate(['']);
       }
     );
@@ -132,9 +193,13 @@ export class DataService {
         console.log("xfxcgfcgccg")
         this.userslist = data.response
         // window.location.href = '/brands'
+        this.branddetail = data.brand;
+        this.brandcountries = data.brands_country
+        console.log("scdgsavef")
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
+        alert("Something Went Wrong.")
         this.errors = err.error.message;
         //  this.router.navigate(['']);
       }
@@ -151,6 +216,7 @@ export class DataService {
         console.log("errrrrrr"+err.error.message)
         alert(err.error.Message)
         if (err.error.Message == undefined){
+          alert("Something Went Wrong.")
           this.router.navigate(['sendnotifications']);
         }
         // window.location.href = '/sendnotifications'
@@ -201,10 +267,18 @@ export class DataService {
   }
 
 
-  public addCountry(country){
+  public addCountry(country, formdata){
+    var is_file=country["is_file"]
     this.http.post(API_URL+'add_country', JSON.stringify(country), this.authhttpOptions).subscribe(
       (data: any)  => {
-        window.location.href = '/country'
+        formdata.append('id',data["country"]);
+        if(is_file == true)
+        {
+          this.upload_file(formdata)
+        }else{
+          alert("Country Added Successfully.");
+          this.router.navigate(['country']);
+        }
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)

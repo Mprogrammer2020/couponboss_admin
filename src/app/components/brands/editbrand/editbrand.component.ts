@@ -6,6 +6,10 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 import * as $ from 'jquery';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { FileUploader, FileLikeObject } from 'ng2-file-upload';
+import { concat } from  'rxjs';
+
+
 @Component({
   selector: 'app-editbrand',
   templateUrl: './editbrand.component.html',
@@ -19,18 +23,19 @@ export class EditbrandComponent implements OnInit {
   customData:any;
 
   fileName: string;
-  filePreview: string;
+  filePreview: any;
   myString: string;
   selectedId:any;
   selectedElement:any;
+  is_file:boolean = false;
+
+  
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];  
 
   constructor(private formBuilder: FormBuilder,private httpClient: HttpClient,private router: Router,private _Activatedroute:ActivatedRoute,private _dataService:DataService) { 
     this.selectedId=this._Activatedroute.snapshot.paramMap.get("id");
     this._dataService.getBrand(this.selectedId);
-    // this.selectedElement= [
-    //   {id: 1,image: "",latitude: "48.200000",longitude: "45.550000",name: "india",status: 1}];
 
       this.selectedElement= [1,2];
   }
@@ -54,15 +59,17 @@ export class EditbrandComponent implements OnInit {
     let reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {
       let file = event.target.files[0];
+      this.filePreview = file;
+      this.is_file = true
       reader.readAsDataURL(file);
-      reader.onload = () => {
-         this.myString=(<string> reader.result).split(',')[1];
-        this.fileName = file.name + " " + file.type;
-        this.filePreview = 'data:image/png' + ';base64,' + this.myString;
-        $('#viewProfileImage').attr("src", this.filePreview);
+      // reader.onload = () => {
+      //    this.myString=(<string> reader.result).split(',')[1];
+      //   this.fileName = file.name + " " + file.type;
+      //   this.filePreview = 'data:image/png' + ';base64,' + this.myString;
+      //   $('#viewProfileImage').attr("src", this.filePreview);
 
 
-      };
+      // };
     }
   }
 
@@ -76,9 +83,12 @@ export class EditbrandComponent implements OnInit {
         return;
     }
   
+    let formData = new FormData();
+    formData.append('file' ,  this.filePreview);
+    formData.append('type' , "brand");
     this.customData=this.addFilterForm.value;
-    this.customData['profile_pic']=this.filePreview;
-    this._dataService.editBrand(this.customData);
+    this.customData['is_file']= this.is_file;
+    this._dataService.editBrand(this.customData, formData);
 
   }
 
