@@ -1,0 +1,50 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">My Profile</h4>
+            </div>
+            
+        </div>
+        <!-- /row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <div class="row">
+                        <aside class="col-lg-4 text-center">
+                            <img src="assets/images/profile_image.jpg" alt="image" class="img-circle profile_image" id="viewProfileImage"/>
+                        </aside>
+                        <aside class="col-lg-8">
+                            <div class="row">
+                                <aside class="col-sm-6">
+                                    <label>First Name</label>
+                                    <h5 *ngFor="let admin of _dataService.adminprofile; let myIndex = index">{{admin.first_name}}</h5>
+                                    
+                                </aside>
+                                <aside class="col-sm-6">
+                                    <label>Last Name</label>
+                                    <h5 *ngFor="let admin of _dataService.adminprofile; let myIndex = index">{{admin.last_name}}</h5>
+                                </aside>
+                            </div>
+                            <div class="row">
+                                <aside class="col-sm-6">
+                                    <label>Email</label>
+                                    <h5 *ngFor="let admin of _dataService.adminprofile; let myIndex = index">{{admin.email}}</h5>
+                                </aside>  
+                            </div>
+                            
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+
+
+<app-footer></app-footer>

@@ -28,8 +28,9 @@ import { ViewcouponComponent } from './components/coupon/viewcoupon/viewcoupon.c
 import { JwtHelperService, JwtModuleOptions, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 import { SettingsComponent } from './components/settings/settings.component';
+import { MyprofileComponent } from './components/myprofile/myprofile.component';
 
-import { FileUploadModule } from 'ng2-file-upload';
+// import { FileUploadModule } from 'ng2-file-upload';
 
 const yourTokenGetter: any = localStorage.getItem('token');
 const yourWhitelistedDomains: any = "localhost:4200";
@@ -64,7 +65,8 @@ const JWT_Module_Options: JwtModuleOptions = {
     AddcountryComponent,
     RequestsComponent,
     ViewcouponComponent,
-    SettingsComponent
+    SettingsComponent,
+    MyprofileComponent
   ],
   imports: [
     BrowserModule,
@@ -72,8 +74,8 @@ const JWT_Module_Options: JwtModuleOptions = {
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
-    FileUploadModule
+    ReactiveFormsModule
+    // FileUploadModule
   ],
   providers: [XyzService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService],

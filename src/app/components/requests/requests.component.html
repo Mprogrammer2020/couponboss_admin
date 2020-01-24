@@ -1,1 +1,88 @@
-<p>requests works!</p>
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title">Contact Us List</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>User Email</th>
+                                    <th> Store Name</th>
+                                    <th>Store Link</th>
+                                    <th>Country</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let reqcup of _dataService.requestlist; let myIndex = index">
+                                <tr>
+                                    <td>{{reqcup.id}}</td>
+                                    <td>{{reqcup.email}}</td>
+                                    <td>{{reqcup.name}}</td>
+                                    <td>{{reqcup.store_link}}</td>
+                                    <td>{{reqcup.brand}}</td>
+                                    <td>{{reqcup.country}}</td>
+                                    <!-- <td><button (click)="editBrand(item.id)" >Send Response</button  ></td> -->
+                                    <td><button type="button"  data-toggle="modal" [attr.data-target]="'#exampleModal' + reqcup.id">
+                                        Send Response
+                                          </button>
+                                    </td>
+                                </tr>
+
+                                <!-- Modal Start -->
+                                <div class="modal fade" [attr.id]="'exampleModal' + reqcup.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Send Response</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form [formGroup]="addFilterForm" (ngSubmit)="onSubmit()" name="addFilterForm"> 
+                                                <input [ngModel]="reqcup.email" class="form-control" formControlName="email" type="hidden" >
+                                                <div class="row">
+                                                    <aside class="col-sm-10">
+                                                        <div class="form-group">
+                                                        <label class="text-uppercase">Response</label>
+                                                        <input value="" class="form-control" formControlName="response" type="text" [ngClass]="{ 'is-invalid': submitted && f.response.errors }">
+                                                            <div *ngIf="submitted && f.response.errors" class="invalid-feedback">
+                                                                    <div *ngIf="f.response.errors.required">This field is required</div>
+                                                            </div>
+                                                        </div>
+                                                    </aside>
+                                                </div>
+                                                <div class="row">
+        
+                                                    <aside class="col-sm-5">
+                                                        <button type="submit" id="upload" class="blue_btn yellow_btn big_yellow text-uppercase" >Send Response</button>
+                                    
+                                                    </aside>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<app-footer></app-footer>
+

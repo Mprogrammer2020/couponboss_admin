@@ -6,7 +6,7 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 import * as $ from 'jquery';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { FileUploader, FileLikeObject } from 'ng2-file-upload';
+// import { FileUploader, FileLikeObject } from 'ng2-file-upload';
 import { concat } from  'rxjs';
 
 

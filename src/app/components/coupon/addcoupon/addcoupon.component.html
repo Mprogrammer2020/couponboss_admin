@@ -165,12 +165,12 @@
                                     <div class="form-group">
                                             <label class="text-uppercase">Select Brand</label>
 
-                                            <select multiple class="custom-select" formControlName="brand">
+                                            <select formControlName="brand">
                                                 <option value="">Choose your Brand</option>
                                                 <option *ngFor="let brandd of _dataService.brandslist" [ngValue]="brandd.id" (change)="changeBrand($event)">{{brandd.name}}</option>
                                             </select>
                                             <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
-                                            <div *ngIf="submitted && f.brand.errors" class="invalid-feedback">
+                                            <div *ngIf="submitted && f.brandd.errors" class="invalid-feedback">
                                                     <div *ngIf="f.brand.errors.required">This field is required</div>
                                             </div>
                                     </div>
@@ -183,7 +183,7 @@
                         <div class="row">
         
                         <aside class="col-sm-5">
-                            <button type="submit" id="upload" class="blue_btn yellow_btn big_yellow text-uppercase" >Add Brand</button>
+                            <button type="submit" id="upload" class="blue_btn yellow_btn big_yellow text-uppercase" >Add Coupon</button>
         
                         </aside>
                         </div>

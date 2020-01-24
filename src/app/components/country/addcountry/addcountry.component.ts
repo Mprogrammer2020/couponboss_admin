@@ -5,6 +5,9 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 import * as $ from 'jquery';
 import { DataService } from '../../../services/data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+//import LatLng = google.maps.LatLng;
+import {LocationPickerModule} from "ng-location-picker";
 
 @Component({
   selector: 'app-addcountry',
@@ -23,17 +26,18 @@ export class AddcountryComponent implements OnInit {
   myString: string;
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];
-  constructor(private formBuilder: FormBuilder,private _dataService:DataService,private http: HttpClient,private router: Router) { }
+  constructor(private formBuilder: FormBuilder,private _dataService:DataService ,private http: HttpClient ,private router: Router, private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.addFilterForm = this.formBuilder.group({
       name: ['',[Validators.required]],
-      logo:['',[Validators.required]]
+      image:['']
     });
+    
 
   }
   get f() { return this.addFilterForm.controls; }
-
+  
   onFileChange(event:any) {
 
     let reader = new FileReader();
@@ -50,19 +54,21 @@ export class AddcountryComponent implements OnInit {
       };
     }
   }
-  onSubmit() {
-    this.submitted = true;
 
-    // stop here if form is invalid
-    if (this.addFilterForm.invalid) {
-        return;
-    }
+      
+       
+    onSubmit() {
+      this.submitted = true;
   
-    this.customData=this.addFilterForm.value;
-    this.customData['profile_pic']=this.filePreview;
-    this._dataService.addCountry(this.customData);
-
-
-  }
+      // stop here if form is invalid
+      if (this.addFilterForm.invalid) {
+          return;
+      }
+    
+      this.customData=this.addFilterForm.value;
+      this._dataService.addCountry(this.customData);
+  
+  
+    }
 
 }

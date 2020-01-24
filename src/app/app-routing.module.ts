@@ -16,7 +16,11 @@ import { AddcouponComponent } from './components/coupon/addcoupon/addcoupon.comp
 import { EditcouponComponent } from './components/coupon/editcoupon/editcoupon.component';
 import { RequestsComponent } from './components/requests/requests.component';
 import { SettingsComponent } from './components/settings/settings.component';
+
 import {ViewcouponComponent} from './components/coupon/viewcoupon/viewcoupon.component'
+
+
+import { MyprofileComponent } from './components/myprofile/myprofile.component';
 
  
 
@@ -60,8 +64,8 @@ const routes: Routes = [
   {
     path: 'country',
     component: CountryComponent,
-    pathMatch:'full'
-    // canActivate: [AuthGuard]
+    pathMatch:'full',
+    canActivate: [AuthGuard]
   },
   {
     path: 'country/addNew',
@@ -101,7 +105,14 @@ const routes: Routes = [
   },
   {
     path: 'settings',
-    component: RequestsComponent,
+    component: SettingsComponent,
+    pathMatch:'full',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'myProfile',
+    component: MyprofileComponent,
+    pathMatch:'full',
     canActivate: [AuthGuard]
   },
   {
