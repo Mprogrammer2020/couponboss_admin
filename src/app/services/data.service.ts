@@ -119,7 +119,7 @@ export class DataService {
         formdata.append('id' ,data["brand"]);
         if(is_file == true)
         {
-          this.upload_file(formdata)
+          this.upload_file(formdata, "brands", "Added")
         }else{
           alert("Brand Added Successfully");
           this.router.navigate(['brands']);
@@ -150,12 +150,13 @@ export class DataService {
     );
   }
 
-  public upload_file(image_data){
+  public upload_file(image_data,redirect_url, operation){
     this.http.post(API_URL+'uploadfile',image_data, this.authhttpOptionsupload).subscribe(
       (data: any)  => {
-      alert("Brand edited Successfully")
+      alert(redirect_url.charAt(0).toUpperCase() + " "+ operation +" Successfully")
       //  window.location.href = '/brands'
-      this.router.navigate(['brands']);
+      
+        this.router.navigate([redirect_url]);
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
@@ -175,7 +176,7 @@ export class DataService {
         formdata.append('id' ,data["brand"]);
         if(is_file == true)
         {
-          this.upload_file(formdata)
+          this.upload_file(formdata, "brands", "Edited")
         }else{
           alert("Brand edited Successfully");
           this.router.navigate(['brands']);
@@ -288,15 +289,15 @@ export class DataService {
 }
 
 
-  public addCountry(country){
+  public addCountry(country, formdata){
     var is_file=country["is_file"]
 
     this.http.post(API_URL+'add_country', JSON.stringify(country), this.authhttpOptions).subscribe(
       (data: any)  => {
-        // formdata.append('id',data["country"]);
+        formdata.append('id',data["country"]);
         if(is_file == true)
         {
-          // this.upload_file(formdata)
+          this.upload_file(formdata,"country", "Added")
         }else{
           alert("Country Added Successfully.");
           this.router.navigate(['country']);
@@ -341,7 +342,7 @@ export class DataService {
         formdata.append('id' , data["coupon"]);
         if(is_file == true)
         {
-          this.upload_file(formdata)
+          this.upload_file(formdata, "coupon", "Added")
         }
         else
         {
@@ -398,7 +399,7 @@ export class DataService {
         formdata.append('id',data["coupon"]);
         if(is_file == true)
         {
-          this.upload_file(formdata)
+          this.upload_file(formdata, "coupon", "Edit")
         }
         else
         {

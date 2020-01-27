@@ -27,6 +27,7 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
+                            <div  *ngIf="_dataService.brandslist; else elseBlock">
                             <tbody *ngFor="let item of _dataService.brandslist; let myIndex = index">
                                 <tr>
                                     <td>{{item.id}}</td>
@@ -39,6 +40,7 @@
                                           </button>
                                     </td>
                                 </tr>
+                            
 
                                 <!-- Modal Start -->
                                 <div class="modal fade" [attr.id]="'exampleModal' + item.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -83,6 +85,8 @@
                                 <!-- Modal End -->
 
                             </tbody>
+                        </div>
+                        <ng-template #elseBlock><div>No Contact Us Found.</div></ng-template>
                         </table>
                     </div>
                 </div>

@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
       username: '',
       password: '',
     };
-    if (!localStorage.getItem('token')) {
-      this.router.navigate(['']);
+    if (localStorage.getItem('token')) {
+      this.router.navigate(['dashboard']);
     }
   }
 

@@ -46,7 +46,6 @@ export class ContactusComponent implements OnInit {
     }
   
     this.customData=this.addFilterForm.value;
-    debugger
     // this.customData['profile_pic']=this.filePreview;
     this._dataService.sendResponse(this.customData);
 

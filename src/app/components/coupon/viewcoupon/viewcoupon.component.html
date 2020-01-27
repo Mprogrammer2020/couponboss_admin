@@ -100,8 +100,10 @@
             <div class="white-box">
                 <h4><b>Coupon Countries</b></h4>
                     <div class="form-group">
-                        <div class="col-md-12" *ngFor="let country of _dataService.branddetail.coupon_countries">
-                            {{country.name}},
+                        <div class="col-md-12" >
+                            <span *ngFor="let country of _dataService.branddetail.coupon_countries">
+                                {{country.name}},
+                            </span>
                         </div>
                     </div>
             </div>
