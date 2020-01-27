@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="white-box">
-                    <h3 class="box-title">Contact Us List</h3>
+                    <h3 class="box-title">Coupon Requests List</h3>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -25,7 +25,7 @@
                                     <td>{{reqcup.name}}</td>
                                     <td>{{reqcup.store_link}}</td>
                                     <td>{{reqcup.brand}}</td>
-                                    <td>{{reqcup.country}}</td>
+                                    <td class="country" *ngFor="let cntry of reqcup.country; let myIndex1 = index1">{{cntry.name}}</td>
                                     <!-- <td><button (click)="editBrand(item.id)" >Send Response</button  ></td> -->
                                     <td><button type="button"  data-toggle="modal" [attr.data-target]="'#exampleModal' + reqcup.id">
                                         Send Response

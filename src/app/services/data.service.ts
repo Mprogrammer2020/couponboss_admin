@@ -116,7 +116,6 @@ export class DataService {
     var is_file=brand["is_file"]
     this.http.post(API_URL+'add_brands', JSON.stringify(brand), this.authhttpOptions).subscribe(
       (data: any)  => {
-        debugger
         formdata.append('id' ,data["brand"]);
         if(is_file == true)
         {
@@ -274,79 +273,7 @@ export class DataService {
   }
 
 
-  // public getBrandsList(){
-  // this.http.get(API_URL+'getbrands', this.authhttpOptions).subscribe(
-  //   (data: any)  => {
-  //     // window.location.href = '/brands'
-  //     //alert("Brand Created Successfully")
-  //     // this.router.navigate(['brands']);
-  //     this.brandslist = data.response
-  //   },
-  //   (err:any)  => {
-  //     console.log("errrrrrr"+err.error.message)
-  //     this.errors = err.error.message;
-  //     this.router.navigate(['']);
-  //   }
-  // );
-  // }
-
-//   public getBrand(data){
-//   this.http.post(API_URL+'show_brand',{"brandId":data}, this.authhttpOptions).subscribe(
-//     (data: any)  => {
-//       this.branddetail = data.brand;
-//       this.brandcountries = data.brands_country
-      
-//       console.log("scdgsavef")
-//     },
-//     (err:any)  => {
-//       console.log("errrrrrr"+err.error.message)
-//       this.errors = err.error.message;
-//         this.router.navigate(['']);
-//     }
-//   );
-// }
-
-  // public addBrand(brand){
-  //   this.http.post(API_URL+'add_brands', JSON.stringify(brand), this.authhttpOptions).subscribe(
-  //     (data: any)  => {
-  //       window.location.href = '/brands'
-  //     },
-  //     (err:any)  => {
-  //       console.log("errrrrrr"+err.error.message)
-  //       this.errors = err.error.message;
-  //       //  this.router.navigate(['']);
-  //     }
-  //   );     
-  // }
-
-  // public deleteBrand(data){
-  //   this.http.post(API_URL+'delete_brand',JSON.stringify(data), this.authhttpOptions).subscribe(
-  //     (data: any)  => {
-  //      alert("Brand Deleted Successfully")
-  //      this.getBrandsList()
-  //    },
-  //     (err:any)  => {
-  //       console.log("errrrrrr"+err.error.message)
-  //       this.errors = err.error.message;
-  //     }
-  //   );
-  // }
-
-  // public editBrand(data){
-  //   this.http.put(API_URL+'edit_brands',JSON.stringify(data), this.authhttpOptions).subscribe(
-  //     (data: any)  => {
-  //      alert("Brand edited Successfully")
-  //     //  window.location.href = '/brands'
-  //      this.router.navigate(['brands']);
-  //     },
-  //     (err:any)  => {
-  //       console.log("errrrrrr"+err.error.message)
-  //       this.errors = err.error.message;
-  //       this.router.navigate(['']);
-  //     }
-  //   );
-  // }
-
+  
 
   public getCountries(){
   this.http.get(API_URL+'get_countries', this.authhttpOptions).subscribe(
@@ -407,18 +334,30 @@ export class DataService {
     );
   }
 
-  public addCoupon(coupon){
+  public addCoupon(coupon, formdata){
+    var is_file=coupon["is_file"]
     this.http.post(API_URL+'add_coupon', JSON.stringify(coupon), this.authhttpOptions).subscribe(
       (data: any)  => {
-        window.location.href = '/coupon'
+        formdata.append('id' , data["coupon"]);
+        if(is_file == true)
+        {
+          this.upload_file(formdata)
+        }
+        else
+        {
+          alert("Coupon Added Successfully");
+          this.router.navigate(['coupon']);
+        }
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
         //  this.router.navigate(['']);
+        alert("Something Went Wrong.")
       }
     );     
   }
+  
 
 
   public deleteCoupon(data){
@@ -452,15 +391,27 @@ export class DataService {
 
 
 
-  public editCoupon(data){
-    this.http.put(API_URL+'edit_coupon',JSON.stringify(data), this.authhttpOptions).subscribe(
+  public editCoupon(editdata , formdata){
+    var is_file = editdata["is_file"]
+    this.http.post(API_URL+'edit_coupon',JSON.stringify(editdata), this.authhttpOptions).subscribe(
       (data: any)  => {
-       alert("coupon edited Successfully")
-       this.router.navigate(['coupon']);
+        formdata.append('id',data["coupon"]);
+        if(is_file == true)
+        {
+          this.upload_file(formdata)
+        }
+        else
+        {
+          alert("coupon edited Successfully")
+          this.router.navigate(['coupon']);
+        }
+       
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
+        alert("Something Went Wrong")
+        this.router.navigate(['']);
       }
     );
   }
