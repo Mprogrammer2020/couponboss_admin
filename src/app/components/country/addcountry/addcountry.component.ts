@@ -11,9 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 //import LatLng = google.maps.LatLng;
 // import {LocationPickerModule} from "ng-location-picker";
-
-// import { } from '@types/googlemaps';
-
+declare var google: any;
 
 @Component({
   selector: 'app-addcountry',
