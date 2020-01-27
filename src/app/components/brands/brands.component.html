@@ -35,7 +35,7 @@
                                     <td>{{item.url}}</td>
                                     <td class="brands_countries">
                                         <ul *ngFor="let country of item.brand_countries; let myIndex1 = index1">
-                                        <li><span><img src="https://efx-staging-resources.s3.amazonaws.com/flag_images/india.png"></span> {{country.name}}</li> 
+                                        <li><span> <img [attr.src]= 'country.image == "" ? current_location+"/media/countryimages/No-image-found.jpg" : current_location+country.image'/></span> {{country.name}}</li> 
                                         </ul>
                                     </td>
                                     <td class="brands_countries">

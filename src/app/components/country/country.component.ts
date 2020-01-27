@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';import * as $ from 'jquery';
+import { Component, OnInit, Inject } from '@angular/core';import * as $ from 'jquery';
 import { DataService } from '../../services/data.service';
 import {throwError} from 'rxjs';
 import {NgForm} from '@angular/forms'; 
 import { Router } from '@angular/router'; 
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-country',
@@ -11,9 +12,16 @@ import { Router } from '@angular/router';
 })
 export class CountryComponent implements OnInit {
 
-  constructor(private _dataService: DataService ,private router: Router) { this._dataService.getCountries();}
+  current_location:any;
+  image:any
+
+  constructor(@Inject(DOCUMENT) private document: Document, private _dataService: DataService ,private router: Router) { this._dataService.getCountries();}
 
   ngOnInit() {
+    // this.current_location = this.document.location.origin;
+    this.current_location = "http://192.168.2.91:8001";
+
+    console.log(this.current_location)
   }
   public deleteCountry(id){
     this._dataService.deleteCountry({"id": id})

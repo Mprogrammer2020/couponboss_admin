@@ -30,7 +30,8 @@
                                 <tr>
                                     <td>{{cntry.id}}</td>
                                     <td>{{cntry.name}}</td>
-                                    <td>{{cntry.image}}</td>
+                                    <td> <img [attr.src]= 'cntry.image == "" ? current_location+"/media/countryimages/No-image-found.jpg" : current_location+cntry.image' style="width: 12%;"/></td>
+                                    <!-- <td>{{cntry.image != "" ? image =cntry.image : image= "/assets/profile_image.jpg"}} <img src=""/></td> -->
                                     <td><button (click)="deleteCountry(cntry.id)">Delete</button></td>
                                 </tr>
                             </tbody>
