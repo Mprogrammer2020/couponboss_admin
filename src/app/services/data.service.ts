@@ -47,8 +47,6 @@ export class DataService {
   public dashboard() {
     this.http.get(API_URL+'dashboard', this.authhttpOptions).subscribe(
       (dashdata: any)  => {
-        console.log("dashdata---->")
-        console.log(dashdata)
         this.dashboarddata = dashdata
       },
       (err:any)  => {
@@ -100,7 +98,6 @@ export class DataService {
     this.http.post(API_URL+'dc',{"couponId":data}, this.authhttpOptions).subscribe(
       (data: any)  => {
         this.branddetail = data.coupon;
-        console.log(this.branddetail)
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
@@ -153,10 +150,15 @@ export class DataService {
   public upload_file(image_data,redirect_url, operation){
     this.http.post(API_URL+'uploadfile',image_data, this.authhttpOptionsupload).subscribe(
       (data: any)  => {
-      alert(redirect_url.charAt(0).toUpperCase() + " "+ operation +" Successfully")
-      //  window.location.href = '/brands'
-      
-        this.router.navigate([redirect_url]);
+        if(redirect_url == "sendnotifications"){ 
+          alert("Notification Send Successfully.")
+        }
+        else{
+          alert(redirect_url.charAt(0).toUpperCase() + " "+ operation +" Successfully")
+        }
+          
+        
+          this.router.navigate([redirect_url]);
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
@@ -195,12 +197,10 @@ export class DataService {
   public getUsers(){
     this.http.get(API_URL+'getusers', this.authhttpOptions).subscribe(
       (data: any)  => {
-        console.log("xfxcgfcgccg")
         this.userslist = data.response
         // window.location.href = '/brands'
         this.branddetail = data.brand;
         this.brandcountries = data.brands_country
-        console.log("scdgsavef")
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
@@ -212,10 +212,18 @@ export class DataService {
      
    }
 
-   public sendNotification(data){
-    this.http.post(API_URL+'sendnotification',JSON.stringify(data), this.authhttpOptions).subscribe(
+   public sendNotification(notdata, formdata){
+      var is_file=notdata["is_file"]
+    this.http.post(API_URL+'sendnotification',JSON.stringify(notdata), this.authhttpOptions).subscribe(
       (data: any)  => {
-       alert("Notification Send Successfully")
+        formdata.append('id',data["notification"]);
+        if(is_file == true)
+        {
+          this.upload_file(formdata,"sendnotifications", "")
+        }else{
+          alert("Notification Send Successfully");
+          this.router.navigate(['sendnotifications']);
+        }
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)

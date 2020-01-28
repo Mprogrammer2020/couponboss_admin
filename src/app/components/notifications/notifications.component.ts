@@ -22,6 +22,7 @@ export class NotificationsComponent implements OnInit {
   filePreview: string;
   myString: string;
   selectedElement:any;
+  is_file:boolean = false;
 
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];  
@@ -51,23 +52,17 @@ export class NotificationsComponent implements OnInit {
 
   get f() { return this.addFilterForm.controls; }
 
-
   onFileChange(event:any) {
 
     let reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {
       let file = event.target.files[0];
+      this.filePreview = file;
+      this.is_file = true
       reader.readAsDataURL(file);
-      reader.onload = () => {
-         this.myString=(<string> reader.result).split(',')[1];
-        this.fileName = file.name + " " + file.type;
-        this.filePreview = 'data:image/png' + ';base64,' + this.myString;
-        $('#viewProfileImage').attr("src", this.filePreview);
-
-
-      };
     }
   }
+
 
 
   onSubmit() {
@@ -77,10 +72,13 @@ export class NotificationsComponent implements OnInit {
     if (this.addFilterForm.invalid) {
         return;
     }
-  
+    let formData = new FormData();
+    formData.append('file' ,  this.filePreview);
+    formData.append('type' , "notifications");
     this.customData=this.addFilterForm.value;
     this.customData['profile_pic']=this.filePreview;
-    this._dataService.sendNotification(this.customData);
+    this.customData['is_file']= this.is_file;
+    this._dataService.sendNotification(this.customData, formData);
 
 
   }

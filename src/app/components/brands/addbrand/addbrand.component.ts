@@ -71,7 +71,6 @@ export class AddbrandComponent implements OnInit {
   //   }
   // }
 
-
   onFileChange(event:any) {
 
     let reader = new FileReader();
@@ -80,14 +79,6 @@ export class AddbrandComponent implements OnInit {
       this.filePreview = file;
       this.is_file = true
       reader.readAsDataURL(file);
-    //   reader.onload = () => {
-    //      this.myString=(<string> reader.result).split(',')[1];
-    //     this.fileName = file.name + " " + file.type;
-    //     this.filePreview = 'data:image/png' + ';base64,' + this.myString;
-    //     $('#viewProfileImage').attr("src", this.filePreview);
-
-
-    //   };
     }
   }
 

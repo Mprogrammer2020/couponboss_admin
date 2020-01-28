@@ -27,7 +27,6 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <div  *ngIf="_dataService.brandslist; else elseBlock">
                             <tbody *ngFor="let item of _dataService.brandslist; let myIndex = index">
                                 <tr>
                                     <td>{{item.id}}</td>
@@ -85,8 +84,7 @@
                                 <!-- Modal End -->
 
                             </tbody>
-                        </div>
-                        <ng-template #elseBlock><div>No Contact Us Found.</div></ng-template>
+                            <div *ngIf="_dataService.brandslist && _dataService.brandslist.length==0"><tbody><h2>No Contact Us Found.</h2></tbody></div>
                         </table>
                     </div>
                 </div>

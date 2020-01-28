@@ -29,7 +29,7 @@
                                 </tr>
                             </thead>
                             <tbody *ngFor="let item of _dataService.brandslist; let myIndex = index">
-                                <tr *ngIf="_dataService.brandslist; else elseBlock">
+                                <tr>
                                     <td>{{item.id}}</td>
                                     <td>{{item.name}}</td>
                                     <td>{{item.url}}</td>
@@ -45,8 +45,8 @@
                                     </td>
                                     <td><button (click)="editBrand(item.id)" >Edit</button  ><button (click)="deleteBrand(item.id)">Delete</button></td>
                                 </tr>
-                                <ng-template #elseBlock><div>Brand Not Found.</div></ng-template>
                             </tbody>
+                            <div *ngIf="_dataService.brandslist && _dataService.brandslist.length==0"><tbody><h2>No Brands Found.</h2></tbody></div>
                         </table>
                     </div>
                 </div>

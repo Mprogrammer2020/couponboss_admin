@@ -35,6 +35,7 @@
                                     <td><button (click)="deleteCountry(cntry.id)">Delete</button></td>
                                 </tr>
                             </tbody>
+                            <div *ngIf="_dataService.countrieslist && _dataService.countrieslist.length==0"><tbody><h2>No Country Found.</h2></tbody></div>
                         </table>
                     </div>
                 </div>
