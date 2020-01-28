@@ -439,6 +439,19 @@ export class DataService {
     return this.http.post<any>(API_URL + 'change_admin_password',body,this.authhttpOptions);
   }
 
+  public filterCoupon(data){
+    this.http.get(API_URL+'get_coupons?search=true&data='+JSON.stringify(data), this.authhttpOptions).subscribe(
+      (data: any)  => {
+        this.couponslist = data.response
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+      }
+    );
+    
+  }
+
   
 
 }

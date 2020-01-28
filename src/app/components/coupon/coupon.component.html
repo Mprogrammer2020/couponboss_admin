@@ -16,6 +16,21 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <h3 class="box-title">Coupons</h3>
+                    <div style="float: right;">
+                        <form   [formGroup]="addFilterForm" (ngSubmit)="filterCoupon()" name="addFilterForm"> 
+                            <select class="custom-select" formControlName="country" (change)="changeCity($event)">
+                                <option value="">Choose your Country</option>
+                                <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" >{{city.name}}</option>
+                            </select>
+
+
+                            <select class="custom-select" formControlName="brand" (change)="changeCity($event)">
+                                <option value="">Choose your Brand</option>
+                                <option *ngFor="let city of _dataService.brandslist" [ngValue]="city.id" >{{city.name}}</option>
+                            </select>
+                            <!-- <button type="submit" id="upload" class="blue_btn yellow_btn big_yellow text-uppercase" >Search Coupon</button> -->
+                        </form>
+                    </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>

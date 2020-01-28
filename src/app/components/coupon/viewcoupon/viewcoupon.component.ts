@@ -14,10 +14,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ViewcouponComponent implements OnInit {
   public selectedId:any;
-
+  current_location:any
   constructor(private httpClient: HttpClient,private router: Router,private _Activatedroute:ActivatedRoute,private _dataService:DataService) { 
     this.selectedId=this._Activatedroute.snapshot.paramMap.get("id");
     this._dataService.getCoupon(this.selectedId);
+    this.current_location = "http://192.168.2.91:8001";
   }
 
   ngOnInit() {
