@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="white-box">
-                    <h3 class="box-title">Brands List</h3>
+                    <h3 class="box-title">Brands List</h3>                  
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -28,7 +28,7 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody *ngFor="let item of _dataService.brandslist; let myIndex = index">
+                            <tbody *ngFor="let item of _dataService.brandslist| paginate: { itemsPerPage:itemsPerPage, currentPage: currentPage,totalItems:totalItems }; let myIndex = index">
                                 <tr>
                                     <td>{{item.id}}</td>
                                     <td>{{item.name}}</td>
@@ -48,11 +48,18 @@
                             </tbody>
                             <div *ngIf="_dataService.brandslist && _dataService.brandslist.length==0"><tbody><h2>No Brands Found.</h2></tbody></div>
                         </table>
+                        <pagination-controls class="pagination" (pageChange)="currentPage=$event"></pagination-controls>
+                        
                     </div>
+                    
                 </div>
             </div>
         </div>
     </div>
+   
+    
 </div>
 
-<app-footer></app-footer>
+<app-footer>
+    
+</app-footer>

@@ -26,7 +26,7 @@
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody *ngFor="let cntry of _dataService.countrieslist; let myIndex = index">
+                            <tbody *ngFor="let cntry of _dataService.countrieslist | paginate: { itemsPerPage:itemsPerPage, currentPage: currentPage,totalItems:totalItems }; let myIndex = index">
                                 <tr>
                                     <td>{{cntry.id}}</td>
                                     <td>{{cntry.name}}</td>
@@ -37,6 +37,7 @@
                             </tbody>
                             <div *ngIf="_dataService.countrieslist && _dataService.countrieslist.length==0"><tbody><h2>No Country Found.</h2></tbody></div>
                         </table>
+                        <pagination-controls class="pagination" (pageChange)="currentPage=$event"></pagination-controls>
                     </div>
                 </div>
             </div>

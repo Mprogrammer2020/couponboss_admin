@@ -49,7 +49,7 @@ export class EditbrandComponent implements OnInit {
       brandId:this.selectedId
     });
 
-    this._dataService.getCountries();
+    this._dataService.getCountries(1,2);
   }
 
   get f() { return this.addFilterForm.controls; }

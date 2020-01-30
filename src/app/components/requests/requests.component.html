@@ -18,7 +18,7 @@
                                     <th>Country</th>
                                 </tr>
                             </thead>
-                            <tbody *ngFor="let reqcup of _dataService.requestlist; let myIndex = index">
+                            <tbody *ngFor="let reqcup of _dataService.requestlist | paginate: { itemsPerPage:itemsPerPage, currentPage: currentPage,totalItems:totalItems }; let myIndex = index">
                                 <tr>
                                     <td>{{reqcup.id}}</td>
                                     <td>{{reqcup.email}}</td>
@@ -76,6 +76,7 @@
                             <div *ngIf="_dataService.requestlist && _dataService.requestlist.length==0"><tbody><h2>No Request Found.</h2></tbody></div>
 
                         </table>
+                        <pagination-controls class="pagination" (pageChange)="currentPage=$event"></pagination-controls>
                     </div>
                 </div>
             </div>

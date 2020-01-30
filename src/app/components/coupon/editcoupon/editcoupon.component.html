@@ -141,7 +141,7 @@
                                     <div class="form-group">
                                             <label class="text-uppercase">Select Brand</label>
 
-                                            <select formControlName="brand" [(ngModel)]="_dataService.branddetail.coupon_brand.name">
+                                            <select formControlName="brand" [(ngModel)]="_dataService.branddetail.coupon_brand">
                                                 <option value="">Choose your brand</option>
                                                 <option *ngFor="let brandd of _dataService.brandslist" [ngValue]="brandd.id" (change)="changeBrand($event)">{{brandd.name}}</option>
                                             </select>

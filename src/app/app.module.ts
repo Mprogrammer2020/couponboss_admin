@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,6 +28,8 @@ import { JwtHelperService, JwtModuleOptions, JWT_OPTIONS } from '@auth0/angular-
 
 import { SettingsComponent } from './components/settings/settings.component';
 import { MyprofileComponent } from './components/myprofile/myprofile.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 // import { FileUploadModule } from 'ng2-file-upload';
 
@@ -74,7 +75,8 @@ const JWT_Module_Options: JwtModuleOptions = {
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
     // FileUploadModule
   ],
   providers: [XyzService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

@@ -12,17 +12,36 @@ import { DOCUMENT } from '@angular/common';
 })
 export class CountryComponent implements OnInit {
 
+  private currentPage:any=1; // set current page to 1
+  public itemsPerPage:any=3; // we are showing 10 items per page
   current_location:any;
   image:any
 
-  constructor(@Inject(DOCUMENT) private document: Document, private _dataService: DataService ,private router: Router) { this._dataService.getCountries();}
+  constructor(@Inject(DOCUMENT) private document: Document, private _dataService: DataService ,private router: Router) { }
 
   ngOnInit() {
     // this.current_location = this.document.location.origin;
-    this.current_location = "http://192.168.2.91:8001";
+    this.current_location = "http://192.168.2.57:8000";
+    this.getData(this.currentPage,this.itemsPerPage)
+    $('#idCountryLi').addClass('active');
 
     console.log(this.current_location)
   }
+  public setValue() { 
+    this.currentPage=1;
+    this.getData(this.currentPage,this.itemsPerPage)
+  }
+
+  public getNext(page: any){
+    this.currentPage = page;
+    this.getData(this.currentPage,this.itemsPerPage);
+  }
+
+  getData(pageNo: any,maxResults: any){
+    
+    this._dataService.getCountries(pageNo,maxResults);
+}
+
   public deleteCountry(id){
     this._dataService.deleteCountry({"id": id})
   }

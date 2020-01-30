@@ -42,8 +42,8 @@ export class AddcouponComponent implements OnInit {
       brand:['',[Validators.required]]
     });
 
-    this._dataService.getCountries();
-    this._dataService.getBrandsList();
+    this._dataService.getCountries(1,2);
+    this._dataService.getBrandsList(1,2);
   }
 
   get f() { return this.addFilterForm.controls; }

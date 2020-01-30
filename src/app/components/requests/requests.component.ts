@@ -13,6 +13,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RequestsComponent implements OnInit {
 
+  private currentPage:any=1; // set current page to 1
+  public itemsPerPage:any=3; // we are showing 10 items per page
+
   public editObj:any;
   addFilterForm: FormGroup;
   submitted = false;
@@ -25,14 +28,32 @@ export class RequestsComponent implements OnInit {
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];
 
-  constructor(private formBuilder: FormBuilder,private _dataService: DataService,private router: Router) {this._dataService.requestcouponlist(); }
+  constructor(private formBuilder: FormBuilder,private _dataService: DataService,private router: Router) { }
 
   ngOnInit() {
     this.addFilterForm = this.formBuilder.group({
       email: ['',[Validators.required]],
       response: ['',[Validators.required]]
     });
+
+    this.getData(this.currentPage,this.itemsPerPage)
+    $('#idRequestLi').addClass('active');
   }
+
+  public setValue() { 
+    this.currentPage=1;
+    this.getData(this.currentPage,this.itemsPerPage)
+  }
+
+  public getNext(page: any){
+    this.currentPage = page;
+    this.getData(this.currentPage,this.itemsPerPage);
+  }
+
+  getData(pageNo: any,maxResults: any){
+    
+    this._dataService.requestcouponlist(pageNo,maxResults);
+}
 
   onSubmit() {
     this.submitted = true;

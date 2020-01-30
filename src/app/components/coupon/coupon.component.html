@@ -42,7 +42,7 @@
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody *ngFor="let coup of _dataService.couponslist; let myIndex = index">
+                            <tbody *ngFor="let coup of _dataService.couponslist | paginate: { itemsPerPage:itemsPerPage, currentPage: currentPage,totalItems:totalItems }; let myIndex = index">
                                 <tr>
                                     <td>{{coup.id}}</td>
                                     <td>{{coup.code}}</td>
@@ -61,6 +61,7 @@
                             </tbody>
                             <div *ngIf="_dataService.couponslist && _dataService.couponslist.length==0"><tbody><h2>No Coupon Found.</h2></tbody></div>
                         </table>
+                        <pagination-controls class="pagination" (pageChange)="currentPage=$event"></pagination-controls>
                     </div>
                 </div>
             </div>

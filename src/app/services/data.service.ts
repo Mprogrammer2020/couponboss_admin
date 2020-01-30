@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, JsonpInterceptor} from '@angular/common/http';
+import {HttpClient, HttpHeaders, JsonpInterceptor,HttpParams} from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -27,10 +27,13 @@ export class DataService {
   public adminprofile:any;
   public requestlist:any;
   public coupondetail:any;
+  public totalItems:any;
+  public couponbrands:any;
 
   constructor(private http: HttpClient, public jwtHelper: JwtHelperService, public router: Router) {
     this.authhttpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json','Access-Control-Allow-Origin': '*', 'access-control-allow-origin': '*', 'AUTHORIZATION':  localStorage.getItem('token')})
+    
     };
 
     this.authhttpOptionsupload = {
@@ -59,13 +62,15 @@ export class DataService {
   }
 
 
-   public getBrandsList(){
-    this.http.get(API_URL+'getbrands', this.authhttpOptions).subscribe(
+   public getBrandsList(pageNo:any,maxRecords:any){
+    let httpParams = new HttpParams().set('pageNo', pageNo).set('maxRecords', maxRecords)
+    this.http.get(API_URL+'getbrands', {headers: { 'Authorization':  localStorage.getItem('token')},params: httpParams}).subscribe(
       (data: any)  => {
         // window.location.href = '/brands'
         //alert("Brand Created Successfully")
         // this.router.navigate(['brands']);
-        this.brandslist = data.response
+        this.brandslist = data.response;
+        
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
@@ -97,7 +102,7 @@ export class DataService {
   public getCoupon(data){
     this.http.post(API_URL+'dc',{"couponId":data}, this.authhttpOptions).subscribe(
       (data: any)  => {
-        this.branddetail = data.coupon;
+        this.branddetail = data.coupon
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
@@ -137,7 +142,7 @@ export class DataService {
     this.http.post(API_URL+'delete_brand',JSON.stringify(data), this.authhttpOptions).subscribe(
       (data: any)  => {
        alert("Brand Deleted Successfully")
-       this.getBrandsList()
+       this.getBrandsList(1,2)
      },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
@@ -237,8 +242,9 @@ export class DataService {
     );
   }
 
-  public contactuslist(){
-    this.http.get(API_URL+'countactuslist', this.authhttpOptions).subscribe(
+  public contactuslist(pageNo:any,maxRecords:any){
+    let httpParams = new HttpParams().set('pageNo', pageNo).set('maxRecords', maxRecords)
+    this.http.get(API_URL+'countactuslist', {headers: { 'Authorization':  localStorage.getItem('token')},params: httpParams}).subscribe(
       (data: any)  => {
         this.brandslist = data.countactuslist
       //  alert("Notification Send Successfully")
@@ -267,8 +273,9 @@ export class DataService {
 
   }
 
-  public requestcouponlist(){
-    this.http.get(API_URL+'get_coupon_request', this.authhttpOptions).subscribe(
+  public requestcouponlist(pageNo:any,maxRecords:any){
+    let httpParams = new HttpParams().set('pageNo', pageNo).set('maxRecords', maxRecords)
+    this.http.get(API_URL+'get_coupon_request', {headers: { 'Authorization':  localStorage.getItem('token')},params: httpParams}).subscribe(
       (data: any)  => {
         this.requestlist = data.response
       //  alert("Notification Send Successfully")
@@ -284,10 +291,13 @@ export class DataService {
 
   
 
-  public getCountries(){
-  this.http.get(API_URL+'get_countries', this.authhttpOptions).subscribe(
+  public getCountries(pageNo:any,maxRecords:any){
+    let httpParams = new HttpParams().set('pageNo',pageNo).set('maxRecords',maxRecords)
+
+  this.http.get(API_URL+'get_countries', {headers: { 'Authorization': localStorage.getItem('token')},params: httpParams}).subscribe(
     (data: any)  => {
-      this.countrieslist = data.response
+      this.countrieslist = data.response;
+      this.totalItems = data.count;
     },
     (err:any)  => {
       console.log("errrrrrr"+err.error.message)
@@ -322,7 +332,7 @@ export class DataService {
     this.http.post(API_URL+'delete_country',JSON.stringify(data), this.authhttpOptions).subscribe(
       (data: any)  => {
        alert("Country Deleted Successfully")
-       this.getCountries()
+       this.getCountries(1,2)
      },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
@@ -331,8 +341,9 @@ export class DataService {
     );
   }
    
-  public getCoupons(){
-    this.http.get(API_URL+'get_coupons', this.authhttpOptions).subscribe(
+  public getCoupons(pageNo:any,maxRecords:any){
+    let httpParams = new HttpParams().set('pageNo',pageNo).set('maxRecords',maxRecords)
+    this.http.get(API_URL+'get_coupons', {headers:{'Authorization': localStorage.getItem('token')},params:httpParams}).subscribe(
       (data: any) => {
         this.couponslist = data.response
       },
@@ -373,7 +384,7 @@ export class DataService {
     this.http.post(API_URL+'delete_coupon',JSON.stringify(data), this.authhttpOptions).subscribe(
       (data: any)  => {
        alert("Coupon Deleted Successfully")
-       this.getCountries()
+       this.getCountries(1,2)
      },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
@@ -451,14 +462,36 @@ export class DataService {
     this.http.get(API_URL+'get_coupons?search=true&data='+JSON.stringify(data), this.authhttpOptions).subscribe(
       (data: any)  => {
         this.couponslist = data.response
+        //  this.router.navigate(['']);
       },
-      (err:any)  => {
-        console.log("errrrrrr"+err.error.message)
-        this.errors = err.error.message;
+      (err:any) => {
+        alert("Something Went Wrong.")
       }
-    );
-    
+    );     
   }
+
+
+  // public addBanner(banner, formdata){
+  //   var is_file=banner["is_file"]
+  //   this.http.post(API_URL+'add_banner', JSON.stringify(banner), this.authhttpOptions).subscribe(
+  //     (data: any)  => {
+  //       formdata.append('id' ,data["banner"]);
+  //       if(is_file == true)
+  //       {
+  //         this.upload_file(formdata, "banner", "Added")
+  //       }else{
+  //         alert("Banner Added Successfully");
+  //         this.router.navigate(['banner']);
+  //       }
+  //     },
+  //     (err:any)  => {
+  //       console.log("errrrrrr"+err.error.message)
+  //       this.errors = err.error.message;
+  //     }
+  //   );
+    
+
+  // }   
 
   
 
