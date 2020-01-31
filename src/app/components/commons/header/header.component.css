@@ -13,3 +13,39 @@ img {
     margin: 31px 11px 10px 3px;
 
 } */
+.navbar-default .navbar-nav > li > a {
+	color: #fff;
+	font-size: 16px;
+}
+.navbar-right {
+	float: right !important;
+	 margin-right: 0px; 
+}
+.navbar-header {
+	background: #c2272b;
+}
+.light-logo {
+	height: 56px;
+}
+.logo b {
+	height: 60px;
+	 float: inherit; 
+	padding-left: 10px;
+	width: auto;
+	line-height: 59px;
+	text-align: center;
+}
+.top-left-part {
+	
+	text-align: center;
+}
+#side-menu li a:hover {
+	background: rgba(0, 0, 0, 0.07);
+    color: #c2272b!important;
+}
+#side-menu > li > a:hover, #side-menu > li > a:focus {
+    background: 
+rgba(0, 0, 0, 0.07);
+color:
+    red;
+}

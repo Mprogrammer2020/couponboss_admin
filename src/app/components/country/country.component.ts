@@ -23,7 +23,7 @@ export class CountryComponent implements OnInit {
     // this.current_location = this.document.location.origin;
     this.current_location = "http://192.168.2.57:8000";
     this.getData(this.currentPage,this.itemsPerPage)
-    $('#idCountryLi').addClass('active');
+    $('#country_sidebar').addClass('active');
 
     console.log(this.current_location)
   }

@@ -29,7 +29,7 @@ export class CouponComponent implements OnInit {
     });
 
     this.getData(this.currentPage,this.itemsPerPage)
-    $('#idCouponLi').addClass('active');
+    $('#coupon_sidebar').addClass('active');
     this._dataService.getBrandsList(1,2)
     this._dataService.getCountries(1,2)
   }

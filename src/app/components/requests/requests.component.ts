@@ -37,7 +37,7 @@ export class RequestsComponent implements OnInit {
     });
 
     this.getData(this.currentPage,this.itemsPerPage)
-    $('#idRequestLi').addClass('active');
+    $('#request_sidebar').addClass('active');
   }
 
   public setValue() { 

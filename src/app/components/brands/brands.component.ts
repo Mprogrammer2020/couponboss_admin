@@ -21,7 +21,7 @@ export class BrandsComponent implements OnInit {
   ngOnInit() {
     this.current_location = "http://192.168.2.57:8000";
     this.getData(this.currentPage,this.itemsPerPage)
-    $('#idParentalFiltersLi').addClass('active');
+    $('#brand_sidebar').addClass('active');
 
   }
   public setValue() { 

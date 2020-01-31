@@ -20,6 +20,8 @@ export class DashboardComponent implements OnInit {
    }
 
   ngOnInit() {
+
+    $('#dashboard_sidebar').addClass('active');
     if (!localStorage.getItem('token')) {
       this.router.navigate(['login']);
     }

@@ -40,7 +40,7 @@ export class ContactusComponent implements OnInit {
     });
 
     this.getData(this.currentPage,this.itemsPerPage)
-    $('#idContactUsLi').addClass('active');
+    $('#contact_sidebar').addClass('active');
   }
 
   public setValue() { 
