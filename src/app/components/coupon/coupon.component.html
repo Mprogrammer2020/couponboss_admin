@@ -59,7 +59,13 @@
                                         <li>{{country.name}}</li> 
                                         </ul>
                                     </td>
-                                    <td><button (click)="ViewCoupon(coup.id)" >View</button> <button (click)="editCoupon(coup.id)" >Edit</button  ><button (click)="deleteCoupon(coup.id)">Delete</button></td>
+                                    
+                                    <td>
+                                        <a class="icons" (click)="ViewCoupon(coup.id)" ><i class="fa fa-eye"  aria-hidden="true"></i>
+                                        </a><a class="icons" (click)="editCoupon(coup.id)" ><i class="fa fa-pencil"  aria-hidden="true"></i>
+                                        </a><a  class="icons" (click)="deleteCoupon(coup.id)"><i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
                             <div *ngIf="_dataService.couponslist && _dataService.couponslist.length==0"><tbody><h2>No Coupon Found.</h2></tbody></div>

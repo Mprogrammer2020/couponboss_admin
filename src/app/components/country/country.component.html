@@ -32,7 +32,10 @@
                                     <td>{{cntry.name}}</td>
                                     <td> <img [attr.src]= 'cntry.image == "" ? current_location+"/media/countryimages/No-image-found.jpg" : current_location+cntry.image' style="width: 12%;"/></td>
                                     <!-- <td>{{cntry.image != "" ? image =cntry.image : image= "/assets/profile_image.jpg"}} <img src=""/></td> -->
-                                    <td><button (click)="deleteCountry(cntry.id)">Delete</button></td>
+                                    <td>
+                                        <a  class="icons" (click)="deleteCountry(cntry.id)"><i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
                             <div *ngIf="_dataService.countrieslist && _dataService.countrieslist.length==0"><tbody><h2>No Country Found.</h2></tbody></div>

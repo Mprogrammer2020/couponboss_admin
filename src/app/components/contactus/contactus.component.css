@@ -1,5 +1,5 @@
 .pagination /deep/ .ngx-pagination .current {
-    background: #f33155;
+    background: red;
   }
 
   .pagination /deep/ .ngx-pagination li {
