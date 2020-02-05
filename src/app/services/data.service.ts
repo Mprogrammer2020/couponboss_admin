@@ -384,7 +384,7 @@ export class DataService {
     this.http.post(API_URL+'delete_coupon',JSON.stringify(data), this.authhttpOptions).subscribe(
       (data: any)  => {
        alert("Coupon Deleted Successfully")
-       this.getCountries(1,2)
+       this.getCoupons(1,2)
      },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)

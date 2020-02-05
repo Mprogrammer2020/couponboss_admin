@@ -1,12 +1,12 @@
 <div class="row" *ngIf="!_loginService.token">
     <div class="login_form">
         <div class="text-center logo_img" >
-            <img src="" alt="home" class="light-logo" />
+          <b>
+            <!--This is dark logo icon-->
+            <img src="../../../../assets/images/logo_couponboss.png" alt="home" class="dark-logo" />
+        </b>
         </div>
         
-        <img src="">
-        <h2>Log in</h2>
-
 
         <div class="col-sm-12">
             <span>{{ _loginService.errors }}<br /></span>
@@ -75,14 +75,14 @@ font-size: 18px;
   height: 45px;
     border-radius: 60px !important;
     padding: 13px 20px;
-    background-color:#fffcc8;
+    background-color:#fff;
     color:#000;
     font-weight: bold;
     border:none;
     width: 100%;
 }
 .actions input {
-   background-color:#cdde68;
+   background-color:#e62828;
 border-radius: 60px;
 padding: 10px;
 font-size: 20px;

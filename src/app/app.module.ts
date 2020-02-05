@@ -29,6 +29,9 @@ import { JwtHelperService, JwtModuleOptions, JWT_OPTIONS } from '@auth0/angular-
 import { SettingsComponent } from './components/settings/settings.component';
 import { MyprofileComponent } from './components/myprofile/myprofile.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BannerComponent } from './components/banner/banner.component';
+import { AddbannerComponent } from './components/banner/addbanner/addbanner.component';
+import { EditbannerComponent } from './components/banner/editbanner/editbanner.component';
 
 
 // import { FileUploadModule } from 'ng2-file-upload';
@@ -67,7 +70,10 @@ const JWT_Module_Options: JwtModuleOptions = {
     RequestsComponent,
     ViewcouponComponent,
     SettingsComponent,
-    MyprofileComponent
+    MyprofileComponent,
+    BannerComponent,
+    AddbannerComponent,
+    EditbannerComponent
   ],
   imports: [
     BrowserModule,

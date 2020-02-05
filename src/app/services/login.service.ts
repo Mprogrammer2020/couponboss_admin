@@ -79,9 +79,12 @@ export class LoginService {
   }
  
   public logout() {
-    this.token = null;
-    this.token_expires = null;
-    this.username = null;
+    let a = confirm("Are you Sure you want to delete this Brand ?")
+    if (a == true){
+      this.token = null;
+      this.token_expires = null;
+      this.username = null;
+    }
   }
  
   public updattoken() {

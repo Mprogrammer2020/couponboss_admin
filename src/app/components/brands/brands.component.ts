@@ -44,7 +44,7 @@ export class BrandsComponent implements OnInit {
   }
 
   public deleteBrand(id){
-   let a = confirm("Are you Sure?")
+   let a = confirm("Are you Sure you want to delete this Brand ?")
    if (a == true){
     this._dataService.deleteBrand({"brandId": id})
    }
