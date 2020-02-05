@@ -161,3 +161,33 @@ body {
 .panel-theme a:hover {
   color: #0791e6;
 }
+.header_logo {
+	background: none;
+	border: none;
+}
+.navbar-header {
+	background: #a81317!important;
+}
+#side-menu li a i {
+  margin-right: 7px;
+  font-size: 14px;
+}
+.multiple_select_main {
+	position: relative;
+	padding-left: 103px;
+}
+.multiple_select_main label{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.icons {
+	font-size: 23px;
+	margin: 0px 8px;
+}
+.icons .fa.fa-trash {
+	color: red;
+}
+.icons .fa.fa-pencil {
+	color: #666;
+}

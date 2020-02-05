@@ -14,7 +14,10 @@ export class HeaderComponent implements OnInit {
 
 
   logout() {
+    let a = confirm("Are you Sure you want to logout?")
+    if (a == true){
     localStorage.clear();
+    }
   }
 
 }

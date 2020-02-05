@@ -45,7 +45,11 @@
                                         <li>{{coupon.code}}</li>
                                         </ul>
                                     </td>
-                                    <td><button (click)="editBrand(item.id)" >Edit</button  ><button (click)="deleteBrand(item.id)">Delete</button></td>
+                                    <td>
+                                        <a class="icons" (click)="editBrand(item.id)" ><i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a><a  class="icons" (click)="deleteBrand(item.id)"><i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
                             <div *ngIf="_dataService.brandslist && _dataService.brandslist.length==0"><tbody><h2>No Brands Found.</h2></tbody></div>

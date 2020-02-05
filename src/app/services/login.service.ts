@@ -46,16 +46,24 @@ export class LoginService {
       (data: any)  => {
 
         localStorage.setItem('token',  data.data['token'])
-        localStorage.setItem('token_first', 'true')
         // localStorage.setItem('user', JSON.stringify(data.data['user']))
         this.token =  localStorage.getItem('token');
         // console.log(data.data['user']['username'])
-        this.updateData(data.data['token'], data.data['user']['first_name']);
+        // this.updateData(data.data['token'], data.data['user']['first_name']);
         window.location.href='dashboard';
       },
       (err:any)  => {
-        console.log("errrrrrr"+err.error.message)
-        this.errors = err.error.message;
+        if(err.error.is_email_error == false){
+          this.errors = "Please enter the correct password"
+        }
+        else if(err.error.is_email_error == true){
+          this.errors = "Please enter the correct email"
+        }
+        else{
+          this.errors = err.error.message;
+        }
+
+        console.log("errrrrrr"+err.error)
       }
     );
   }

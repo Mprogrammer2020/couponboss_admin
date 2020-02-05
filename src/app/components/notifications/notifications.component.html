@@ -6,7 +6,7 @@
     <div class="row bg-title text-center">
         <span class="back_arrow" style="float: left;padding-top: 16px;"><a href="" style="color: #000;"> <i class="fa fa-arrow-left" aria-hidden="true" style="font-size:20px ;"></i></a>
         </span>
-        <h2 class="page_heading">Notifications</h2>
+        <h4 class="page_heading">Notifications</h4>
     </div>
     <!-- /.row -->
     <!-- .row -->
@@ -109,11 +109,13 @@
                             <div class="row">
                                 <aside class="col-sm-10">
                                     <div class="form-group">
+                                        <div class="multiple_select_main">
                                             <label class="text-uppercase">Select Users</label>
-
                                             <select multiple class="custom-select" formControlName="userId" >
                                                 <option *ngFor="let city of _dataService.userslist" [ngValue]="city.id" (change)="changeCity($event)">{{city.device_uid}}</option>
                                             </select>
+                                        </div>
+                                           
                                             <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
                                             <div *ngIf="submitted && f.userId.errors" class="invalid-feedback">
                                                     <div *ngIf="f.userId.errors.required">This field is required</div>

@@ -43,7 +43,7 @@ export class CountryComponent implements OnInit {
 }
 
   public deleteCountry(id){
-    let a = confirm("Are you Sure you want to delete this Brand ?")
+    let a = confirm("Are you Sure you want to delete this country ?")
     if (a == true){
     this._dataService.deleteCountry({"id": id})
     }
