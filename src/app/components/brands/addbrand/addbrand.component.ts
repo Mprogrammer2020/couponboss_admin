@@ -5,6 +5,7 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 import * as $ from 'jquery';
 import { DataService } from '../../../services/data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-addbrand',
@@ -25,7 +26,7 @@ export class AddbrandComponent implements OnInit {
 
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];  
-  constructor(private formBuilder: FormBuilder,private _dataService:DataService,private http: HttpClient,private router: Router, private cd: ChangeDetectorRef ) { }
+  constructor(private formBuilder: FormBuilder,private _dataService:DataService,private http: HttpClient,private router: Router, private cd: ChangeDetectorRef,private _location: Location ) { }
 
   ngOnInit() {
 
@@ -40,6 +41,10 @@ export class AddbrandComponent implements OnInit {
   }
 
   get f() { return this.addFilterForm.controls; }
+
+  backClicked() {
+    this._location.back();
+  }
 
 
   // onFileChange(event) {
