@@ -4,6 +4,7 @@ import {throwError} from 'rxjs';
 import {NgForm} from '@angular/forms'; 
 import { Router } from '@angular/router'; 
 import { DOCUMENT } from '@angular/common';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-country',
@@ -17,7 +18,11 @@ export class CountryComponent implements OnInit {
   current_location:any;
   image:any
 
-  constructor(@Inject(DOCUMENT) private document: Document, private _dataService: DataService ,private router: Router) { }
+  constructor(@Inject(DOCUMENT) private document: Document, private _dataService: DataService ,private router: Router,private _location: Location) { }
+
+  backClicked() {
+    this._location.back();
+  }
 
   ngOnInit() {
     // this.current_location = this.document.location.origin;

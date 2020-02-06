@@ -102,7 +102,8 @@ export class DataService {
   public getCoupon(data){
     this.http.post(API_URL+'dc',{"couponId":data}, this.authhttpOptions).subscribe(
       (data: any)  => {
-        this.branddetail = data.coupon
+        this.branddetail = data.coupon;
+        this.couponcountries = data.cop_con
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)

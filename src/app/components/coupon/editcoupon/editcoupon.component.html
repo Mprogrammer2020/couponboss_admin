@@ -125,7 +125,7 @@
                                     <div class="form-group">
                                             <label class="text-uppercase">Select Country</label>
 
-                                            <select multiple class="custom-select" formControlName="country" [(ngModel)]="_dataService.branddetail.coupon_countries">
+                                            <select multiple class="custom-select" formControlName="country" [(ngModel)]="_dataService.couponcountries">
                                                 <option value="">Choose your city</option>
                                                 <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" (change)="changeCity($event)">{{city.name}}</option>
                                             </select>
@@ -141,7 +141,7 @@
                                     <div class="form-group">
                                             <label class="text-uppercase">Select Brand</label>
 
-                                            <select formControlName="brand" [(ngModel)]="_dataService.branddetail.coupon_brand">
+                                            <select formControlName="brand" [(ngModel)]="_dataService.branddetail.coupon_brand.id">
                                                 <option value="">Choose your brand</option>
                                                 <option *ngFor="let brandd of _dataService.brandslist" [ngValue]="brandd.id" (change)="changeBrand($event)">{{brandd.name}}</option>
                                             </select>
