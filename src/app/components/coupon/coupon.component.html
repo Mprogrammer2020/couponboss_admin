@@ -19,7 +19,7 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <h3 class="box-title">Coupons</h3>
-                    <div style="float: right;">
+                    <div class="filters" style="float: right;">
                         <form   [formGroup]="addFilterForm" (ngSubmit)="filterCoupon()" name="addFilterForm"> 
                             <select class="custom-select" formControlName="country" (change)="changeCity($event)">
                                 <option value="">Choose your Country</option>

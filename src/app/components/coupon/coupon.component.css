@@ -22,3 +22,7 @@
     .pagination /deep/ .ngx-pagination a::before{
      display: none;
    }
+
+  .filters {
+    margin: -46px 0 0 0;
+  }
