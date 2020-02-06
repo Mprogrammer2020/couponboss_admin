@@ -5,7 +5,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import * as $ from 'jquery';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import {Location} from '@angular/common';
 // import { FileUploader, FileLikeObject } from 'ng2-file-upload';
 import { concat } from  'rxjs';
 
@@ -33,7 +33,7 @@ export class EditbrandComponent implements OnInit {
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];  
 
-  constructor(private formBuilder: FormBuilder,private httpClient: HttpClient,private router: Router,private _Activatedroute:ActivatedRoute,private _dataService:DataService) { 
+  constructor(private formBuilder: FormBuilder,private httpClient: HttpClient,private router: Router,private _Activatedroute:ActivatedRoute,private _dataService:DataService,private _location: Location) { 
     this.selectedId=this._Activatedroute.snapshot.paramMap.get("id");
     this._dataService.getBrand(this.selectedId);
 
@@ -50,6 +50,10 @@ export class EditbrandComponent implements OnInit {
     });
 
     this._dataService.getCountries(1,2);
+  }
+
+  backClicked() {
+    this._location.back();
   }
 
   get f() { return this.addFilterForm.controls; }

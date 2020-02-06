@@ -6,6 +6,7 @@ import {NgForm} from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class ContactusComponent implements OnInit {
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = []; 
 
-  constructor(private formBuilder: FormBuilder,private _dataService: DataService,private router: Router) { }
+  constructor(private formBuilder: FormBuilder,private _dataService: DataService,private router: Router,private _location: Location) { }
 
   ngOnInit() {
     this.addFilterForm = this.formBuilder.group({
@@ -41,6 +42,10 @@ export class ContactusComponent implements OnInit {
 
     this.getData(this.currentPage,this.itemsPerPage)
     $('#contact_sidebar').addClass('active');
+  }
+  
+  backClicked() {
+    this._location.back();
   }
 
   public setValue() { 

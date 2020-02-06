@@ -5,6 +5,7 @@ import {throwError} from 'rxjs';
 import {NgForm} from '@angular/forms'; 
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-requests',
@@ -28,7 +29,7 @@ export class RequestsComponent implements OnInit {
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];
 
-  constructor(private formBuilder: FormBuilder,private _dataService: DataService,private router: Router) { }
+  constructor(private formBuilder: FormBuilder,private _dataService: DataService,private router: Router,private _location: Location) { }
 
   ngOnInit() {
     this.addFilterForm = this.formBuilder.group({
@@ -38,6 +39,10 @@ export class RequestsComponent implements OnInit {
 
     this.getData(this.currentPage,this.itemsPerPage)
     $('#request_sidebar').addClass('active');
+  }
+
+  backClicked() {
+    this._location.back();
   }
 
   public setValue() { 

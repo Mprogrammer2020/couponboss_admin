@@ -4,6 +4,7 @@ import { DataService } from '../../services/data.service';
 import {throwError} from 'rxjs';
 import {NgForm} from '@angular/forms'; 
 import { Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -17,9 +18,15 @@ export class BrandsComponent implements OnInit {
   private currentPage:any=1; // set current page to 1
   public itemsPerPage:any=3; // we are showing 10 items per page
   current_location:any
-  constructor(private _dataService: DataService,private router: Router) {}
+  constructor(private _dataService: DataService,private router: Router,private _location: Location) {}
+
+  backClicked() {
+    this._location.back();
+  }
+
+
   ngOnInit() {
-    this.current_location = "http://192.168.2.57:8000";
+    this.current_location = "http://192.168.2.91:8001";
     this.getData(this.currentPage,this.itemsPerPage)
     $('#brand_sidebar').addClass('active');
 
