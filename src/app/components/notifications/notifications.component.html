@@ -20,8 +20,11 @@
                                 <div class="form-group">
                                 <label class="text-uppercase">Title</label>
                                 <input value="" class="form-control" formControlName="title" type="text" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
-                                    <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-                                            <div *ngIf="f.title.errors.required">This field is required</div>
+                                    <div *ngIf="submitted && f.title.errors  && !touched " class="invalid-feedback">
+                                            <div *ngIf="f.title.errors.required && !touched">This field is required</div>
+                                    </div>
+                                    <div *ngIf="error_msg && touched" class="invalid-feedback">
+                                        <div *ngIf="error_msg && touched">Empty Value is Not Valid</div>
                                     </div>
                                 </div>
                             </aside>
@@ -31,8 +34,11 @@
                                 <div class="form-group">
                                 <label class="text-uppercase">Title in Arabic</label>
                                 <input value="" class="form-control" formControlName="title_ar" type="text" [ngClass]="{ 'is-invalid': submitted && f.title_ar.errors }">
-                                    <div *ngIf="submitted && f.title_ar.errors" class="invalid-feedback">
-                                            <div *ngIf="f.title_ar.errors.required">This field is required</div>
+                                    <div *ngIf="submitted && f.title_ar.errors && !touched" class="invalid-feedback">
+                                            <div *ngIf="f.title_ar.errors.required && !touched">This field is required</div>
+                                    </div>
+                                    <div *ngIf="error_msg2 && touched" class="invalid-feedback">
+                                        <div *ngIf="error_msg2 && touched">Empty Value is Not Valid</div>
                                     </div>
                                 </div>
                             </aside>
@@ -42,8 +48,11 @@
                                 <div class="form-group">
                                         <label class="text-uppercase">Description</label>
                                         <input value="" class="form-control " formControlName="description" type="textarea" [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
-                                        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-                                                <div *ngIf="f.description.errors.required">This field is required</div>
+                                        <div *ngIf="submitted && f.description.errors && !touched" class="invalid-feedback">
+                                                <div *ngIf="f.description.errors.required && !touched">This field is required</div>
+                                        </div>
+                                        <div *ngIf="error_msg3 && touched" class="invalid-feedback">
+                                            <div *ngIf="error_msg3 && touched">Empty Value is Not Valid</div>
                                         </div>
                                 </div>
                             </aside>
@@ -54,8 +63,11 @@
                                 <div class="form-group">
                                         <label class="text-uppercase">Description in Arabic</label>
                                         <input value="" class="form-control " formControlName="description_ar" type="textarea" [ngClass]="{ 'is-invalid': submitted && f.description_ar.errors }">
-                                        <div *ngIf="submitted && f.description_ar.errors" class="invalid-feedback">
-                                                <div *ngIf="f.description_ar.errors.required">This field is required</div>
+                                        <div *ngIf="submitted && f.description_ar.errors && !touched" class="invalid-feedback">
+                                                <div *ngIf="f.description_ar.errors.required && !touched">This field is required</div>
+                                        </div>
+                                        <div *ngIf="error_msg4 && touched" class="invalid-feedback">
+                                            <div *ngIf="error_msg4 && touched">Empty Value is Not Valid</div>
                                         </div>
                                 </div>
                             </aside>
@@ -65,8 +77,8 @@
                                     <div class="form-group">
                                             <label class="text-uppercase">Image</label>
                                             <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.image.errors }" />
-                                            <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.image.errors.required">This field is required</div>
+                                            <div *ngIf="submitted && f.image.errors && !touched" class="invalid-feedback">
+                                                    <div *ngIf="f.image.errors.required && !touched">This field is required</div>
                                             </div>
                                     </div>
                                 </aside>

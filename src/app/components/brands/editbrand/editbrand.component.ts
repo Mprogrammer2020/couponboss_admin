@@ -29,6 +29,10 @@ export class EditbrandComponent implements OnInit {
   selectedElement:any;
   is_file:boolean = false;
 
+  error_msg:boolean = false;
+  touched:boolean;
+  error_msg2:boolean = false;
+
   
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];  
@@ -80,8 +84,28 @@ export class EditbrandComponent implements OnInit {
   
 
   onSubmit() {
-    this.submitted = true;
+    this.submitted = true;    
     this.selectedId=this._Activatedroute.snapshot.paramMap.get("id");
+
+       
+    if (this.addFilterForm.value.name.replace(/\s/g,"") == ""){
+      this.addFilterForm.value.name= ""
+      this.error_msg = true;
+      this.touched = this.addFilterForm.controls.name.touched
+      console.log(this.addFilterForm.controls.name.touched)
+      return
+    }else{this.error_msg = false;}
+
+
+    if (this.addFilterForm.value.website_url.replace(/\s/g,"") == ""){
+     
+      this.addFilterForm.value.website_url= ""
+      this.error_msg2 = true
+      this.touched = this.addFilterForm.controls.website_url.touched
+      return
+    }else{this.error_msg2 = false;}
+
+
     // stop here if form is invalid
     if (this.addFilterForm.invalid) {
         return;

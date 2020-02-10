@@ -22,3 +22,9 @@
     .pagination /deep/ .ngx-pagination a::before{
      display: none;
    }
+
+  .pull-right {
+  float: right !important;
+  margin: -35px -383px 8px 32px ;
+  margin-left: 32px;
+}

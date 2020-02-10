@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./myprofile.component.css']
 })
 export class MyprofileComponent implements OnInit {
-
-  constructor(private _dataService: DataService ,private router: Router) { this._dataService.getAdminProfile();}
+  current_location:string;
+  constructor(private _dataService: DataService ,private router: Router) { this._dataService.getAdminProfile();   this.current_location = "http://192.168.2.91:8001";}
 
   ngOnInit() {
   }

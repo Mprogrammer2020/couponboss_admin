@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 
-const API_URL="http://192.168.2.57:8000/apis/"; 
+const API_URL="http://192.168.2.91:8001/apis/"; 
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +29,10 @@ export class DataService {
   public coupondetail:any;
   public totalItems:any;
   public couponbrands:any;
+  public currentuser:any;
+  public currentadmin:any;
+
+  
 
   constructor(private http: HttpClient, public jwtHelper: JwtHelperService, public router: Router) {
     this.authhttpOptions = {
@@ -159,6 +163,9 @@ export class DataService {
         if(redirect_url == "sendnotifications"){ 
           alert("Notification Send Successfully.")
         }
+        else if(redirect_url == "myProfile"){ 
+          alert("Profile Updated Successfully.")
+        }
         else{
           alert(redirect_url.charAt(0).toUpperCase() + " "+ operation +" Successfully")
         }
@@ -176,6 +183,33 @@ export class DataService {
 
 
   }
+
+
+  public updateAdminProfile(editdata , formdata){
+    var is_file = editdata["is_file"]
+    this.http.post(API_URL+'updateProfile',JSON.stringify(editdata), this.authhttpOptions).subscribe(
+      (data: any)  => {
+        formdata.append('id',data["user"]);
+        if(is_file == true)
+        {
+          this.upload_file(formdata, "myProfile", "Edit")
+        }
+        else
+        {
+          alert("User edited Successfully")
+          this.router.navigate(['myProfile']);
+        }
+       
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+        alert("Something Went Wrong")
+        this.router.navigate(['']);
+      }
+    );
+  }
+  
 
   public editBrand(editdata, formdata){
     var is_file=editdata["is_file"]
@@ -242,6 +276,7 @@ export class DataService {
       }
     );
   }
+
 
   public contactuslist(pageNo:any,maxRecords:any){
     let httpParams = new HttpParams().set('pageNo', pageNo).set('maxRecords', maxRecords)
@@ -445,7 +480,10 @@ export class DataService {
   public getAdminProfile(){
     this.http.get(API_URL+'get_admin_profile', this.authhttpOptions).subscribe(
       (data: any)  => {
-        this.adminprofile = data.response
+        this.adminprofile = data.response;
+        
+        this.currentadmin = data.response[0];
+        console.log(this.currentadmin)
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
@@ -470,6 +508,8 @@ export class DataService {
       }
     );     
   }
+
+
 
 
   // public addBanner(banner, formdata){

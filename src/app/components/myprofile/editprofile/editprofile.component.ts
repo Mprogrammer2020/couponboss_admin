@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef  } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSmartModalService } from 'ngx-smart-modal';
@@ -6,13 +6,12 @@ import * as $ from 'jquery';
 import { DataService } from '../../../services/data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Location} from '@angular/common';
-
 @Component({
-  selector: 'app-addbrand',
-  templateUrl: './addbrand.component.html',
-  styleUrls: ['./addbrand.component.css']
+  selector: 'app-editprofile',
+  templateUrl: './editprofile.component.html',
+  styleUrls: ['./editprofile.component.css']
 })
-export class AddbrandComponent implements OnInit {
+export class EditprofileComponent implements OnInit {
 
   public editObj:any;
   addFilterForm: FormGroup;
@@ -22,27 +21,29 @@ export class AddbrandComponent implements OnInit {
   fileName: string;
   filePreview: string;
   myString: string;
+  selectedElement:any;
   is_file:boolean = false;
 
   error_msg:boolean = false;
   touched:boolean;
   error_msg2:boolean = false;
+  error_msg3:boolean = false;
 
-
-
-  @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];  
-  constructor(public formBuilder: FormBuilder,private _dataService:DataService,private http: HttpClient,private router: Router, private cd: ChangeDetectorRef,private _location: Location ) { }
+  constructor(private formBuilder: FormBuilder,private _dataService:DataService,private http: HttpClient,private router: Router, private cd: ChangeDetectorRef,private _location: Location) { 
+     }
 
   ngOnInit() {
 
     this.addFilterForm = this.formBuilder.group({
-      name: ['',[Validators.required]],
-      website_url: ['',[Validators.required]],
-      logo:[''],
-      country: ['', [Validators.required]]
+      first_name: ['',[Validators.required]],
+      last_name: ['',[Validators.required]],
+      email: ['',[Validators.required]],
+      image:['']
     });
 
-    this._dataService.getCountries(1,2);
+    this._dataService.getAdminProfile();
+    console.log("hello")
+    console.log(this._dataService.currentadmin)
   }
 
   get f() { return this.addFilterForm.controls; }
@@ -63,26 +64,32 @@ export class AddbrandComponent implements OnInit {
     }
   }
 
-  
-
 
   onSubmit() {
     this.submitted = true;
     
-    if (this.addFilterForm.value.name.replace(/\s/g,"") == ""){
+    if (this.addFilterForm.value.first_name.replace(/\s/g,"") == ""){
      
-      this.addFilterForm.value.name= ""
+      this.addFilterForm.value.first_name= ""
       this.error_msg = true;
-      this.touched = this.addFilterForm.controls.name.touched
+      this.touched = this.addFilterForm.controls.first_name.touched
       return
     }else{this.error_msg = false;}
 
 
-    if (this.addFilterForm.value.website_url.replace(/\s/g,"") == ""){
+    if (this.addFilterForm.value.last_name.replace(/\s/g,"") == ""){
      
-      this.addFilterForm.value.website_url= ""
+      this.addFilterForm.value.last_name= ""
       this.error_msg2 = true
-      this.touched = this.addFilterForm.controls.website_url.touched
+      this.touched = this.addFilterForm.controls.last_name.touched
+      return
+    }else{this.error_msg2 = false;}
+
+    if (this.addFilterForm.value.email.replace(/\s/g,"") == ""){
+     
+      this.addFilterForm.value.email= ""
+      this.error_msg2 = true
+      this.touched = this.addFilterForm.controls.email.touched
       return
     }else{this.error_msg2 = false;}
   
@@ -93,11 +100,11 @@ export class AddbrandComponent implements OnInit {
 
     let formData = new FormData();
     formData.append('file' ,  this.filePreview);
-    formData.append('type' , "brand");
+    formData.append('type' , "userprofile");
     this.customData=this.addFilterForm.value;
     this.customData['is_file']= this.is_file;
   
-    this._dataService.addBrand(this.customData, formData);
+    this._dataService.updateAdminProfile(this.customData, formData);
 
   }
 

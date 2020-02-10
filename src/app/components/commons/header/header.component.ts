@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
     let a = confirm("Are you Sure you want to logout?")
     if (a == true){
     localStorage.clear();
+    window.location.href = ''
     }
   }
 

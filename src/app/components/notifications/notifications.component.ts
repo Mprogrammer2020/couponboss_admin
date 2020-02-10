@@ -25,6 +25,12 @@ export class NotificationsComponent implements OnInit {
   selectedElement:any;
   is_file:boolean = false;
 
+  error_msg:boolean = false;
+  touched:boolean;
+  error_msg2:boolean = false;
+  error_msg3:boolean = false;
+  error_msg4:boolean = false;
+
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];  
   constructor(private formBuilder: FormBuilder,private _dataService:DataService,private http: HttpClient,private router: Router, private cd: ChangeDetectorRef,private _location: Location) { 
@@ -42,8 +48,6 @@ export class NotificationsComponent implements OnInit {
       countryId: ['', [Validators.required]],
       userId: ['', [Validators.required]]
     });
-
-
 
     this._dataService.getCountries(1,2);
     this._dataService.getBrandsList(1,2);
@@ -70,6 +74,40 @@ export class NotificationsComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+
+
+    if (this.addFilterForm.value.title.replace(/\s/g,"") == ""){
+      this.addFilterForm.value.title= ""
+      this.error_msg = true;
+      this.touched = this.addFilterForm.controls.title.touched
+      console.log(this.addFilterForm.controls.title.touched)
+      return
+    }else{this.error_msg = false;}
+
+
+    if (this.addFilterForm.value.title_ar.replace(/\s/g,"") == ""){
+     
+      this.addFilterForm.value.title_ar= ""
+      this.error_msg2 = true
+      this.touched = this.addFilterForm.controls.title_ar.touched
+      return
+    }else{this.error_msg2 = false;}
+
+    if (this.addFilterForm.value.description.replace(/\s/g,"") == ""){
+     
+      this.addFilterForm.value.description= ""
+      this.error_msg3 = true
+      this.touched = this.addFilterForm.controls.description.touched
+      return
+    }else{this.error_msg3 = false;}
+
+    if (this.addFilterForm.value.description_ar.replace(/\s/g,"") == ""){
+     
+      this.addFilterForm.value.description_ar= ""
+      this.error_msg4 = true
+      this.touched = this.addFilterForm.controls.description_ar.touched
+      return
+    }else{this.error_msg4 = false;}
 
     // stop here if form is invalid
     if (this.addFilterForm.invalid) {

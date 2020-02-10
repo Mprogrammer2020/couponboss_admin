@@ -18,6 +18,7 @@ import { RequestsComponent } from './components/requests/requests.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import {ViewcouponComponent} from './components/coupon/viewcoupon/viewcoupon.component'
 import { MyprofileComponent } from './components/myprofile/myprofile.component';
+import { EditprofileComponent } from './components/myprofile/editprofile/editprofile.component';
 
 
  
@@ -110,6 +111,12 @@ const routes: Routes = [
   {
     path: 'myProfile',
     component: MyprofileComponent,
+    pathMatch:'full',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'editProfile',
+    component: EditprofileComponent,
     pathMatch:'full',
     canActivate: [AuthGuard]
   },

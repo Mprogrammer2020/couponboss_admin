@@ -15,7 +15,7 @@
                 <div class="white-box">
                     <div class="row">
                         <aside class="col-lg-4 text-center">
-                            <img src="assets/images/profile_image.jpg" alt="image" class="img-circle profile_image" id="viewProfileImage"/>
+                            <img [attr.src]= '_dataService.currentadmin.image == "" ? current_location+"/media/countryimages/No-image-found.jpg" : current_location+_dataService.currentadmin.image' alt="image" class="img-circle profile_image" id="viewProfileImage"/>
                         </aside>
                         <aside class="col-lg-8">
                             <div class="row">
