@@ -4,9 +4,10 @@
     <div class="container-fluid">
         <div class="row bg-title text-center">
             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-                <span class="back_arrow" style="float: left;"><a (click)="backClicked()" style="color: #000;"> <i class="fa fa-arrow-left" aria-hidden="true" style="font-size:20px ;"></i></a>
-                </span>
+                <!-- <span class="back_arrow" style="float: left;"><a (click)="backClicked()" style="color: #000;"> <i class="fa fa-arrow-left" aria-hidden="true" style="font-size:20px ;"></i></a>
+                </span> -->
                 <h4 class="page-title">Brands List</h4>
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
             </div>
             <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12">
                 <button class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light" routerLink="/addbrand/new" >Add New</button>
@@ -30,7 +31,7 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody *ngFor="let item of _dataService.brandslist| paginate: { itemsPerPage:itemsPerPage, currentPage: currentPage,totalItems:totalItems }; let myIndex = index">
+                            <tbody id="myTable" *ngFor="let item of _dataService.brandslist| paginate: { itemsPerPage:itemsPerPage, currentPage: currentPage,totalItems:totalItems }; let myIndex = index">
                                 <tr>
                                     <td>{{item.id}}</td>
                                     <td>{{item.name}}</td>

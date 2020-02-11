@@ -1011,7 +1011,8 @@ pre {
     text-transform: uppercase;
     font-size: 18px;
     font-weight: 500;
-    margin-top: 6px
+    margin-top: 6px;
+    display: inline-block;
 }
 
 .bg-title .breadcrumb {
@@ -1354,8 +1355,8 @@ pre {
 
 .btn-danger,
 .btn-danger.disabled {
-    background: #f33155;
-    border: 1px solid #f33155
+    background: #c2272b;
+    border: 1px solid ##c2272b
 }
 
 .btn-danger.disabled.focus,
@@ -1364,9 +1365,9 @@ pre {
 .btn-danger.focus,
 .btn-danger:focus,
 .btn-danger:hover {
-    background: #f33155;
+    background: #c2272b;
     opacity: .8;
-    border: 1px solid #f33155
+    border: 1px solid #c2272b
 }
 
 .btn-default,
@@ -1445,14 +1446,14 @@ pre {
 }
 
 .btn-danger.btn-outline {
-    color: #f33155;
+    color: #c2272b;
     background-color: transparent
 }
 
 .btn-danger.btn-outline.focus,
 .btn-danger.btn-outline:focus,
 .btn-danger.btn-outline:hover {
-    background: #f33155;
+    background: #c2272b;
     color: #fff
 }
 
@@ -1611,8 +1612,8 @@ pre {
 .open>.dropdown-toggle.btn-danger.focus,
 .open>.dropdown-toggle.btn-danger:focus,
 .open>.dropdown-toggle.btn-danger:hover {
-    background-color: #f33155;
-    border: 1px solid #f33155
+    background-color: #c2272b;
+    border: 1px solid #c2272b
 }
 
 .btn-inverse,
@@ -4303,17 +4304,7 @@ ul.common li a:hover {
 .table-hover>tbody>tr:hover,
 .table-striped>tbody>tr:nth-of-type(odd),
 .table>tbody>tr.active>td,
-.table>tbody>tr.active>th,
-.table>tbody>tr>td.active,
-.table>tbody>tr>th.active,
-.table>tfoot>tr.active>td,
-.table>tfoot>tr.active>th,
-.table>tfoot>tr>td.active,
-.table>tfoot>tr>th.active,
-.table>thead>tr.active>td,
-.table>thead>tr.active>th,
-.table>thead>tr>td.active,
-.table>thead>tr>th.active {
+.table>tbody>tr.active>th,red !important
     background-color: #f7fafc!important
 }
 
@@ -12593,4 +12584,16 @@ ul.pro-amenities li span i {
         margin: 10% auto 0;
         width: 300px
     }
+}
+
+
+
+.red_custom_btn {
+	background: #c2272b;
+	color: #fff;
+	padding: 12px 30px;
+	font-size: 18px;
+	text-transform: capitalize;
+	border-radius: 60px;
+	border: none;
 }

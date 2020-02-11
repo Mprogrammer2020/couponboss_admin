@@ -19,7 +19,7 @@
 
 }
 .pagination /deep/ .ngx-pagination .current {
-    background: #f33155;
+    background: #c2272b;
   }
 
   .pagination /deep/ .ngx-pagination li {

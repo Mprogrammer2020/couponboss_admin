@@ -16,7 +16,7 @@ export class BrandsComponent implements OnInit {
 
   
   private currentPage:any=1; // set current page to 1
-  public itemsPerPage:any=3; // we are showing 10 items per page
+  public itemsPerPage:any=5; // we are showing 10 items per page
   current_location:any
   constructor(private _dataService: DataService,private router: Router,private _location: Location) {}
 
