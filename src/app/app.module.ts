@@ -34,6 +34,7 @@ import { EditprofileComponent } from './components/myprofile/editprofile/editpro
 // import { AddbannerComponent } from './components/banner/addbanner/addbanner.component';
 // import { EditbannerComponent } from './components/banner/editbanner/editbanner.component';
 
+import { DataTablesModule } from 'angular-datatables';
 
 // import { FileUploadModule } from 'ng2-file-upload';
 
@@ -84,7 +85,9 @@ const JWT_Module_Options: JwtModuleOptions = {
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    DataTablesModule
+
     // FileUploadModule
   ],
   providers: [XyzService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

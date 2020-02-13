@@ -7,7 +7,7 @@
                 <!-- <span class="back_arrow" style="float: left;"><a (click)="backClicked()" style="color: #000;"> <i class="fa fa-arrow-left" aria-hidden="true" style="font-size:20px ;"></i></a>
                 </span> -->
                 <h4 class="page-title">Brands List</h4>
-                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                <!-- <input class="form-control" id="myInput" type="text" placeholder="Search.."> -->
             </div>
             <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12">
                 <button class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light" routerLink="/addbrand/new" >Add New</button>
@@ -20,7 +20,7 @@
                 <div class="white-box">
                     <!-- <h3 class="box-title"></h3>-->
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table row-border hover" datatable [dtOptions]="dtOptions"  *ngIf=" _dataService.is_response" >
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -31,8 +31,8 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody id="myTable" *ngFor="let item of _dataService.brandslist| paginate: { itemsPerPage:itemsPerPage, currentPage: currentPage,totalItems:totalItems }; let myIndex = index">
-                                <tr>
+                            <tbody id="myTable" >
+                                <tr *ngFor="let item of _dataService.brandslist">
                                     <td>{{item.id}}</td>
                                     <td>{{item.name}}</td>
                                     <td>{{item.url}}</td>
@@ -55,7 +55,7 @@
                             </tbody>
                             <div *ngIf="_dataService.brandslist && _dataService.brandslist.length==0"><tbody><h2>No Brands Found.</h2></tbody></div>
                         </table>
-                        <pagination-controls class="pagination" (pageChange)="currentPage=$event"></pagination-controls>
+                        <!-- <pagination-controls class="pagination" (pageChange)="currentPage=$event"></pagination-controls> -->
                         
                     </div>
                     

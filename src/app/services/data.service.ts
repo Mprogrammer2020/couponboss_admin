@@ -32,6 +32,8 @@ export class DataService {
   public currentuser:any;
   public currentadmin:any;
 
+  public is_response:boolean = false;
+
   
 
   constructor(private http: HttpClient, public jwtHelper: JwtHelperService, public router: Router) {
@@ -74,6 +76,7 @@ export class DataService {
         //alert("Brand Created Successfully")
         // this.router.navigate(['brands']);
         this.brandslist = data.response;
+        this.is_response = true;
         
       },
       (err:any)  => {
