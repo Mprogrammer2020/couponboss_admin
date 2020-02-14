@@ -36,6 +36,8 @@ import { EditprofileComponent } from './components/myprofile/editprofile/editpro
 
 import { DataTablesModule } from 'angular-datatables';
 
+import { OwlDateTimeModule, OwlNativeDateTimeModule  } from 'ng-pick-datetime';
+
 // import { FileUploadModule } from 'ng2-file-upload';
 
 const yourTokenGetter: any = localStorage.getItem('token');
@@ -86,7 +88,9 @@ const JWT_Module_Options: JwtModuleOptions = {
     BrowserAnimationsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    DataTablesModule
+    DataTablesModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
 
     // FileUploadModule
   ],

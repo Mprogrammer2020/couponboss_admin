@@ -31,6 +31,8 @@ export class AddcouponComponent implements OnInit {
     this.addFilterForm = this.formBuilder.group({
       title: ['',[Validators.required]],
       headline: ['',[Validators.required]],
+      // headline_ar: ['',[Validators.required]],
+      // description_ar: ['',[Validators.required]],
       code:['',[Validators.required]],
       discount:['',[Validators.required]],
       description:['',[Validators.required]],
@@ -39,7 +41,8 @@ export class AddcouponComponent implements OnInit {
       logo:[''],
       is_featured:['',[Validators.required]],
       country: ['', [Validators.required]],
-      brand:['',[Validators.required]]
+      brand:['',[Validators.required]],
+      expiry_date: ['',[Validators.required]],
     });
 
     this._dataService.getCountries(1,2);

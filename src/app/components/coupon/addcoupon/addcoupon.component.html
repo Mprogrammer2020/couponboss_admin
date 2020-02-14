@@ -36,7 +36,7 @@
                             </aside>
         
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <aside class="col-sm-10">
                                 <div class="form-group">
                                         <label class="text-uppercase">Headline In Arabic</label>
@@ -47,7 +47,7 @@
                                 </div>
                             </aside>
         
-                        </div>
+                        </div> -->
                         <div class="row">
                             <aside class="col-sm-10">
                                 <div class="form-group">
@@ -66,7 +66,7 @@
                                         <label class="text-uppercase">Discount</label>
                                         <input value="" class="form-control " formControlName="discount" type="text" [ngClass]="{ 'is-invalid': submitted && f.discount.errors }">
                                         <div *ngIf="submitted && f.discount.errors" class="invalid-feedback">
-                                                <div *ngIf="f.headline.discount.required">This field is required</div>
+                                                <div *ngIf="f.discount.error.required">This field is required</div>
                                         </div>
                                 </div>
                             </aside>
@@ -84,7 +84,7 @@
                             </aside>
         
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <aside class="col-sm-10">
                                 <div class="form-group">
                                         <label class="text-uppercase">Description In Arabic</label>
@@ -95,7 +95,7 @@
                                 </div>
                             </aside>
         
-                        </div>
+                        </div> -->
                         <div class="row">
                             <aside class="col-sm-10">
                                 <div class="form-group">
@@ -132,6 +132,20 @@
                             </aside>
         
                         </div>
+
+                        <div class="row">
+                            <aside class="col-sm-10">
+                                <div class="form-group">
+                                        <label class="text-uppercase">Expiry Date</label>
+                                        <input value="" class="form-control "  [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" formControlName="expiry_date" type="datetime" [ngClass]="{ 'is-invalid': submitted && f.video_link.errors }">
+                                        <owl-date-time #dt1></owl-date-time>
+                                        <div *ngIf="submitted && f.expiry_date.errors" class="invalid-feedback">
+                                                <div *ngIf="f.expiry_date.errors.required">This field is required</div>
+                                        </div>
+                                </div>
+                            </aside>        
+                        </div>
+
                         <div class="row">
                                 <aside class="col-sm-10">
                                     <div class="form-group">
@@ -149,7 +163,7 @@
                                         <div class="form-group">
                                                 <label class="text-uppercase">Select Country</label>
 
-                                                <select multiple class="custom-select" formControlName="country">
+                                                <select multiple class="custom-select" formControlName="country" *ngIf="_dataService.countrieslist">
                                                     <option value="">Choose your city</option>
                                                     <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" (change)="changeCity($event)">{{city.name}}</option>
                                                 </select>
@@ -165,7 +179,7 @@
                                     <div class="form-group">
                                             <label class="text-uppercase">Select Brand</label>
 
-                                            <select formControlName="brand">
+                                            <select formControlName="brand" *ngIf="_dataService.brandslist">
                                                 <option value="">Choose your Brand</option>
                                                 <option *ngFor="let brandd of _dataService.brandslist" [ngValue]="brandd.id" (change)="changeBrand($event)">{{brandd.name}}</option>
                                             </select>
