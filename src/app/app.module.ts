@@ -34,6 +34,8 @@ import { EditprofileComponent } from './components/myprofile/editprofile/editpro
 // import { AddbannerComponent } from './components/banner/addbanner/addbanner.component';
 // import { EditbannerComponent } from './components/banner/editbanner/editbanner.component';
 
+import { DatePipe } from '@angular/common'
+
 import { DataTablesModule } from 'angular-datatables';
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule  } from 'ng-pick-datetime';
@@ -95,7 +97,7 @@ const JWT_Module_Options: JwtModuleOptions = {
     // FileUploadModule
   ],
   providers: [XyzService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService],
+    JwtHelperService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

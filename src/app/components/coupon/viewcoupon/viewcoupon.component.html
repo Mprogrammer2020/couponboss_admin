@@ -42,7 +42,7 @@
         <div class="col-md-4 col-xs-12">
             <div class="white-box">
                 <h4><b>Coupon Details</b></h4>
-                <form class="form-horizontal form-material" *ngIf="_dataService.branddetail">
+                <form class="form-horizontal form-material" *ngIf="_dataService && _dataService.branddetail">
                     <div class="form-group">
                         <label class="col-md-12">Headline</label>
                         <div class="col-md-12">
@@ -83,6 +83,14 @@
                         <label class="col-sm-12">Brand</label>
                         <div class="col-sm-12">
                             {{_dataService.branddetail.coupon_brand.name}}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-12">Expiry Date</label>
+                        <div class="col-sm-12">
+                            <!-- {{ _dataService.branddetail.expire_date}} -->
+                            {{ _dataService.branddetail.expire_date | date }}
                         </div>
                     </div>
                 </form>

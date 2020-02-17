@@ -15,6 +15,9 @@ export class EditprofileComponent implements OnInit {
 
   public editObj:any;
   addFilterForm: FormGroup;
+
+  changePasswordForm: FormGroup;
+
   submitted = false;
   customData:any;
 
@@ -29,6 +32,12 @@ export class EditprofileComponent implements OnInit {
   error_msg2:boolean = false;
   error_msg3:boolean = false;
 
+  field_error:boolean = false;
+  wrong_field_error:boolean = false;
+  passtouched:boolean;
+  passerror_msg2:boolean = false;
+  passerror_msg3:boolean = false;
+
   constructor(private formBuilder: FormBuilder,private _dataService:DataService,private http: HttpClient,private router: Router, private cd: ChangeDetectorRef,private _location: Location) { 
      }
 
@@ -41,12 +50,23 @@ export class EditprofileComponent implements OnInit {
       image:['']
     });
 
+    this.changePasswordForm = this.formBuilder.group({
+      
+      currentPassword: ['', [Validators.required]],
+      newPassword: ['', [Validators.required]],
+     confirmPassword: ['', [Validators.required]],
+
+  });
+
     this._dataService.getAdminProfile();
     console.log("hello")
     console.log(this._dataService.currentadmin)
   }
 
   get f() { return this.addFilterForm.controls; }
+
+
+  get passf() { return this.changePasswordForm.controls; }
 
   backClicked() {
     this._location.back();
@@ -105,6 +125,37 @@ export class EditprofileComponent implements OnInit {
     this.customData['is_file']= this.is_file;
   
     this._dataService.updateAdminProfile(this.customData, formData);
+
+  }
+
+  onPassSubmit() {
+    
+    if(this.changePasswordForm.value['newPassword']!= this.changePasswordForm.value['confirmPassword']){
+      // this.passtouched = this.changePasswordForm.controls.last_name.touched
+      this.wrong_field_error = true
+      
+      // $('#idError').text("New password & confirm password didn't match.")
+      return;
+    }
+    // stop here if form is invalid
+    if (this.changePasswordForm.invalid) {
+      this.field_error = true
+        return;
+    }
+    this._dataService.changePassword(this.changePasswordForm.value).subscribe(
+      (res:any)=>{
+      alert(res['message']);
+      this.router.navigate(['']);
+    },
+    (error:any)=>{
+      if(error.status==401){
+        this.router.navigate(['']);
+      };
+      alert(error.error.message);    
+    }
+  
+  );
+
 
   }
 

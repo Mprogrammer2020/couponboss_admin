@@ -28,16 +28,16 @@
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    <img src="assets/images/profile_image.jpg" alt="user-img" width="36" class="img-circle">
+                    <!-- <img src="assets/images/profile_image.jpg" alt="user-img" width="36" class="img-circle"> -->
+                    <img [attr.src]= '_dataService.currentadmin.image == "" ? current_location+"/media/countryimages/No-image-found.jpg" : current_location+_dataService.currentadmin.image' alt="user-img" class="img-circle" width="36"/>
                     <i class="fa fa-sort-desc" aria-hidden="true"></i>
                  </a>
                <ul class="dropdown-menu">
                   <li><a routerLink="/myProfile">My Profile</a></li>
-
                   <li role="separator" class="divider"></li>
                   <li><a routerLink="/editProfile">Edit Profile</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a routerLink="/settings">Settings</a></li>
+                  <!-- <li role="separator" class="divider"></li> -->
+                  <!-- <li><a routerLink="/settings">Settings</a></li> -->
                   <!-- <li><a href="/admin/change_password">Change Password</a></li> -->
                   <li role="separator" class="divider"></li>
                   <li><a (click)="logout()">Logout</a></li>
@@ -45,8 +45,5 @@
             </li>
          </ul>
             </div>
-            <!-- /.navbar-header -->
-            <!-- /.navbar-top-links -->
-            <!-- /.navbar-static-side -->
         </nav>
 

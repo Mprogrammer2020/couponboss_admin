@@ -6,18 +6,19 @@
     <div class="row bg-title text-center">
         <span class="back_arrow" style="float: left;padding-top: 16px;"><a (click)="backClicked()" style="color: #000;"> <i class="fa fa-arrow-left" aria-hidden="true" style="font-size:20px ;"></i></a>
         </span>
-        <h4 class="page_heading">Edit Profile</h4>
+        <h4 class="page_heading">Edit Admin</h4>
     </div>
     <!-- /.row -->
     <!-- .row -->
     <div class="row">
-        <div class="col-md-12 col-xs-12">
+        <div class="col-sm-6">
             <div class="white-box"> 
+                <h3 class="box-title">Edit Profile</h3>
                 <div class="add_formarea">
                     <form   [formGroup]="addFilterForm" (ngSubmit)="onSubmit()" name="addFilterForm" id="addFilterForm">               
                         <div class="row">
                             <aside class="col-sm-10">
-                                <div class="form-group">
+                                <div class="form-group" *ngIf=" _dataService.currentadmin">
                                 <label class="text-uppercase">First Name</label>
                                 <input id="name_input" value="" class="form-control" formControlName="first_name"  [(ngModel)]="_dataService.currentadmin.first_name" type="text" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }">
                                     <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
@@ -32,7 +33,7 @@
 
                         <div class="row">
                             <aside class="col-sm-10">
-                                <div class="form-group">
+                                <div class="form-group"  *ngIf=" _dataService.currentadmin" >
                                 <label class="text-uppercase">Last Name</label>
                                 <input id="name_input" value="" class="form-control" formControlName="last_name" type="text"  [(ngModel)]="_dataService.currentadmin.last_name"  [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }">
                                     <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
@@ -47,7 +48,7 @@
 
                         <div class="row">
                             <aside class="col-sm-10">
-                                <div class="form-group">
+                                <div class="form-group" *ngIf="_dataService.currentadmin">
                                         <label class="text-uppercase">Email</label>
                                         <input value="" class="form-control " formControlName="email" type="email" [(ngModel)]="_dataService.currentadmin.email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                                         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
@@ -76,12 +77,58 @@
                         <div class="row">
         
                         <aside class="col-sm-5">
-                            <button type="submit" id="upload" class="blue_btn yellow_btn big_yellow text-uppercase" >Update Profile</button>
+                            <button type="submit" id="upload" class="btn btn-danger big_yellow text-uppercase" >Update Profile</button>
         
                         </aside>
                         </div>
                         </form>
                         </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="white-box change_pass">
+                <h3 class="box-title">Change Password</h3>
+                <div class="add_formarea">
+                  <!-- <div class="login_form" > -->
+                      <form [formGroup]="changePasswordForm" (ngSubmit)="onPassSubmit()" id="addFilterForm"> 
+                        
+                            <label for="id_current_password">Old password:</label>
+                            <input class="form-control" formControlName="currentPassword" type="password"  [ngClass]="{ 'is-invalid': field_error && passf.currentPassword.errors }" required >
+                           <p class="errorMsg" id="currenPassMsg"></p>
+                           <div *ngIf="field_error && passf.currentPassword.errors" class="invalid-feedback">
+                              <div *ngIf="passf.currentPassword.errors.required">Current Password is required</div>
+                      
+                            </div>
+                           <label for="id_new_password">New password:</label>
+                            <input class="form-control" type="password"  formControlName="newPassword" [ngClass]="{ 'is-invalid': field_error && passf.newPassword.errors }" required >
+                            <div *ngIf="field_error && passf.newPassword.errors" class="invalid-feedback">
+                              <div *ngIf="passf.newPassword.errors.required">New Password is required</div>
+  
+                            </div>
+                            <p class="errorMsg" id="newPassMsg"></p>
+                           <label for="id_new_password1">Confirm New password:</label>
+                            <input class="form-control" type="password"  formControlName="confirmPassword" [ngClass]="{ 'is-invalid': field_error && passf.confirmPassword.errors }" required >
+                           <p class="errorMsg" id="confirmPassMsg"></p>
+                           <div *ngIf="field_error && passf.confirmPassword.errors" class="invalid-feedback">
+                              <div *ngIf="passf.confirmPassword.errors.required" id="" >Confirm Password is required</div>
+                      
+                            </div>
+
+                            <div  *ngIf="wrong_field_error" class="invalid-feedback">
+                                <div *ngIf="wrong_field_error" id="" >New password & confirm password didn't match.</div>
+                        
+                              </div>
+                            <p id="idErrorr" class="errorMsg"></p>
+
+                            <aside class="col-sm-5">
+                                <button type="submit" class="btn btn-danger big_yellow text-uppercase" style="font-size: 12px;">Change password</button>
+                                    
+                            </aside>
+                           <!-- <div class="text-center"> <button type="submit" class="blue_btn" >Change password</button></div> -->
+                       
+                      </form>
+                  <!-- </div> -->
+              </div>
             </div>
         </div>
     </div>

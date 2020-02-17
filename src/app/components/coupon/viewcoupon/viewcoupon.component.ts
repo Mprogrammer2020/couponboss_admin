@@ -6,6 +6,7 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 import * as $ from 'jquery';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Location} from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -17,7 +18,7 @@ import {Location} from '@angular/common';
 export class ViewcouponComponent implements OnInit {
   public selectedId:any;
   current_location:any
-  constructor(private httpClient: HttpClient,private router: Router,private _Activatedroute:ActivatedRoute,private _dataService:DataService,private _location: Location) { 
+  constructor(public datepipe: DatePipe, private httpClient: HttpClient,private router: Router,private _Activatedroute:ActivatedRoute,private _dataService:DataService,private _location: Location) { 
     this.selectedId=this._Activatedroute.snapshot.paramMap.get("id");
     this._dataService.getCoupon(this.selectedId);
     this.current_location = "http://192.168.2.91:8001";
