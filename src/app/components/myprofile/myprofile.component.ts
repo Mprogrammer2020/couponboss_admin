@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class MyprofileComponent implements OnInit {
   current_location:string;
-  constructor(private _dataService: DataService ,private router: Router) { this._dataService.getAdminProfile();   this.current_location = "http://192.168.2.91:8001";}
+  constructor(public _dataService: DataService ,public router: Router) { this._dataService.getAdminProfile();   this.current_location = "http://192.168.2.91:8001";}
 
   ngOnInit() {
   }

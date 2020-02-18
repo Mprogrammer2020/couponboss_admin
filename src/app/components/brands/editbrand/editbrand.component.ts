@@ -37,7 +37,7 @@ export class EditbrandComponent implements OnInit {
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];  
 
-  constructor(private formBuilder: FormBuilder,private httpClient: HttpClient,private router: Router,private _Activatedroute:ActivatedRoute,private _dataService:DataService,private _location: Location) { 
+  constructor(public formBuilder: FormBuilder,public httpClient: HttpClient,public router: Router,public _Activatedroute:ActivatedRoute,public _dataService:DataService,public _location: Location) { 
     this.selectedId=this._Activatedroute.snapshot.paramMap.get("id");
     this._dataService.getBrand(this.selectedId);
 

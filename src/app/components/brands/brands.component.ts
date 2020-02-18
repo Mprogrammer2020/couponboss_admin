@@ -17,13 +17,13 @@ import { DataTablesModule } from 'angular-datatables';
 export class BrandsComponent implements OnInit {
 
   
-  private currentPage:any=1; // set current page to 1
+  public currentPage:any=1; // set current page to 1
   public itemsPerPage:any=5; // we are showing 10 items per page
   current_location:any
 
   dtOptions: DataTables.Settings = {};
 
-  constructor(private _dataService: DataService,private router: Router,private _location: Location) {}
+  constructor(public _dataService: DataService,public router: Router,public _location: Location) {}
 
   backClicked() {
     this._location.back();
@@ -31,7 +31,7 @@ export class BrandsComponent implements OnInit {
 
 
   ngOnInit() {
-    this.current_location = "http://192.168.2.91:8001";
+    this.current_location = "http://68.183.133.217:8000";
     this.getData(this.currentPage,this.itemsPerPage)
     $('#brand_sidebar').addClass('active');
     this.dtOptions = {

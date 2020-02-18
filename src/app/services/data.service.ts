@@ -5,15 +5,16 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 
-const API_URL="http://192.168.2.91:8001/apis/"; 
+const API_URL="http://192.168.2.57:8000/apis/"; 
+//const API_URL="http://68.183.133.217:8000/apis/"; 
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  private authhttpOptions: any;
-  private authhttpOptionsupload: any;
+  public authhttpOptions: any;
+  public authhttpOptionsupload: any;
   public errors:any;
   public brandslist:any;
   public countrieslist:any;
@@ -31,12 +32,13 @@ export class DataService {
   public couponbrands:any;
   public currentuser:any;
   public currentadmin:any;
+  public sociallist:any;
 
   public is_response:boolean = false;
 
   
 
-  constructor(private http: HttpClient, public jwtHelper: JwtHelperService, public router: Router) {
+  constructor(public http: HttpClient, public jwtHelper: JwtHelperService, public router: Router) {
     this.authhttpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json','Access-Control-Allow-Origin': '*', 'access-control-allow-origin': '*', 'AUTHORIZATION':  localStorage.getItem('token')})
     
@@ -535,7 +537,67 @@ export class DataService {
   //   );
     
 
-  // }   
+  // }  
+  
+  public getSocial(){
+
+    this.http.get(API_URL+'get_social', this.authhttpOptions).subscribe(
+      (data: any) => {
+        this.sociallist = data.response
+      },
+      (err:any) => {
+        console.log("error"+err.error.message)
+        this.errors = err.error.message;
+      }
+    );
+  }
+
+  public deleteSocial(data){
+    this.http.post(API_URL+'delete_social',JSON.stringify(data), this.authhttpOptions).subscribe(
+      (data: any)  => {
+       alert("Country Deleted Successfully")
+       this.getSocial()
+     },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+      }
+    );
+  }
+
+
+  public addSocial(data){
+    this.http.post(API_URL+'add_social', JSON.stringify(data), this.authhttpOptions).subscribe(
+      (data: any)  => {
+          alert("SocialLink Added Successfully");
+          this.router.navigate(['social']);
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+
+        //  this.router.navigate(['']);
+
+        alert("Something Went Wrong.")
+      }
+    );     
+  }
+
+  public editSocial(editdata){
+    this.http.put(API_URL+'edit_social',JSON.stringify(editdata), this.authhttpOptions).subscribe(
+      (data: any)  => {
+          alert("SocialLink edited Successfully");
+          this.router.navigate(['social']);
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+        alert("Something Went Wrong.")
+        this.router.navigate(['']);
+      }
+    );
+  }
+
 
   
 

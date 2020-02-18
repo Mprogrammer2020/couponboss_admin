@@ -27,7 +27,7 @@ export class EditcouponComponent implements OnInit {
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];
 
-  constructor(private formBuilder: FormBuilder,private httpClient: HttpClient,private router: Router,private _Activatedroute:ActivatedRoute,private _dataService:DataService) { 
+  constructor(public formBuilder: FormBuilder,public httpClient: HttpClient,public router: Router,public _Activatedroute:ActivatedRoute,public _dataService:DataService) { 
     this.selectedId=this._Activatedroute.snapshot.paramMap.get("id");
     this._dataService.getCoupon(this.selectedId);
     this.selectedElement= [1,2]

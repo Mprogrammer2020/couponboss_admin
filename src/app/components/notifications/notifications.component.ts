@@ -33,16 +33,16 @@ export class NotificationsComponent implements OnInit {
 
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];  
-  constructor(private formBuilder: FormBuilder,private _dataService:DataService,private http: HttpClient,private router: Router, private cd: ChangeDetectorRef,private _location: Location) { 
+  constructor(public formBuilder: FormBuilder,public _dataService:DataService,public http: HttpClient,public router: Router, public cd: ChangeDetectorRef,public _location: Location) { 
     this.selectedElement= [1];
   }
 
   ngOnInit() {
     this.addFilterForm = this.formBuilder.group({
       title: ['',[Validators.required]],
-      title_ar: ['',[Validators.required]],
+      title_ar: [''],
       description: ['',[Validators.required]],
-      description_ar: ['',[Validators.required]],
+      description_ar: [''],
       image:[''],
       brandId: ['', [Validators.required]],
       countryId: ['', [Validators.required]],

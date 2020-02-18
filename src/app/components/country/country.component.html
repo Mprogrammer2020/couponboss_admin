@@ -18,7 +18,8 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table row-border hover" datatable [dtOptions]="dtOptions"  *ngIf=" _dataService.is_response" >
+                        
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -27,8 +28,8 @@
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody *ngFor="let cntry of _dataService.countrieslist | paginate: { itemsPerPage:itemsPerPage, currentPage: currentPage,totalItems:totalItems }; let myIndex = index">
-                                <tr>
+                            <tbody id="myTable">
+                                <tr *ngFor="let cntry of _dataService.countrieslist ">
                                     <td>{{cntry.id}}</td>
                                     <td>{{cntry.name}}</td>
                                     <td> <img [attr.src]= 'cntry.image == "" ? current_location+"/media/countryimages/No-image-found.jpg" : current_location+cntry.image' style="width: 12%;"/></td>
@@ -41,7 +42,7 @@
                             </tbody>
                             <div *ngIf="_dataService.countrieslist && _dataService.countrieslist.length==0"><tbody><h2>No Country Found.</h2></tbody></div>
                         </table>
-                        <pagination-controls class="pagination" (pageChange)="currentPage=$event"></pagination-controls>
+                        <!--pagination-controls class="pagination" (pageChange)="currentPage=$event"></!--pagination-controls>-->
                     </div>
                 </div>
             </div>

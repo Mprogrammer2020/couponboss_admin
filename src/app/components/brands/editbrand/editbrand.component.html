@@ -55,6 +55,7 @@
                                     </div>
                                 </aside>
             
+
                             </div>
                             <div class="row">
                                 <aside class="col-sm-10">
@@ -63,7 +64,7 @@
 
                                             <select multiple class="custom-select" formControlName="country" [(ngModel)]="_dataService.brandcountries">
                                                 <option value="">Choose your city</option>
-                                                <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" (change)="changeCity($event)">{{city.name}}</option>
+                                                <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" >{{city.name}}</option>
                                             </select>
                                             <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
                                             <div *ngIf="submitted && f.country.errors" class="invalid-feedback">

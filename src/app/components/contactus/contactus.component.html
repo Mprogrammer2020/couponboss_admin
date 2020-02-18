@@ -3,6 +3,7 @@
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row bg-title text-center">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12"></div>
             <!-- <span class="back_arrow" style="float: left;padding-top: 16px;"><a (click)="backClicked()" style="color: #000;"> <i class="fa fa-arrow-left" aria-hidden="true" style="font-size:20px ;"></i></a>
             </span> -->
             <h4 class="page_heading">Contact Us List</h4>
@@ -13,7 +14,7 @@
                 <div class="white-box">
                     <!-- <h3 class="box-title">Contact Us List</h3> -->
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table row-border hover" datatable [dtOptions]="dtOptions"  *ngIf=" _dataService.is_response" >
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -23,8 +24,8 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody *ngFor="let item of _dataService.brandslist |paginate: { itemsPerPage:itemsPerPage, currentPage: currentPage,totalItems:totalItems }; let myIndex = index">
-                                <tr>
+                            <tbody id="myTable" *ngFor="let item of _dataService.brandslist">
+                                <tr >
                                     <td>{{item.id}}</td>
                                     <td>{{item.email}}</td>
                                     <td>{{item.subject}}</td>
@@ -47,7 +48,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                         </div>
-                                        <div class="modal-body">
+                                        <div class="modal-body" >
                                             <form [formGroup]="addFilterForm" (ngSubmit)="onSubmit()" name="addFilterForm"> 
                                                 <input [ngModel]="item.email" class="form-control" formControlName="email" type="hidden" >
                                                 <div class="row">
@@ -82,7 +83,7 @@
                             </tbody>
                             <div *ngIf="_dataService.brandslist && _dataService.brandslist.length==0"><tbody><h2>No Contact Us Found.</h2></tbody></div>
                         </table>
-                        <pagination-controls class="pagination" (pageChange)="currentPage=$event"></pagination-controls>
+                        <!--pagination-controls class="pagination" (pageChange)="currentPage=$event"></!--pagination-controls> -->
                     </div>
                 </div>
             </div>

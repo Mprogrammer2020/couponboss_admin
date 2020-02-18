@@ -91,7 +91,7 @@
 
                                                 <select class="custom-select" formControlName="countryId" >
                                                     <option value="" selected="">Choose your country</option>
-                                                    <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" (change)="changeCity($event)">{{city.name}}</option>
+                                                    <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" >{{city.name}}</option>
                                                 </select>
                                                 <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
                                                 <div *ngIf="submitted && f.countryId.errors" class="invalid-feedback">
@@ -108,7 +108,7 @@
 
                                             <select  class="custom-select" formControlName="brandId" >
                                                 <option value="" selected="">Choose your Brand</option>
-                                                <option *ngFor="let city of _dataService.brandslist" [ngValue]="city.id" (change)="changeCity($event)">{{city.name}}</option>
+                                                <option *ngFor="let city of _dataService.brandslist" [ngValue]="city.id" >{{city.name}}</option>
                                             </select>
                                             <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
                                             <div *ngIf="submitted && f.brandId.errors" class="invalid-feedback">
@@ -124,7 +124,7 @@
                                         <div class="multiple_select_main">
                                             <label class="text-uppercase">Select Users</label>
                                             <select multiple class="custom-select" formControlName="userId" >
-                                                <option *ngFor="let city of _dataService.userslist" [ngValue]="city.id" (change)="changeCity($event)">{{city.device_uid}}</option>
+                                                <option *ngFor="let city of _dataService.userslist" [ngValue]="city.id" >{{city.device_id}}</option>
                                             </select>
                                         </div>
                                            

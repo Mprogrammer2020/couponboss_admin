@@ -30,15 +30,15 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { MyprofileComponent } from './components/myprofile/myprofile.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { EditprofileComponent } from './components/myprofile/editprofile/editprofile.component';
-// import { BannerComponent } from './components/banner/banner.component';
-// import { AddbannerComponent } from './components/banner/addbanner/addbanner.component';
-// import { EditbannerComponent } from './components/banner/editbanner/editbanner.component';
 
 import { DatePipe } from '@angular/common'
 
 import { DataTablesModule } from 'angular-datatables';
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule  } from 'ng-pick-datetime';
+import { SocialComponent } from './components/social/social.component';
+import { AddsocialComponent } from './components/social/addsocial/addsocial.component';
+import { EditsocialComponent } from './components/social/editsocial/editsocial.component';
 
 // import { FileUploadModule } from 'ng2-file-upload';
 
@@ -78,9 +78,9 @@ const JWT_Module_Options: JwtModuleOptions = {
     SettingsComponent,
      MyprofileComponent,
      EditprofileComponent,
-    // BannerComponent,
-    // AddbannerComponent,
-    // EditbannerComponent
+     SocialComponent,
+     AddsocialComponent,
+     EditsocialComponent
   ],
   imports: [
     BrowserModule,

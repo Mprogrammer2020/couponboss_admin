@@ -50,7 +50,7 @@ export class AddcountryComponent implements OnInit {
 
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];
-  constructor(private formBuilder: FormBuilder,private _dataService:DataService ,private http: HttpClient ,private router: Router) { }
+  constructor(public formBuilder: FormBuilder,public _dataService:DataService ,public http: HttpClient ,public router: Router) { }
 
   ngOnInit() {
     this.addFilterForm = this.formBuilder.group({
@@ -84,7 +84,7 @@ export class AddcountryComponent implements OnInit {
       this.getPlaceAutocomplete();
   }
 
-  private getPlaceAutocomplete() {
+  public getPlaceAutocomplete() {
     const autocomplete = new google.maps.places.Autocomplete(this.addresstext.nativeElement,
         {
             types: [this.adressType]  // 'establishment' / 'address' / 'geocode'

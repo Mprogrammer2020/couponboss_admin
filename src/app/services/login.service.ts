@@ -3,21 +3,23 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
-const API_URL="http://192.168.2.91:8001/apis/"; 
+const API_URL="http://192.168.2.57:8000/apis/"; 
+//const API_URL="http://68.183.133.217:8000/apis/"; 
+
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
  
   // http options used for making API calls
-  private httpOptions: any;
+  public httpOptions: any;
  
-  private authhttpOptions: any;
+  public authhttpOptions: any;
   // the actual JWT token
   public token: any;
  
    //Router Reference
-   private router: Router;
+   public router: Router;
 
   // the token expiration date
   public token_expires: Date;
@@ -29,7 +31,7 @@ export class LoginService {
   // error messages received from the login attempt
   public errors: any = [];
  
-  constructor(private http: HttpClient) {
+  constructor(public http: HttpClient) {
     this.httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json','Access-Control-Allow-Origin': '*', 'access-control-allow-origin': '*' })
     };
@@ -99,7 +101,7 @@ export class LoginService {
     this.token =  localStorage.getItem('token');
   }
 
-  private updateData(token, user) {
+  public updateData(token, user) {
     this.token =  localStorage.getItem('token');
     this.errors = [];
  

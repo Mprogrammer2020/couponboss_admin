@@ -5,6 +5,7 @@ import {NgForm} from '@angular/forms';
 import { Router } from '@angular/router'; 
 import { DOCUMENT } from '@angular/common';
 import {Location} from '@angular/common';
+import { DataTablesModule } from 'angular-datatables';
 
 @Component({
   selector: 'app-country',
@@ -13,12 +14,14 @@ import {Location} from '@angular/common';
 })
 export class CountryComponent implements OnInit {
 
-  private currentPage:any=1; // set current page to 1
+  public currentPage:any=1; // set current page to 1
   public itemsPerPage:any=3; // we are showing 10 items per page
   current_location:any;
   image:any
 
-  constructor(@Inject(DOCUMENT) private document: Document, private _dataService: DataService ,private router: Router,private _location: Location) { }
+  dtOptions: DataTables.Settings = {};
+
+  constructor(@Inject(DOCUMENT) public document: Document, public _dataService: DataService ,public router: Router,public _location: Location) { }
 
   backClicked() {
     this._location.back();
@@ -26,15 +29,34 @@ export class CountryComponent implements OnInit {
 
   ngOnInit() {
     // this.current_location = this.document.location.origin;
-    this.current_location = "http://192.168.2.91:8001";
+    this.current_location = "http://68.183.133.217:8000";
     this.getData(this.currentPage,this.itemsPerPage)
     $('#country_sidebar').addClass('active');
 
     console.log(this.current_location)
+    this.dtOptions = {
+      pagingType: 'full_numbers'
+    };
+    this.loadscript();
+
   }
   public setValue() { 
     this.currentPage=1;
     this.getData(this.currentPage,this.itemsPerPage)
+  }
+
+  public loadscript()
+  {
+    
+  $(document).ready(function(){
+    // $("#myInput").on("keyup", function() {
+    //   var value = $(this).val().toLowerCase();
+    //   $("#myTable tr").filter(function() {
+    //     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    //   });
+    // });
+  });
+
   }
 
   public getNext(page: any){

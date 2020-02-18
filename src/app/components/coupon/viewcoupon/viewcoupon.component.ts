@@ -18,7 +18,7 @@ import { DatePipe } from '@angular/common';
 export class ViewcouponComponent implements OnInit {
   public selectedId:any;
   current_location:any
-  constructor(public datepipe: DatePipe, private httpClient: HttpClient,private router: Router,private _Activatedroute:ActivatedRoute,private _dataService:DataService,private _location: Location) { 
+  constructor(public datepipe: DatePipe, public httpClient: HttpClient,public router: Router,public _Activatedroute:ActivatedRoute,public _dataService:DataService,public _location: Location) { 
     this.selectedId=this._Activatedroute.snapshot.paramMap.get("id");
     this._dataService.getCoupon(this.selectedId);
     this.current_location = "http://192.168.2.91:8001";

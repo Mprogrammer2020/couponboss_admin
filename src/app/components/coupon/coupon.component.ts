@@ -5,6 +5,8 @@ import {throwError} from 'rxjs';
 import {NgForm} from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
+
 
 @Component({
   selector: 'app-coupon',
@@ -13,14 +15,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CouponComponent implements OnInit {
 
-  private currentPage:any=1; // set current page to 1
+  public currentPage:any=1; // set current page to 1
   public itemsPerPage:any=3; // we are showing 10 items per page
   public editObj:any;
   addFilterForm: FormGroup;
   submitted = false;
   customData:any;
 
-  constructor(private formBuilder: FormBuilder, private _dataService: DataService,private router: Router) { }
+  dtOptions: DataTables.Settings = {};
+
+  constructor(public formBuilder: FormBuilder, public _dataService: DataService,public router: Router) { }
 
   ngOnInit() {
     this.addFilterForm = this.formBuilder.group({
@@ -32,11 +36,31 @@ export class CouponComponent implements OnInit {
     $('#coupon_sidebar').addClass('active');
     this._dataService.getBrandsList(1,2)
     this._dataService.getCountries(1,2)
+    this.dtOptions = {
+      pagingType: 'full_numbers'
+    };
+    this.loadscript();
+
+
   }
 
   public setValue() { 
     this.currentPage=1;
     this.getData(this.currentPage,this.itemsPerPage)
+  }
+
+  public loadscript()
+  {
+    
+  $(document).ready(function(){
+    // $("#myInput").on("keyup", function() {
+    //   var value = $(this).val().toLowerCase();
+    //   $("#myTable tr").filter(function() {
+    //     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    //   });
+    // });
+  });
+
   }
 
   public getNext(page: any){

@@ -14,7 +14,7 @@ export class SettingsComponent implements OnInit {
   changePasswordForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder,private _dataService:DataService,private httpClient: HttpClient,private router: Router,) { }
+  constructor(public formBuilder: FormBuilder,public _dataService:DataService,public httpClient: HttpClient,public router: Router,) { }
 
   ngOnInit() {
     this.changePasswordForm = this.formBuilder.group({

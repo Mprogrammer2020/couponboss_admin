@@ -31,7 +31,7 @@ export class AddbrandComponent implements OnInit {
 
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];  
-  constructor(public formBuilder: FormBuilder,private _dataService:DataService,private http: HttpClient,private router: Router, private cd: ChangeDetectorRef,private _location: Location ) { }
+  constructor(public formBuilder: FormBuilder,public _dataService:DataService,public http: HttpClient,public router: Router, public cd: ChangeDetectorRef,public _location: Location ) { }
 
   ngOnInit() {
 

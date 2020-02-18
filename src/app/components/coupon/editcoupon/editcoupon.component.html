@@ -113,7 +113,11 @@
                                 <aside class="col-sm-10">
                                     <div class="form-group">
                                             <label class="text-uppercase">Is Featured</label>
-                                            <input value="" class="form-control " formControlName="is_featured"  [(ngModel)]="_dataService.branddetail.is_featured" type="text" [ngClass]="{ 'is-invalid': submitted && f.is_featured.errors }">
+                                            <select formControlName="is_featured"  [(ngModel)]="_dataService.branddetail.is_featured">
+                                                <option value="">Options</option>
+                                                <option value="True">TRUE</option>
+                                                <option value="False">FALSE</option>
+                                            </select>
                                             <div *ngIf="submitted && f.is_featured.errors" class="invalid-feedback">
                                                     <div *ngIf="f.is_featured.errors.required">This field is required</div>
                                             </div>
@@ -127,7 +131,7 @@
 
                                             <select multiple class="custom-select" formControlName="country" [(ngModel)]="_dataService.couponcountries">
                                                 <option value="">Choose your city</option>
-                                                <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" (change)="changeCity($event)">{{city.name}}</option>
+                                                <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" >{{city.name}}</option>
                                             </select>
                                             <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
                                             <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
@@ -143,7 +147,7 @@
 
                                             <select formControlName="brand" [(ngModel)]="_dataService.branddetail.coupon_brand.id">
                                                 <option value="">Choose your brand</option>
-                                                <option *ngFor="let brandd of _dataService.brandslist" [ngValue]="brandd.id" (change)="changeBrand($event)">{{brandd.name}}</option>
+                                                <option *ngFor="let brandd of _dataService.brandslist" [ngValue]="brandd.id" >{{brandd.name}}</option>
                                             </select>
                                             <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
                                             <div *ngIf="submitted && f.brand.errors" class="invalid-feedback">
