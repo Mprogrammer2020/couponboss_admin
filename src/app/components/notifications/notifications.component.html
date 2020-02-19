@@ -16,7 +16,7 @@
                 <div class="add_formarea">
                     <form   [formGroup]="addFilterForm" (ngSubmit)="onSubmit()" name="addFilterForm">               
                         <div class="row">
-                            <aside class="col-sm-10">
+                            <aside class="col-md-6">
                                 <div class="form-group">
                                 <label class="text-uppercase">Title</label>
                                 <input value="" class="form-control" formControlName="title" type="text" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
@@ -28,9 +28,7 @@
                                     </div>
                                 </div>
                             </aside>
-                        </div>
-                        <div class="row">
-                            <aside class="col-sm-10">
+                            <aside class="col-md-6">
                                 <div class="form-group">
                                 <label class="text-uppercase">Title in Arabic</label>
                                 <input value="" class="form-control" formControlName="title_ar" type="text" [ngClass]="{ 'is-invalid': submitted && f.title_ar.errors }">
@@ -42,9 +40,7 @@
                                     </div>
                                 </div>
                             </aside>
-                        </div>
-                        <div class="row">
-                            <aside class="col-sm-10">
+                            <aside class="col-md-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Description</label>
                                         <input value="" class="form-control " formControlName="description" type="textarea" [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
@@ -56,10 +52,7 @@
                                         </div>
                                 </div>
                             </aside>
-                        </div>
-
-                        <div class="row">
-                            <aside class="col-sm-10">
+                            <aside class="col-md-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Description in Arabic</label>
                                         <input value="" class="form-control " formControlName="description_ar" type="textarea" [ngClass]="{ 'is-invalid': submitted && f.description_ar.errors }">
@@ -71,41 +64,33 @@
                                         </div>
                                 </div>
                             </aside>
-                        </div>
-                        <div class="row">
-                                <aside class="col-sm-10">
+                            <aside class="col-md-6">
+                                <div class="form-group">
+                                        <label class="text-uppercase">Image</label>
+                                        <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.image.errors }" />
+                                        <div *ngIf="submitted && f.image.errors && !touched" class="invalid-feedback">
+                                                <div *ngIf="f.image.errors.required && !touched">This field is required</div>
+                                        </div>
+                                </div>
+                            </aside>
+                            <div class="col-md-6 brand_box">
+                                <aside class="col-md-6">
                                     <div class="form-group">
-                                            <label class="text-uppercase">Image</label>
-                                            <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.image.errors }" />
-                                            <div *ngIf="submitted && f.image.errors && !touched" class="invalid-feedback">
-                                                    <div *ngIf="f.image.errors.required && !touched">This field is required</div>
+                                            <label class="text-uppercase">Select Country</label>
+    
+                                            <select class="custom-select" formControlName="countryId" >
+                                                <option value="" selected="">Choose your country</option>
+                                                <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" >{{city.name}}</option>
+                                            </select>
+                                            <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
+                                            <div *ngIf="submitted && f.countryId.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.countryId.errors.required">This field is required</div>
                                             </div>
                                     </div>
                                 </aside>
-            
-                            </div>
-                            <div class="row">
-                                    <aside class="col-sm-10">
-                                        <div class="form-group">
-                                                <label class="text-uppercase">Select Country</label>
-
-                                                <select class="custom-select" formControlName="countryId" >
-                                                    <option value="" selected="">Choose your country</option>
-                                                    <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" >{{city.name}}</option>
-                                                </select>
-                                                <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
-                                                <div *ngIf="submitted && f.countryId.errors" class="invalid-feedback">
-                                                        <div *ngIf="f.countryId.errors.required">This field is required</div>
-                                                </div>
-                                        </div>
-                                    </aside>
-                            </div>
-
-                            <div class="row">
-                                <aside class="col-sm-10">
+                                <aside class="col-md-6">
                                     <div class="form-group">
-                                            <label class="text-uppercase">Select Brand</label>
-
+                                            <label class="text-uppercase">Select Brand</label>    
                                             <select  class="custom-select" formControlName="brandId" >
                                                 <option value="" selected="">Choose your Brand</option>
                                                 <option *ngFor="let city of _dataService.brandslist" [ngValue]="city.id" >{{city.name}}</option>
@@ -116,12 +101,17 @@
                                             </div>
                                     </div>
                                 </aside>
-                            </div>
 
-                            <div class="row">
-                                <aside class="col-sm-10">
+                            </div>
+                            
+                           
+                        </div>                     
+
+                            <div class="row">           
+                             
+                                <aside class="col-md-6">
                                     <div class="form-group">
-                                        <div class="multiple_select_main">
+                                        <div class="multiple_select_main select-user-box">
                                             <label class="text-uppercase">Select Users</label>
                                             <select multiple class="custom-select" formControlName="userId" >
                                                 <option *ngFor="let city of _dataService.userslist" [ngValue]="city.id" >{{city.device_id}}</option>

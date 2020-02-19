@@ -4,8 +4,8 @@
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row bg-title">
-            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                <h4 class="page-title">My Profile</h4>
+            <div class=" col-xs-12 text-center">
+                <h4 class="page-title ">My Profile</h4>
             </div>
             
         </div>
@@ -17,25 +17,22 @@
                         <aside class="col-lg-4 text-center">
                             <img [attr.src]= '_dataService.currentadmin.image == "" ? current_location+"/media/countryimages/No-image-found.jpg" : current_location+_dataService.currentadmin.image' alt="image" class="img-circle profile_image" id="viewProfileImage"/>
                         </aside>
-                        <aside class="col-lg-8">
-                            <div class="row">
-                                <aside class="col-sm-6">
-                                    <label>First Name</label>
-                                    <h5 *ngFor="let admin of _dataService.adminprofile; let myIndex = index">{{admin.first_name}}</h5>
-                                    
+                        <aside class="col-lg-8">                           
+                                <aside class="edit_content">
+                                    <label>First Name :</label>
+                                    <h5 *ngFor="let admin of _dataService.adminprofile; let myIndex = index">{{admin.first_name}}</h5>    
+                                    <div class="clear"></div>                                
                                 </aside>
-                                <aside class="col-sm-6">
-                                    <label>Last Name</label>
+                                <aside class="edit_content">
+                                    <label>Last Name :</label>
                                     <h5 *ngFor="let admin of _dataService.adminprofile; let myIndex = index">{{admin.last_name}}</h5>
-                                </aside>
-                            </div>
-                            <div class="row">
-                                <aside class="col-sm-6">
-                                    <label>Email</label>
+                                    <div class="clear"></div> 
+                                </aside>                         
+                                <aside class="edit_content">
+                                    <label>Email :</label>
                                     <h5 *ngFor="let admin of _dataService.adminprofile; let myIndex = index">{{admin.email}}</h5>
-                                </aside>  
-                            </div>
-                            
+                                    <div class="clear"></div> 
+                                </aside>                                                  
                         </aside>
                     </div>
                 </div>

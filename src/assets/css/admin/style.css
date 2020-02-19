@@ -9,6 +9,7 @@
     background: #fff
 }
 
+
 .preloader .cssload-speeding-wheel {
     position: absolute;
     top: calc(50% - 3.5px);
@@ -10122,7 +10123,43 @@ select{
     height:45px;
     margin:0px 5px;
 }
+#side-menu > li > a.active {
+		border-left: none!important;
+	
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+	
+	background-color: transparent!important;
+}
+.edit_content label {
+    display: inline-block;
+    width: 100%;
+    max-width: 80px;
+}
 
+.edit_content h5 {
+	display: inline-block;
+}
+.brand_box label {
+	margin-left: ;
+	margin-right: 19px;
+}
+.brand_box {
+    padding-top: 21px;
+}
+.multiple_select_main.select-user-box {
+	padding: 0px;
+}
+.multiple_select_main.select-user-box label {
+	
+	position: relative;
+}
+#DataTables_Table_0_first {
+	display: none;
+}
+.multiple_select_main.select-user-box select{
+   width: 100%;
+}
 @media screen and (max-width:58em) {
     .tabs-style-iconfall nav li .sticon::before {
         opacity: 1;
@@ -12640,6 +12677,7 @@ ul.pro-amenities li span i {
     max-width: 100%;
     padding: 7px 12px;
     transition: all 300ms linear 0s;
+    margin-left: 5px;
 }
 
 .dataTables_info {
@@ -16364,3 +16402,9 @@ section {
 	}
 }
 #idErrorr{display: inline-block;}
+
+.paginate_button.first {
+
+    display: none !important;
+
+}

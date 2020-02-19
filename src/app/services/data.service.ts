@@ -171,6 +171,15 @@ export class DataService {
         else if(redirect_url == "myProfile"){ 
           alert("Profile Updated Successfully.")
         }
+        else if(redirect_url == "brands"){
+          alert("Brand" + " "+ operation +" Successfully.")
+        }
+        else if(redirect_url == "country"){
+          alert("Country" + " "+ operation +" Successfully.")
+        }
+        else if(redirect_url == "coupon"){
+          alert("Coupon" + " "+ operation +" Successfully.")
+        }
         else{
           alert(redirect_url.charAt(0).toUpperCase() + " "+ operation +" Successfully")
         }
@@ -387,6 +396,7 @@ export class DataService {
     this.http.get(API_URL+'get_coupons', {headers:{'Authorization': localStorage.getItem('token')},params:httpParams}).subscribe(
       (data: any) => {
         this.couponslist = data.response
+        this.is_response = true;
       },
       (err:any) => {
         console.log("error"+err.error.message)
