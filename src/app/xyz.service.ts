@@ -22,7 +22,7 @@ const API_URL="http://192.168.2.91:8001/apis/";
 export class XyzService {
  
   // http options used for making API calls
-  private httpOptions: any;
+  public httpOptions: any;
 
  
   // the actual JWT token
@@ -39,7 +39,7 @@ export class XyzService {
   // error messages received from the login attempt
   public errors: any = [];
  
-  constructor(private http: HttpClient) {
+  constructor(public http: HttpClient) {
     this.httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json','Access-Control-Allow-Origin': '*', 'access-control-allow-origin': '*' })
     };
@@ -86,7 +86,7 @@ export class XyzService {
     this.token =  localStorage.getItem('token');
   }
 
-  private updateData(token, user) {
+  public updateData(token, user) {
     this.token =  localStorage.getItem('token');
     this.errors = [];
  

@@ -8,6 +8,14 @@
     z-index: 99999;
     background: #fff
 }
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+	color: #555;
+	background-color: transparent;
+}
+#side-menu > li > a.active {	
+	border-left: 3px solid transparent!important;
+	
+}
 
 .preloader .cssload-speeding-wheel {
     position: absolute;
@@ -12583,6 +12591,15 @@ ul.pro-amenities li span i {
     .new-login-register .new-login-box {
         margin: 10% auto 0;
         width: 300px
+    }
+    .red_custom_btn {
+        background: #c2272b;
+        color: #fff;
+        padding: 12px 30px;
+        font-size: 18px;
+        text-transform: capitalize;
+        border-radius: 60px;
+        border: none;
     }
 }
 
