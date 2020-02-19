@@ -29,7 +29,7 @@ export class CountryComponent implements OnInit {
 
   ngOnInit() {
     // this.current_location = this.document.location.origin;
-    this.current_location = "http://68.183.133.217:8000";
+    this.current_location = "http://157.245.218.104:8000";
     this.getData(this.currentPage,this.itemsPerPage)
     $('#country_sidebar').addClass('active');
 

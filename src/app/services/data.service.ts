@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 
-const API_URL="http://192.168.2.57:8000/apis/"; 
+const API_URL="http://157.245.218.104:8000/apis/"; 
 //const API_URL="http://68.183.133.217:8000/apis/"; 
 
 @Injectable({

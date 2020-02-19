@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { XyzService } from './xyz.service';
+// import { XyzService } from './xyz.service';
 import { HttpClientModule } from '@angular/common/http';    // add this
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -36,9 +36,9 @@ import { DatePipe } from '@angular/common'
 import { DataTablesModule } from 'angular-datatables';
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule  } from 'ng-pick-datetime';
-import { SocialComponent } from './components/social/social.component';
-import { AddsocialComponent } from './components/social/addsocial/addsocial.component';
-import { EditsocialComponent } from './components/social/editsocial/editsocial.component';
+// import { SocialComponent } from './components/social/social.component';
+// import { AddsocialComponent } from './components/social/addsocial/addsocial.component';
+// import { EditsocialComponent } from './components/social/editsocial/editsocial.component';
 
 // import { FileUploadModule } from 'ng2-file-upload';
 
@@ -77,10 +77,10 @@ const JWT_Module_Options: JwtModuleOptions = {
     ViewcouponComponent,
     SettingsComponent,
      MyprofileComponent,
-     EditprofileComponent,
-     SocialComponent,
-     AddsocialComponent,
-     EditsocialComponent
+     EditprofileComponent
+    //  SocialComponent,
+    //  AddsocialComponent,
+    //  EditsocialComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +96,7 @@ const JWT_Module_Options: JwtModuleOptions = {
 
     // FileUploadModule
   ],
-  providers: [XyzService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+  providers: [ { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService, DatePipe],
   bootstrap: [AppComponent]
 })

@@ -20,9 +20,9 @@ import {ViewcouponComponent} from './components/coupon/viewcoupon/viewcoupon.com
 import { MyprofileComponent } from './components/myprofile/myprofile.component';
 import { EditprofileComponent } from './components/myprofile/editprofile/editprofile.component';
 
-import { SocialComponent } from './components/social/social.component';
-import { AddsocialComponent } from './components/social/addsocial/addsocial.component';
-import { EditsocialComponent } from './components/social/editsocial/editsocial.component';
+// import { SocialComponent } from './components/social/social.component';
+// import { AddsocialComponent } from './components/social/addsocial/addsocial.component';
+// import { EditsocialComponent } from './components/social/editsocial/editsocial.component';
  
 
 const routes: Routes = [
@@ -122,24 +122,24 @@ const routes: Routes = [
     pathMatch:'full',
     canActivate: [AuthGuard]
   },
-  {
-    path: 'social',
-    component: SocialComponent,
-    pathMatch:'full',
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'social/addNew',
-    component: AddsocialComponent,
-    pathMatch:'full',
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'editsocial/:id',
-    component: EditsocialComponent,
-    pathMatch:'full',
-    canActivate: [AuthGuard]
-  },
+  // {
+  //   path: 'social',
+  //   component: SocialComponent,
+  //   pathMatch:'full',
+  //   canActivate: [AuthGuard]
+  // },
+  // {
+  //   path: 'social/addNew',
+  //   component: AddsocialComponent,
+  //   pathMatch:'full',
+  //   canActivate: [AuthGuard]
+  // },
+  // {
+  //   path: 'editsocial/:id',
+  //   component: EditsocialComponent,
+  //   pathMatch:'full',
+  //   canActivate: [AuthGuard]
+  // },
   {
     path: '**',
    redirectTo: '' 
