@@ -63,8 +63,8 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr----->"+err.error.message)
         this.errors = err.error.message;
-        // localStorage.clear();
-        // this.router.navigate(['']);
+        localStorage.clear();
+        this.router.navigate(['']);
       }
     );
   }
