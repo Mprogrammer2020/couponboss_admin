@@ -85,6 +85,7 @@ export class DataService {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
         alert("Something Went Wrong.")
+        localStorage.clear();
         this.router.navigate(['']);
       }
     );
@@ -102,6 +103,8 @@ export class DataService {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
         alert("Something Went Wrong.")
+        localStorage.clear();
+        this.router.navigate(['']);
         //  this.router.navigate(['']);
       }
     );
@@ -118,6 +121,8 @@ export class DataService {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
         alert("Something Went Wrong.")
+        localStorage.clear();
+        this.router.navigate(['']);
         //  this.router.navigate(['']);
       }
     );
@@ -144,6 +149,8 @@ export class DataService {
         //  this.router.navigate(['']);
 
         alert("Something Went Wrong.")
+        localStorage.clear();
+        this.router.navigate(['']);
       }
     );     
   }
@@ -158,6 +165,8 @@ export class DataService {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
         alert("Something Went Wrong.")
+        localStorage.clear();
+        this.router.navigate(['']);
       }
     );
   }
@@ -191,6 +200,7 @@ export class DataService {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
         alert("Something Went Wrong.")
+        localStorage.clear();
         this.router.navigate(['']);
       }
     );
@@ -218,7 +228,8 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Something Went Wrong")
+        alert("Something Went Wrong");
+        localStorage.clear();
         this.router.navigate(['']);
       }
     );
@@ -242,6 +253,7 @@ export class DataService {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
         alert("Something Went Wrong.")
+        localStorage.clear();
         this.router.navigate(['']);
       }
     );
@@ -260,7 +272,8 @@ export class DataService {
         console.log("errrrrrr"+err.error.message)
         alert("Something Went Wrong.")
         this.errors = err.error.message;
-        //  this.router.navigate(['']);
+        localStorage.clear();
+        this.router.navigate(['']);
       }
     );
      

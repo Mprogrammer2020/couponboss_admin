@@ -1013,7 +1013,10 @@ pre {
     font-size: 18px;
     font-weight: 500;
     margin-top: 6px;
-    display: inline-block;
+    /* display: inline-block; */
+}
+.col-md-12.add_country-box button {
+	float: right;
 }
 
 .bg-title .breadcrumb {
@@ -1754,10 +1757,11 @@ table.dataTable thead .sorting:after {
 }
 
 .white-box .box-title {
-    margin: 0 0 12px;
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 16px
+	margin: 0 0 12px;
+	font-weight: 500;
+	text-transform: uppercase;
+	font-size: 16px;
+	text-align: center;
 }
 
 .panel {
@@ -10141,12 +10145,12 @@ select{
 	display: inline-block;
 }
 .brand_box label {
-	margin-left: ;
-	margin-right: 19px;
+	margin: 0px;
+	display: block;
 }
-.brand_box {
+/* .brand_box {
     padding-top: 21px;
-}
+} */
 .multiple_select_main.select-user-box {
 	padding: 0px;
 }
@@ -10160,6 +10164,7 @@ select{
 .multiple_select_main.select-user-box select{
    width: 100%;
 }
+
 @media screen and (max-width:58em) {
     .tabs-style-iconfall nav li .sticon::before {
         opacity: 1;
@@ -11234,7 +11239,7 @@ table.dataTable.order-column.stripe tbody tr.odd>.sorting_1 {
     white-space: nowrap
 }
 
-.right-aside .contact-list td {
+.right-aside .contaSelect Countryct-list td {
     vertical-align: middle;
     white-space: nowrap;
     padding: 25px 10px
@@ -11257,7 +11262,7 @@ table.dataTable.order-column.stripe tbody tr.odd>.sorting_1 {
 .contact-list td img {
     width: 30px
 }
-
+Select Country
 .list-style-none {
     margin: 0;
     padding: 0
@@ -12654,10 +12659,14 @@ ul.pro-amenities li span i {
     color: #cacaca;
     }
   
-    .dropdown-toggle img {
+    /* .dropdown-toggle img {
       padding-right: 7px;
+    } */
+    .img-circle {
+        border-radius: 50%;
+        padding: 0px!Important;
+        margin-right: 7px;
     }
-
     .dataTables_length {
         visibility: hidden;
     }
@@ -16407,4 +16416,49 @@ section {
 
     display: none !important;
 
+}
+.select_country_content,.edit_brand_select {
+    position: relative;
+    padding-left: 130px;
+}
+.select_country_content label {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.select_country_content select {
+    width: 185px;
+}
+
+.edit_brand_select label {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.edit_brand_select select {
+	width: 300px;
+}
+.modal-header.model_close .close {
+	font-size: 36px;
+}
+.modal-header.model_close{
+    position: relative;
+}
+.modal-header.model_close button {
+	position: absolute;
+	right: 0px;
+	top: -5px;
+}
+.modal-header.model_close h5{
+    font-weight: 600;
+}
+.button_box #upload {
+	padding: 8px;
+}
+.main_select select {
+	margin-left: 12px;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+	color: #555;
+	background-color: transparent;
 }

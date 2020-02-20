@@ -10,7 +10,7 @@
                 <!-- <input class="form-control" id="myInput" type="text" placeholder="Search.."> -->
             </div>
             <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12">
-                <button class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light" routerLink="/addbrand/new" >Add New</button>
+                <button class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light" routerLink="/addbrand/new" >Add New Brand</button>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -31,6 +31,7 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
+                            
                             <tbody id="myTable" >
                                 <tr *ngFor="let item of _dataService.brandslist">
                                     <td>{{item.id}}</td>

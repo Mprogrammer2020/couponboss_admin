@@ -60,12 +60,18 @@
                             <div class="row">
                                 <aside class="col-sm-10">
                                     <div class="form-group">
+                                        <div class="edit_brand_select">
                                             <label class="text-uppercase">Select Country</label>
-
                                             <select multiple class="custom-select" formControlName="country" [(ngModel)]="_dataService.brandcountries">
                                                 <option value="">Choose your city</option>
                                                 <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" >{{city.name}}</option>
                                             </select>
+                                        </div>
+                                            <!-- <label class="text-uppercase">Select Country</label>
+                                            <select multiple class="custom-select" formControlName="country" [(ngModel)]="_dataService.brandcountries">
+                                                <option value="">Choose your city</option>
+                                                <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" >{{city.name}}</option>
+                                            </select> -->
                                             <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
                                             <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
                                                     <div *ngIf="f.country.errors.required">This field is required</div>

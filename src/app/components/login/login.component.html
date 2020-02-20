@@ -16,6 +16,9 @@
         <div class="field form-group">
             <label for="user_email">Email</label><br>
             <input autofocus="autofocus" autocomplete="email" type="text" name="login-username" [(ngModel)]="user.username" id="user_email">
+            <div *ngIf="error_msg || emailerror_msg">
+              <span ><br />
+                Email is required.</span></div>
             <span *ngFor="let error of _loginService.errors.username"><br />
             {{ error }}</span>
         </div>
@@ -23,9 +26,12 @@
         <div class="field form-group">
             <label for="user_password">Password</label><br>
             <input autocomplete="current-password" type="password" name="login-password" [(ngModel)]="user.password" id="user_password">
+            <div  *ngIf="error_msg || passerror_msg">
+              <span><br />
+                Password is required.</span>
+              </div></div>
             <span *ngFor="let error of _loginService.errors.password"><br />
-            {{ error }}</span>
-        </div>
+              {{ error }}</span>
     
             <!-- <div class="field check_box">
             <input name="user[remember_me]" type="hidden" value="0"><input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me">
