@@ -7,6 +7,7 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 import * as $ from 'jquery';
 import { DataService } from '../../../services/data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Location} from '@angular/common';
 
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 //import LatLng = google.maps.LatLng;
@@ -50,7 +51,7 @@ export class AddcountryComponent implements OnInit {
 
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];
-  constructor(public formBuilder: FormBuilder,public _dataService:DataService ,public http: HttpClient ,public router: Router) { }
+  constructor(public formBuilder: FormBuilder,public _dataService:DataService ,public http: HttpClient ,public router: Router,public _location: Location) { }
 
   ngOnInit() {
     this.addFilterForm = this.formBuilder.group({
@@ -74,6 +75,10 @@ export class AddcountryComponent implements OnInit {
       this.is_file = true
       reader.readAsDataURL(file);
     }
+  }
+
+  backClicked() {
+    this._location.back();
   }
 
 

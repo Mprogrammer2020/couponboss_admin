@@ -6,7 +6,8 @@
     <!-- <div class="row bg-title">
         <h2 class="page_heading text-center">Add Country</h2>
     </div> -->
-    <div _ngcontent-qcb-c15="" class="row bg-title text-center"><span _ngcontent-qcb-c15="" class="back_arrow" style="float: left;padding-top: 16px;"><a _ngcontent-qcb-c15="" style="color: #000;"><i _ngcontent-qcb-c15="" aria-hidden="true" class="fa fa-arrow-left" style="font-size:20px ;">
+     <span class="back_arrow" style="float: left;"><a (click)="backClicked()" style="color: #000;"> <i class="fa fa-arrow-left" aria-hidden="true" style="font-size:20px ;"></i></a>
+                </span>
 
     </i></a></span><h4 _ngcontent-qcb-c15="" class="page_heading">Add Country</h4></div>
     <!-- /.row -->
@@ -19,7 +20,7 @@
                         <div class="row" >
                             <aside class="col-sm-10" ng-app="myApp">
                                 <div class="form-group"  ng-controller="MyCtrl">
-                                <label class="text-uppercase">Name</label>
+                                <label class="text-uppercase">Country Name</label>
 
                                 <input class="input form-control"
                                     type="text"
@@ -30,7 +31,7 @@
                                     >
 
                                     <div *ngIf="submitted && f.countryName.errors" class="invalid-feedback">
-                                        <div *ngIf="f.countryName.errors.required">This field is required</div>
+                                        <div *ngIf="f.countryName.errors.required">Name field is required</div>
                                     </div>
                                 <!-- <input [attr.value]="" class="form-control" formControlName="country_name" type="text" [ngClass]="{ 'is-invalid': submitted && f.country_name.errors }" id="testing" onfocus="geolocate(this.id)" [ngModel]="country_name">
                                     <div *ngIf="submitted && f.country_name.errors" class="invalid-feedback">
@@ -46,7 +47,7 @@
                                             <label class="text-uppercase">Image</label>
                                             <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" />
                                             <div *ngIf="submitted && f.logo.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.logo.errors.required">This field is required</div>
+                                                    <div *ngIf="f.logo.errors.required">Image field is required</div>
                                             </div>
                                     </div>
                                 </aside>

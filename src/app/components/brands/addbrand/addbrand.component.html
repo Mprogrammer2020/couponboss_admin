@@ -21,7 +21,7 @@
                                 <label class="text-uppercase">Name</label>
                                 <input  oninput="InvalidMsg(this);" id="name_input" value="" class="form-control" formControlName="name" type="text" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
                                     <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                                            <div *ngIf="f.name.errors.required">This field is required</div>
+                                            <div *ngIf="f.name.errors.required">Name field is required</div>
                                     </div>
                                     <div *ngIf="error_msg && touched" class="invalid-feedback">
                                         <div *ngIf="error_msg && touched">Empty Value is Not Valid</div>
@@ -35,7 +35,7 @@
                                         <label class="text-uppercase">Website Url </label>
                                         <input value="" class="form-control " formControlName="website_url" type="text" [ngClass]="{ 'is-invalid': submitted && f.website_url.errors }">
                                         <div *ngIf="submitted && f.website_url.errors" class="invalid-feedback">
-                                                <div *ngIf="f.website_url.errors.required">This field is required</div>
+                                                <div *ngIf="f.website_url.errors.required">Website Url field is required</div>
                                         </div>
                                         <div *ngIf="error_msg2 && touched" class="invalid-feedback">
                                             <div *ngIf="error_msg2 && touched">Empty Value is Not Valid</div>
@@ -50,7 +50,7 @@
                                             <label class="text-uppercase">Image</label>
                                             <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" />
                                             <div *ngIf="submitted && f.logo.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.logo.errors.required">This field is required</div>
+                                                    <div *ngIf="f.logo.errors.required">Image field is required</div>
                                             </div>
                                     </div>
                                 </aside>
@@ -70,7 +70,7 @@
                                                
                                                 <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
                                                 <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
-                                                        <div *ngIf="f.country.errors.required">This field is required</div>
+                                                        <div *ngIf="f.country.errors.required">Country field is required</div>
                                                 </div>
                                         </div>
                                     </aside>

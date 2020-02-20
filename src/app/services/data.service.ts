@@ -310,6 +310,7 @@ export class DataService {
     this.http.get(API_URL+'countactuslist', {headers: { 'Authorization':  localStorage.getItem('token')},params: httpParams}).subscribe(
       (data: any)  => {
         this.brandslist = data.countactuslist
+        this.is_response = true;
       //  alert("Notification Send Successfully")
       },
       (err:any)  => {
@@ -341,6 +342,7 @@ export class DataService {
     this.http.get(API_URL+'get_coupon_request', {headers: { 'Authorization':  localStorage.getItem('token')},params: httpParams}).subscribe(
       (data: any)  => {
         this.requestlist = data.response
+        this.is_response = true;
       //  alert("Notification Send Successfully")
       },
       (err:any)  => {
@@ -361,6 +363,7 @@ export class DataService {
     (data: any)  => {
       this.countrieslist = data.response;
       this.totalItems = data.count;
+      this.is_response = true;
     },
     (err:any)  => {
       console.log("errrrrrr"+err.error.message)

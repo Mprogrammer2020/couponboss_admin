@@ -38,7 +38,7 @@ export class AddbrandComponent implements OnInit {
     this.addFilterForm = this.formBuilder.group({
       name: ['',[Validators.required]],
       website_url: ['',[Validators.required]],
-      logo:[''],
+      logo: ['',[Validators.required]],
       country: ['', [Validators.required]]
     });
 
