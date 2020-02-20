@@ -12,18 +12,19 @@
 			<div class="col-sm-12">
 				<div class="white-box">
 					<div class="table-responsive">
-						<table class="table row-border hover" datatable [dtOptions]="dtOptions"  *ngIf=" _dataService.requestlist" >
+						<table class="table row-border hover" datatable [dtOptions]="dtOptions" *ngIf=" _dataService.is_response" >
 							<thead>
 								<tr>
 									<th>Id</th>
 									<th>User Email</th>
 									<th> Store Name</th>
 									<th>Store Link</th>
+									<th>Brand</th>
 									<th>Country</th>
 								</tr>
 							</thead>
-							<tbody id="myTable" *ngFor="let reqcup of _dataService.requestlist">
-								<tr>
+							<tbody id="myTable" >
+								<tr *ngFor="let reqcup of _dataService.requestlist">
 									<td>{{reqcup.id}}</td>
 									<td>{{reqcup.email}}</td>
 									<td>{{reqcup.name}}</td>
@@ -35,7 +36,8 @@
 										Send Response
 										  </button>
 									</td>
-								</tr>
+
+
 
 								<!-- Modal Start -->
 								<div class="modal fade" [attr.id]="'exampleModal' + reqcup.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -75,6 +77,7 @@
 									</div>
 									</div>
 								</div>
+								</tr>
 
 							</tbody>
 							<div *ngIf="_dataService.requestlist && _dataService.requestlist.length==0"><tbody><h2>No Request Found.</h2></tbody></div>
