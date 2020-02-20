@@ -16462,3 +16462,6 @@ section {
 	color: #555;
 	background-color: transparent;
 }
+.dataTables_empty{
+    display: none;
+}

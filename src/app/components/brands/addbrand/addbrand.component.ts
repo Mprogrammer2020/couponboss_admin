@@ -27,6 +27,7 @@ export class AddbrandComponent implements OnInit {
   error_msg:boolean = false;
   touched:boolean;
   error_msg2:boolean = false;
+  image_error:boolean = false;
 
 
 
@@ -38,7 +39,7 @@ export class AddbrandComponent implements OnInit {
     this.addFilterForm = this.formBuilder.group({
       name: ['',[Validators.required]],
       website_url: ['',[Validators.required]],
-      logo: ['',[Validators.required]],
+      logo: [''],
       country: ['', [Validators.required]]
     });
 
@@ -85,6 +86,29 @@ export class AddbrandComponent implements OnInit {
       this.touched = this.addFilterForm.controls.website_url.touched
       return
     }else{this.error_msg2 = false;}
+
+
+
+    if (!this.filePreview){
+      this.image_error = true;
+      return
+    }
+
+
+   if (this.addFilterForm.value.website_url != ""){
+     
+     const a = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g;
+     
+     let is_match = this.addFilterForm.value.website_url.match(a);
+
+    if (is_match == null){
+      alert("Enter valid URL")
+      return
+    }
+
+   }
+
+    this.image_error = false;
   
     // stop here if form is invalid
     if (this.addFilterForm.invalid) {

@@ -6,8 +6,14 @@
     <!-- <div class="row bg-title">
         <h2 class="page_heading text-center">Add Country</h2>
     </div> -->
-     <span class="back_arrow" style="float: left;"><a (click)="backClicked()" style="color: #000;"> <i class="fa fa-arrow-left" aria-hidden="true" style="font-size:20px ;"></i></a>
-    </span><h4 _ngcontent-qcb-c15="" class="page_heading">Add Country</h4>
+    <div _ngcontent-qcb-c15="" class="row bg-title text-center">
+
+    <span class="back_arrow" style="float: left;"><a (click)="backClicked()" style="color: #000;"> <i class="fa fa-arrow-left" aria-hidden="true" style="font-size:20px ;"></i></a>
+    </span>
+
+    
+    
+    <h4 _ngcontent-qcb-c15="" class="page_heading">Add Country</h4></div>
     <!-- /.row -->
     <!-- .row -->
     <div class="row">
@@ -18,7 +24,7 @@
                         <div class="row" >
                             <aside class="col-sm-10" ng-app="myApp">
                                 <div class="form-group"  ng-controller="MyCtrl">
-                                <label class="text-uppercase">Country Name</label>
+                                <label class="text-uppercase">Name</label>
 
                                 <input class="input form-control"
                                     type="text"
@@ -44,8 +50,8 @@
                                     <div class="form-group">
                                             <label class="text-uppercase">Image</label>
                                             <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" />
-                                            <div *ngIf="submitted && f.logo.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.logo.errors.required">Image field is required</div>
+                                            <div *ngIf="submitted && image_error" class="invalid-feedback">
+                                                    <div *ngIf="image_error">Image field is required</div>
                                             </div>
                                     </div>
                                 </aside>

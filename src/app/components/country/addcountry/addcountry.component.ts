@@ -36,6 +36,8 @@ export class AddcountryComponent implements OnInit {
   long:string = "";
   countryname:any;
 
+  image_error:boolean = false;
+
 
 
 
@@ -119,11 +121,18 @@ export class AddcountryComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
+    debugger
     // stop here if form is invalid
     if (this.addFilterForm.invalid) {
         return;
     }
+    if (!this.filePreview){
+      this.image_error = true;
+      return
+    }
+
+    this.image_error = false;
+    
     let formData = new FormData();
     formData.append('file' ,  this.filePreview);
     formData.append('type' , "country");

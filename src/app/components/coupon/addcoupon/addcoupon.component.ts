@@ -31,6 +31,7 @@ export class AddcouponComponent implements OnInit {
   error_msg5:boolean = false;
   error_msg6:boolean = false;
   error_msg7:boolean = false;
+  min;
   
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];
@@ -54,6 +55,7 @@ export class AddcouponComponent implements OnInit {
       brand:['',[Validators.required]],
       expiry_date: ['',[Validators.required]],
     });
+    this.min =  new Date();
 
     this._dataService.getCountries(1,2);
     this._dataService.getBrandsList(1,2);
@@ -99,9 +101,10 @@ export class AddcouponComponent implements OnInit {
       return
     }else{this.error_msg3 = false;}
 
-    if (this.addFilterForm.value.discount.replace(/\s/g,"") == ""){
+
+    if (this.addFilterForm.value.discount == null){
      
-      this.addFilterForm.value.discount= ""
+      // this.addFilterForm.value.discount= ""
       this.error_msg4 = true;
       this.touched = this.addFilterForm.controls.discount.touched
       return
@@ -131,7 +134,19 @@ export class AddcouponComponent implements OnInit {
       return
     }else{this.error_msg7 = false;}
     
-    
+    if (this.addFilterForm.value.store_link != ""){
+     
+      const a = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g;
+      
+      let is_match = this.addFilterForm.value.store_link.match(a);
+ 
+     if (is_match == null){
+       alert("Enter valid URL")
+       return
+     }
+ 
+    }
+ 
 
     // stop here if form is invalid
     if (this.addFilterForm.invalid) {

@@ -378,13 +378,22 @@ export class DataService {
 
     this.http.post(API_URL+'add_country', JSON.stringify(country), this.authhttpOptions).subscribe(
       (data: any)  => {
-        formdata.append('id',data["country"]);
-        if(is_file == true)
+
+        if (data["country_added"] == 0 )
         {
-          this.upload_file(formdata,"country", "Added")
-        }else{
-          alert("Country Added Successfully.");
+          formdata.append('id',data["country"]);
+          if(is_file == true)
+          {
+            this.upload_file(formdata,"country", "Added")
+          }else{
+            alert("Country Added Successfully.");
+            this.router.navigate(['country']);
+          }
+        }
+        else{
+          alert("Country Already Added.");
           this.router.navigate(['country']);
+
         }
       },
       (err:any)  => {

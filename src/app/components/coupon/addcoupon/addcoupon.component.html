@@ -76,7 +76,7 @@
                             <aside class="col-sm-10">
                                 <div class="form-group">
                                         <label class="text-uppercase">Discount</label>
-                                        <input value="" class="form-control " formControlName="discount" type="text" [ngClass]="{ 'is-invalid': submitted && f.discount.errors }">
+                                        <input value="" class="form-control " formControlName="discount" type="number" [ngClass]="{ 'is-invalid': submitted && f.discount.errors }">
                                         <div *ngIf="submitted && f.discount.errors" class="invalid-feedback">
                                                 <div *ngIf="f.discount.errors.required">Discount field is required</div>
                                         </div>
@@ -165,7 +165,7 @@
                             <aside class="col-sm-10">
                                 <div class="form-group">
                                         <label class="text-uppercase">Expiry Date</label>
-                                        <input value="" class="form-control "  [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" formControlName="expiry_date" type="datetime" [ngClass]="{ 'is-invalid': submitted && f.video_link.errors }">
+                                        <input value="" class="form-control " [min]="min" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" formControlName="expiry_date" type="datetime" [ngClass]="{ 'is-invalid': submitted && f.video_link.errors }">
                                         <owl-date-time #dt1></owl-date-time>
                                         <div *ngIf="submitted && f.expiry_date.errors" class="invalid-feedback">
                                                 <div *ngIf="f.expiry_date.errors.required">Expiry Date field is required</div>
