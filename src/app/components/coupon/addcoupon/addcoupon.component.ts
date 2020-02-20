@@ -5,6 +5,7 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 import * as $ from 'jquery';
 import { DataService } from '../../../services/data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-addcoupon',
@@ -35,7 +36,7 @@ export class AddcouponComponent implements OnInit {
   
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];
-  constructor(public formBuilder: FormBuilder,public _dataService:DataService,public http: HttpClient,public router: Router, public cd: ChangeDetectorRef) { }
+  constructor(public formBuilder: FormBuilder,public _dataService:DataService,public http: HttpClient,public router: Router, public cd: ChangeDetectorRef,public _location: Location) { }
 
   ngOnInit() {
 
@@ -73,6 +74,10 @@ export class AddcouponComponent implements OnInit {
       reader.readAsDataURL(file);
 
     }
+  }
+
+  backClicked() {
+    this._location.back();
   }
 
   onSubmit() {
