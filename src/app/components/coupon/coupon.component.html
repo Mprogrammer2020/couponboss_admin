@@ -8,20 +8,12 @@
                 </span>
             </div> -->
             <!-- <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> -->
-                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-
-                <!-- <h4 class="page_heading">Coupon List</h4> -->
-                <button class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light" routerLink="/coupon/addNew" >Add New</button>
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <!-- /row -->
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="white-box">
-                    <h3 class="box-title">Coupons</h3>
+                <div class="col-sm-2">
+                    <h4 class="box-title">Coupons</h4>
+                </div>
+                <div class="col-sm-8 text-right costommm_select">
                     <div class="filters" style="float: right;">
-                        <form   [formGroup]="addFilterForm" (ngSubmit)="filterCoupon()" name="addFilterForm"> 
+                        <form  [formGroup]="addFilterForm" (ngSubmit)="filterCoupon()" name="addFilterForm"> 
                             <select class="custom-select" formControlName="country" style="margin-right: 10px;" >
                                 <option value="">Choose your Country</option>
                                 <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" >{{city.name}}</option>
@@ -35,6 +27,34 @@
                             <!-- <button type="submit" id="upload" class="blue_btn yellow_btn big_yellow text-uppercase" >Search Coupon</button> -->
                         </form>
                     </div>
+                </div>
+                <div class="col-sm-2">
+
+                <!-- <h4 class="page_heading">Coupon List</h4> -->
+                <button class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light" routerLink="/coupon/addNew" >Add New Coupon</button>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <!-- <h3 class="box-title">Coupons</h3>
+                    <div class="filters" style="float: right;">
+                        <form   [formGroup]="addFilterForm" (ngSubmit)="filterCoupon()" name="addFilterForm"> 
+                            <select class="custom-select" formControlName="country" style="margin-right: 10px;" >
+                                <option value="">Choose your Country</option>
+                                <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" >{{city.name}}</option>
+                            </select>
+
+
+                            <select class="custom-select" formControlName="brand" >
+                                <option value="">Choose your Brand</option>
+                                <option *ngFor="let city of _dataService.brandslist" [ngValue]="city.id" >{{city.name}}</option>
+                            </select>
+                            <button type="submit" id="upload" class="blue_btn yellow_btn big_yellow text-uppercase" >Search Coupon</button>
+                        </form>
+                    </div> -->
                     <div class="table-responsive">
                         <table class="table row-border hover" datatable [dtOptions]="dtOptions"  *ngIf="  _dataService.couponslist.length>0" >
                             <thead>

@@ -23,6 +23,13 @@
      display: none;
    }
 
-  .filters {
-    margin: -46px 0 0 0;
+.filters {
+    margin: 0px 0 0 0;
+  }
+  .costommm_select .filters  {
+    float: inherit;
+  }
+
+  .costommm_select .filters select {
+    height: 38px;
   }

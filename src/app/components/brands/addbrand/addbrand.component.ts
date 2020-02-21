@@ -102,7 +102,7 @@ export class AddbrandComponent implements OnInit {
      let is_match = this.addFilterForm.value.website_url.match(a);
 
     if (is_match == null){
-      alert("Enter valid URL")
+      alert("Enter valid website url")
       return
     }
 

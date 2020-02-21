@@ -36,9 +36,9 @@ import { DatePipe } from '@angular/common'
 import { DataTablesModule } from 'angular-datatables';
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule  } from 'ng-pick-datetime';
-// import { SocialComponent } from './components/social/social.component';
-// import { AddsocialComponent } from './components/social/addsocial/addsocial.component';
-// import { EditsocialComponent } from './components/social/editsocial/editsocial.component';
+import { SocialComponent } from './components/social/social.component';
+import { AddsocialComponent } from './components/social/addsocial/addsocial.component';
+import { EditsocialComponent } from './components/social/editsocial/editsocial.component';
 
 // import { FileUploadModule } from 'ng2-file-upload';
 
@@ -76,11 +76,11 @@ const JWT_Module_Options: JwtModuleOptions = {
     RequestsComponent,
     ViewcouponComponent,
     SettingsComponent,
-     MyprofileComponent,
-     EditprofileComponent
-    //  SocialComponent,
-    //  AddsocialComponent,
-    //  EditsocialComponent
+    MyprofileComponent,
+    EditprofileComponent,
+    SocialComponent,
+    AddsocialComponent,
+    EditsocialComponent
   ],
   imports: [
     BrowserModule,

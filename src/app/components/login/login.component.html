@@ -1,5 +1,5 @@
 <div class="row" *ngIf="!_loginService.token">
-    <div class="login_form">
+    <div class="login_form loging-box">
         <div class="text-center logo_img" >
           <b>
             <!--This is dark logo icon-->
@@ -7,7 +7,7 @@
         </b>
         </div>
         
-
+<form>
         <div class="col-sm-12">
             <span class="error"><b>{{ _loginService.errors }}</b><br /></span>
         </div>
@@ -42,6 +42,7 @@
             <input type="submit" name="commit" (click)="login()" value="Log in" data-disable-with="Log in">
             <!-- <button (click)="login()" class="btn btn-primary">Log In</button> -->
         </div>
+        </form>
     </div>
 </div>
 

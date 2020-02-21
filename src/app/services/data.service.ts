@@ -5,7 +5,9 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 
-const API_URL="http://157.245.218.104:8000/apis/"; 
+//const API_URL="http://157.245.218.104:8000/apis/"; 
+const API_URL="http://0.0.0.0:8000/apis/"; 
+
 //const API_URL="http://68.183.133.217:8000/apis/"; 
 
 @Injectable({
@@ -283,11 +285,13 @@ export class DataService {
       var is_file=notdata["is_file"]
     this.http.post(API_URL+'sendnotification',JSON.stringify(notdata), this.authhttpOptions).subscribe(
       (data: any)  => {
-        formdata.append('id',data["notification"]);
-        if(is_file == true)
-        {
-          this.upload_file(formdata,"sendnotifications", "")
-        }else{
+        if(data['notification'].length){
+          formdata.append('id',data["notification"][0]);
+          if(is_file == true)
+          {
+            this.upload_file(formdata,"sendnotifications", "")
+          }}
+          else{
           alert("Notification Send Successfully");
           this.router.navigate(['sendnotifications']);
         }
@@ -343,6 +347,7 @@ export class DataService {
       (data: any)  => {
         this.requestlist = data.response
         this.is_response = true;
+        console.log(this.requestlist)
       //  alert("Notification Send Successfully")
       },
       (err:any)  => {
