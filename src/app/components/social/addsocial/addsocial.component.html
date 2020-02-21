@@ -1,0 +1,74 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="page-wrapper">
+
+<div class="container-fluid">
+    <div class="row bg-title text-center">
+        <span class="back_arrow" style="float: left;padding-top: 16px;"><a (click)="backClicked()" style="color: #000;"> <i class="fa fa-arrow-left" aria-hidden="true" style="font-size:20px ;"></i></a>
+        </span>
+        <h4 class="page_heading">Add Social</h4>
+    </div>
+    <!-- /.row -->
+    <!-- .row -->
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div class="white-box"> 
+                <div class="add_formarea">
+                    <form   [formGroup]="addFilterForm" (ngSubmit)="onSubmit()" name="addFilterForm" id="addFilterForm">               
+                        <div class="row">
+                            <aside class="col-sm-10">
+                                <div class="form-group">
+                                <label class="text-uppercase"> Social Name</label>
+                                <input  oninput="InvalidMsg(this);" id="name_input" value="" class="form-control" formControlName="name" type="text" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                            <div *ngIf="f.name.errors.required">Name field is required</div>
+                                    </div>
+                                    <div *ngIf="error_msg && touched" class="invalid-feedback">
+                                        <div *ngIf="error_msg && touched">Empty Value is Not Valid</div>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                        <div class="row">
+                            <aside class="col-sm-10">
+                                <div class="form-group">
+                                        <label class="text-uppercase">Url </label>
+                                        <input value="" class="form-control " formControlName="url" type="text" [ngClass]="{ 'is-invalid': submitted && f.url.errors }">
+                                        <div *ngIf="submitted && f.url.errors" class="invalid-feedback">
+                                                <div *ngIf="f.url.errors.required"> Url field is required</div>
+                                        </div>
+                                        <div *ngIf="error_msg2 && touched" class="invalid-feedback">
+                                            <div *ngIf="error_msg2 && touched">Empty Value is Not Valid</div>
+                                        </div>
+                                </div>
+                            </aside>
+        
+                        </div>
+                        
+                            
+            
+        
+                        
+        
+                        <div class="row">
+        
+                        <aside class="col-sm-5">
+                            <button type="submit" id="upload" class="btn btn-danger big_yellow text-uppercase" >Add Social</button>
+        
+                        </aside>
+                        </div>
+                        </form>
+                        </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+</div>
+<app-footer></app-footer>
+
+<script>
+
+
+</script>
+

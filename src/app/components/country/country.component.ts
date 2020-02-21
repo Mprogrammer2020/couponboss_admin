@@ -30,7 +30,7 @@ export class CountryComponent implements OnInit {
   ngOnInit() {
     // this.current_location = this.document.location.origin;
     this.current_location = "http://157.245.218.104:8000";
-    this.getData(this.currentPage,this.itemsPerPage)
+    this._dataService.getCountries();
     $('#country_sidebar').addClass('active');
 
     console.log(this.current_location)
@@ -40,10 +40,7 @@ export class CountryComponent implements OnInit {
     this.loadscript();
 
   }
-  public setValue() { 
-    this.currentPage=1;
-    this.getData(this.currentPage,this.itemsPerPage)
-  }
+  
 
   public loadscript()
   {
@@ -59,15 +56,9 @@ export class CountryComponent implements OnInit {
 
   }
 
-  public getNext(page: any){
-    this.currentPage = page;
-    this.getData(this.currentPage,this.itemsPerPage);
-  }
+  
 
-  getData(pageNo: any,maxResults: any){
-    
-    this._dataService.getCountries(pageNo,maxResults);
-}
+
 
   public deleteCountry(id){
     let a = confirm("Are you Sure you want to delete this country ?")

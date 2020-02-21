@@ -40,6 +40,7 @@ import { SocialComponent } from './components/social/social.component';
 import { AddsocialComponent } from './components/social/addsocial/addsocial.component';
 import { EditsocialComponent } from './components/social/editsocial/editsocial.component';
 
+
 // import { FileUploadModule } from 'ng2-file-upload';
 
 const yourTokenGetter: any = localStorage.getItem('token');

@@ -58,8 +58,8 @@ export class AddcouponComponent implements OnInit {
     });
     this.min =  new Date();
 
-    this._dataService.getCountries(1,2);
-    this._dataService.getBrandsList(1,2);
+    this._dataService.getCountries();
+    this._dataService.getBrandsList();
   }
 
   get f() { return this.addFilterForm.controls; }

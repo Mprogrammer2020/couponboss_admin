@@ -19,10 +19,10 @@ import { SettingsComponent } from './components/settings/settings.component';
 import {ViewcouponComponent} from './components/coupon/viewcoupon/viewcoupon.component'
 import { MyprofileComponent } from './components/myprofile/myprofile.component';
 import { EditprofileComponent } from './components/myprofile/editprofile/editprofile.component';
-
 import { SocialComponent } from './components/social/social.component';
 import { AddsocialComponent } from './components/social/addsocial/addsocial.component';
 import { EditsocialComponent } from './components/social/editsocial/editsocial.component';
+
  
 
 const routes: Routes = [
@@ -125,21 +125,19 @@ const routes: Routes = [
   {
     path: 'social',
     component: SocialComponent,
-    pathMatch:'full',
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard] 
   },
   {
-    path: 'social/addNew',
+    path: 'addsocial/new',
     component: AddsocialComponent,
-    pathMatch:'full',
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard] 
   },
   {
     path: 'editsocial/:id',
     component: EditsocialComponent,
-    pathMatch:'full',
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard] 
   },
+  
   {
     path: '**',
    redirectTo: '' 

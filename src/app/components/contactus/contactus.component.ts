@@ -47,7 +47,7 @@ export class ContactusComponent implements OnInit {
     };
     this.loadscript();
 
-    this.getData(this.currentPage,this.itemsPerPage)
+    this._dataService.contactuslist();
     $('#contact_sidebar').addClass('active');
   }
 
@@ -58,10 +58,6 @@ export class ContactusComponent implements OnInit {
     this._location.back();
   }
 
-  public setValue() { 
-    this.currentPage=1;
-    this.getData(this.currentPage,this.itemsPerPage)
-  }
 
   public loadscript()
   {
@@ -76,17 +72,7 @@ export class ContactusComponent implements OnInit {
   });
 
   }
-
-
-  public getNext(page: any){
-    this.currentPage = page;
-    this.getData(this.currentPage,this.itemsPerPage);
-  }
-
-  getData(pageNo: any,maxResults: any){
-    
-    this._dataService.contactuslist(pageNo,maxResults);
-}
+  
 
   onSubmit() {
     this.submitted = true;

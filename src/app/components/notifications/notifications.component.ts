@@ -49,8 +49,8 @@ export class NotificationsComponent implements OnInit {
       userId: ['', [Validators.required]]
     });
 
-    this._dataService.getCountries(1,2);
-    this._dataService.getBrandsList(1,2);
+    this._dataService.getCountries();
+    this._dataService.getBrandsList();
     this._dataService.getUsers();
     $('#notification_sidebar').addClass('active');
   }

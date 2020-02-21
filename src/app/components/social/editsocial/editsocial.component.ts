@@ -1,18 +1,21 @@
-import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef  } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import * as $ from 'jquery';
-import { DataService } from '../../../services/data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Location} from '@angular/common';
+// import { FileUploader, FileLikeObject } from 'ng2-file-upload';
+import { concat } from  'rxjs';
+
 
 @Component({
-  selector: 'app-addbrand',
-  templateUrl: './addbrand.component.html',
-  styleUrls: ['./addbrand.component.css']
+  selector: 'app-editsocial',
+  templateUrl: './editsocial.component.html',
+  styleUrls: ['./editsocial.component.css']
 })
-export class AddbrandComponent implements OnInit {
+export class EditsocialComponent implements OnInit {
 
   public editObj:any;
   addFilterForm: FormGroup;
@@ -23,35 +26,35 @@ export class AddbrandComponent implements OnInit {
   filePreview: string;
   myString: string;
   is_file:boolean = false;
-
+  selectedId:any;
+  selectedElement:any;
   error_msg:boolean = false;
   touched:boolean;
   error_msg2:boolean = false;
-  image_error:boolean = false;
 
+  @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];
 
+  constructor(public formBuilder: FormBuilder,public httpClient: HttpClient,public router: Router,public _Activatedroute:ActivatedRoute,public _dataService:DataService,public _location: Location) { 
+    this.selectedId=this._Activatedroute.snapshot.paramMap.get("id");
+    this._dataService.getSociall(this.selectedId);
 
-  @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];  
-  constructor(public formBuilder: FormBuilder,public _dataService:DataService,public http: HttpClient,public router: Router, public cd: ChangeDetectorRef,public _location: Location ) { }
-
-  ngOnInit() {
-
-    this.addFilterForm = this.formBuilder.group({
-      name: ['',[Validators.required]],
-      website_url: ['',[Validators.required]],
-      logo: [''],
-      country: ['', [Validators.required]]
-    });
-
-    this._dataService.getCountries();
+      this.selectedElement= [1,2];
   }
 
+  
+
+  ngOnInit() {
+    this.addFilterForm = this.formBuilder.group({
+      name: ['',[Validators.required]],
+      url: ['',[Validators.required]],
+      socialId:this.selectedId
+    });
+  }
   get f() { return this.addFilterForm.controls; }
 
   backClicked() {
     this._location.back();
   }
-
 
   onFileChange(event:any) {
 
@@ -62,10 +65,9 @@ export class AddbrandComponent implements OnInit {
       this.is_file = true
       reader.readAsDataURL(file);
     }
+
+    
   }
-
-  
-
 
   onSubmit() {
     this.submitted = true;
@@ -79,49 +81,36 @@ export class AddbrandComponent implements OnInit {
     }else{this.error_msg = false;}
 
 
-    if (this.addFilterForm.value.website_url.replace(/\s/g,"") == ""){
+    if (this.addFilterForm.value.url.replace(/\s/g,"") == ""){
      
-      this.addFilterForm.value.website_url= ""
+      this.addFilterForm.value.url= ""
       this.error_msg2 = true
-      this.touched = this.addFilterForm.controls.website_url.touched
+      this.touched = this.addFilterForm.controls.url.touched
       return
     }else{this.error_msg2 = false;}
 
 
 
-    if (!this.filePreview){
-      this.image_error = true;
-      return
-    }
+    
 
-
-   if (this.addFilterForm.value.website_url != ""){
+   if (this.addFilterForm.value.url != ""){
      
      const a = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g;
      
-     let is_match = this.addFilterForm.value.website_url.match(a);
+     let is_match = this.addFilterForm.value.url.match(a);
 
     if (is_match == null){
-      alert("Enter valid website url")
+      alert("Enter valid social url")
       return
     }
 
    }
 
-    this.image_error = false;
-  
-    // stop here if form is invalid
-    if (this.addFilterForm.invalid) {
-        return;
-    }
-
     let formData = new FormData();
-    formData.append('file' ,  this.filePreview);
-    formData.append('type' , "brand");
     this.customData=this.addFilterForm.value;
     this.customData['is_file']= this.is_file;
   
-    this._dataService.addBrand(this.customData, formData);
+    this._dataService.editSocial(this.customData);
 
   }
 

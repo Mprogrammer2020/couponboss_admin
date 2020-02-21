@@ -1,0 +1,64 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title text-center">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                <!-- <span class="back_arrow" style="float: left;"><a (click)="backClicked()" style="color: #000;"> <i class="fa fa-arrow-left" aria-hidden="true" style="font-size:20px ;"></i></a>
+                </span> -->
+                <h4 class="page-title">Social List</h4>
+                <!-- <input class="form-control" id="myInput" type="text" placeholder="Search.."> -->
+            </div>
+            <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12">
+                <button class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light" routerLink="/addsocial/new" >Add New Social</button>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <!-- <h3 class="box-title"></h3>-->
+                    <div class="table-responsive">
+                        <table class="table row-border hover" datatable [dtOptions]="dtOptions"  *ngIf=" _dataService.is_response" >
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Url</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody id="myTable" >
+                                <tr *ngFor="let item of _dataService.sociallist">
+                                    <td>{{item.id}}</td>
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.url}}</td>
+                                    
+                                    
+                                    <td>
+                                        <a class="icons" (click)="editSocial(item.id)" ><i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a><a  class="icons" (click)="deleteSocial(item.id)"><i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <div *ngIf="_dataService.brandslist && _dataService.brandslist.length==0"><tbody><h2>No Social Found.</h2></tbody></div>
+                        </table>
+                        <!-- <pagination-controls class="pagination" (pageChange)="currentPage=$event"></pagination-controls> -->
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    
+</div>
+
+<app-footer>
+    
+</app-footer>
+

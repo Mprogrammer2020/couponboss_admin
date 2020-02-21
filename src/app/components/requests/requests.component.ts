@@ -40,7 +40,7 @@ export class RequestsComponent implements OnInit {
       response: ['',[Validators.required]]
     });
 
-    this.getData(this.currentPage,this.itemsPerPage)
+    this._dataService.requestcouponlist();
     $('#request_sidebar').addClass('active');
     this.dtOptions = {
       pagingType: 'full_numbers'
@@ -56,10 +56,7 @@ export class RequestsComponent implements OnInit {
     this._location.back();
   }
 
-  public setValue() { 
-    this.currentPage=1;
-    this.getData(this.currentPage,this.itemsPerPage)
-  }
+  
 
   public loadscript()
   {
@@ -75,15 +72,9 @@ export class RequestsComponent implements OnInit {
 
   }
 
-  public getNext(page: any){
-    this.currentPage = page;
-    this.getData(this.currentPage,this.itemsPerPage);
-  }
+  
 
-  getData(pageNo: any,maxResults: any){
-    
-    this._dataService.requestcouponlist(pageNo,maxResults);
-}
+  
 
   onSubmit() {
     this.submitted = true;

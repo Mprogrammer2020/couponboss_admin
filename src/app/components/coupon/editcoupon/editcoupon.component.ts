@@ -61,8 +61,8 @@ export class EditcouponComponent implements OnInit {
       coupon_id:this.selectedId
     });
 
-    this._dataService.getCountries(1,2);
-    this._dataService.getBrandsList(1,2);
+    this._dataService.getCountries();
+    this._dataService.getBrandsList();
   }
   get f() { return this.addFilterForm.controls; }
 

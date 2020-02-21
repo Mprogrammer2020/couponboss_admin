@@ -32,10 +32,10 @@ export class CouponComponent implements OnInit {
       country:''
     });
 
-    this.getData(this.currentPage,this.itemsPerPage)
+    this._dataService.getCoupons();
     $('#coupon_sidebar').addClass('active');
-    this._dataService.getBrandsList(1,2)
-    this._dataService.getCountries(1,2)
+    this._dataService.getBrandsList()
+    this._dataService.getCountries()
     this.dtOptions = {
       pagingType: 'full_numbers'
     };
@@ -44,10 +44,7 @@ export class CouponComponent implements OnInit {
 
   }
 
-  public setValue() { 
-    this.currentPage=1;
-    this.getData(this.currentPage,this.itemsPerPage)
-  }
+  
 
   public loadscript()
   {
@@ -63,15 +60,9 @@ export class CouponComponent implements OnInit {
 
   }
 
-  public getNext(page: any){
-    this.currentPage = page;
-    this.getData(this.currentPage,this.itemsPerPage);
-  }
+  
 
-  getData(pageNo: any,maxResults: any){
-    
-    this._dataService.getCoupons(pageNo,maxResults);
-}
+  
 
 
   public editCoupon(id){

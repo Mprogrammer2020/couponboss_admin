@@ -20,9 +20,9 @@
 									<th>User Email</th>
 									<th> Store Name</th>
 									<th>Store Link</th>
-									<th>Brand</th>
+									<!-- <th>Brand</th> -->
 									<th>Country</th>
-									<th></th>
+									<th>Action</th>
 
 								</tr>
 							</thead>
@@ -32,7 +32,8 @@
 									<td>{{reqcup.email}}</td>
 									<td>{{reqcup.name}}</td>
 									<td>{{reqcup.store_link}}</td>
-									<td>{{reqcup.brand}}</td>
+									<!-- <td>{{reqcup.brand}}</td> -->
+									<td *ngIf="reqcup.country.length==0"></td>
 									<td class="country" *ngFor="let cntry of reqcup.country; let myIndex1 = index1">{{cntry.name}}</td>
 									<!-- <td><button (click)="editBrand(item.id)" >Send Response</button  ></td> -->
 									<td><button type="button"  data-toggle="modal" [attr.data-target]="'#exampleModal' + reqcup.id">

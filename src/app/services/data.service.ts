@@ -35,7 +35,7 @@ export class DataService {
   public currentuser:any;
   public currentadmin:any;
   public sociallist:any;
-
+  public socialdetail:any;
   public is_response:boolean = false;
 
   
@@ -72,9 +72,8 @@ export class DataService {
   }
 
 
-   public getBrandsList(pageNo:any,maxRecords:any){
-    let httpParams = new HttpParams().set('pageNo', pageNo).set('maxRecords', maxRecords)
-    this.http.get(API_URL+'getbrands', {headers: { 'Authorization':  localStorage.getItem('token')},params: httpParams}).subscribe(
+   public getBrandsList(){
+    this.http.get(API_URL+'getbrands', this.authhttpOptions).subscribe(
       (data: any)  => {
         // window.location.href = '/brands'
         //alert("Brand Created Successfully")
@@ -161,7 +160,7 @@ export class DataService {
     this.http.post(API_URL+'delete_brand',JSON.stringify(data), this.authhttpOptions).subscribe(
       (data: any)  => {
        alert("Brand Deleted Successfully")
-       this.getBrandsList(1,2)
+       this.getBrandsList()
      },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
@@ -309,9 +308,9 @@ export class DataService {
   }
 
 
-  public contactuslist(pageNo:any,maxRecords:any){
-    let httpParams = new HttpParams().set('pageNo', pageNo).set('maxRecords', maxRecords)
-    this.http.get(API_URL+'countactuslist', {headers: { 'Authorization':  localStorage.getItem('token')},params: httpParams}).subscribe(
+  public contactuslist(){
+    
+    this.http.get(API_URL+'countactuslist', this.authhttpOptions).subscribe(
       (data: any)  => {
         this.brandslist = data.countactuslist
         this.is_response = true;
@@ -341,9 +340,9 @@ export class DataService {
 
   }
 
-  public requestcouponlist(pageNo:any,maxRecords:any){
-    let httpParams = new HttpParams().set('pageNo', pageNo).set('maxRecords', maxRecords)
-    this.http.get(API_URL+'get_coupon_request', {headers: { 'Authorization':  localStorage.getItem('token')},params: httpParams}).subscribe(
+  public requestcouponlist(){
+    
+    this.http.get(API_URL+'get_coupon_request', this.authhttpOptions).subscribe(
       (data: any)  => {
         this.requestlist = data.response
         this.is_response = true;
@@ -361,10 +360,9 @@ export class DataService {
 
   
 
-  public getCountries(pageNo:any,maxRecords:any){
-    let httpParams = new HttpParams().set('pageNo',pageNo).set('maxRecords',maxRecords)
+  public getCountries(){
 
-  this.http.get(API_URL+'get_countries', {headers: { 'Authorization': localStorage.getItem('token')},params: httpParams}).subscribe(
+  this.http.get(API_URL+'get_countries',this.authhttpOptions).subscribe(
     (data: any)  => {
       this.countrieslist = data.response;
       this.totalItems = data.count;
@@ -412,7 +410,7 @@ export class DataService {
     this.http.post(API_URL+'delete_country',JSON.stringify(data), this.authhttpOptions).subscribe(
       (data: any)  => {
        alert("Country Deleted Successfully")
-       this.getCountries(1,2)
+       this.getCountries()
      },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
@@ -421,9 +419,8 @@ export class DataService {
     );
   }
    
-  public getCoupons(pageNo:any,maxRecords:any){
-    let httpParams = new HttpParams().set('pageNo',pageNo).set('maxRecords',maxRecords)
-    this.http.get(API_URL+'get_coupons', {headers:{'Authorization': localStorage.getItem('token')},params:httpParams}).subscribe(
+  public getCoupons(){
+    this.http.get(API_URL+'get_coupons',this.authhttpOptions).subscribe(
       (data: any) => {
         this.couponslist = data.response
         this.is_response = true;
@@ -465,7 +462,7 @@ export class DataService {
     this.http.post(API_URL+'delete_coupon',JSON.stringify(data), this.authhttpOptions).subscribe(
       (data: any)  => {
        alert("Coupon Deleted Successfully")
-       this.getCoupons(1,2)
+       this.getCoupons()
      },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
@@ -583,7 +580,8 @@ export class DataService {
 
     this.http.get(API_URL+'get_social', this.authhttpOptions).subscribe(
       (data: any) => {
-        this.sociallist = data.response
+        this.sociallist = data.response;
+        this.is_response = true;
       },
       (err:any) => {
         console.log("error"+err.error.message)
@@ -595,7 +593,7 @@ export class DataService {
   public deleteSocial(data){
     this.http.post(API_URL+'delete_social',JSON.stringify(data), this.authhttpOptions).subscribe(
       (data: any)  => {
-       alert("Country Deleted Successfully")
+       alert("Social Deleted Successfully")
        this.getSocial()
      },
       (err:any)  => {
@@ -634,6 +632,24 @@ export class DataService {
         this.errors = err.error.message;
         alert("Something Went Wrong.")
         this.router.navigate(['']);
+      }
+    );
+  }
+
+  public getSociall(data){
+    this.http.post(API_URL+'show_social',{"socialId":data}, this.authhttpOptions).subscribe(
+      (data: any)  => {
+        this.socialdetail = data.social;
+        
+        console.log("scdgsavef")
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+        alert("Something Went Wrong.")
+        localStorage.clear();
+        this.router.navigate(['']);
+        //  this.router.navigate(['']);
       }
     );
   }

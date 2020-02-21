@@ -53,7 +53,7 @@ export class EditbrandComponent implements OnInit {
       brandId:this.selectedId
     });
 
-    this._dataService.getCountries(1,2);
+    this._dataService.getCountries();
   }
 
   backClicked() {

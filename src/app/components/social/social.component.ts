@@ -8,31 +8,27 @@ import {Location} from '@angular/common';
 import { DataTablesModule } from 'angular-datatables';
 
 
-
 @Component({
-  selector: 'app-brands',
-  templateUrl: './brands.component.html',
-  styleUrls: ['./brands.component.css']
+  selector: 'app-social',
+  templateUrl: './social.component.html',
+  styleUrls: ['./social.component.css']
 })
-export class BrandsComponent implements OnInit {
+export class SocialComponent implements OnInit {
 
-  
   public currentPage:any=1; // set current page to 1
   public itemsPerPage:any=5; // we are showing 10 items per page
   current_location:any
 
   dtOptions: DataTables.Settings = {};
 
-  constructor(public _dataService: DataService,public router: Router,public _location: Location) {}
+  constructor(public _dataService: DataService,public router: Router,public _location: Location) { }
 
   backClicked() {
     this._location.back();
   }
 
-
   ngOnInit() {
-    this.current_location = "http://157.245.218.104:8000";
-    this._dataService.getBrandsList();
+    this.getData(this.currentPage,this.itemsPerPage)
     $('#brand_sidebar').addClass('active');
     this.dtOptions = {
       pagingType: 'full_numbers'
@@ -40,8 +36,11 @@ export class BrandsComponent implements OnInit {
     this.loadscript();
 
   }
-  
 
+  public setValue() { 
+    this.currentPage=1;
+    this.getData(this.currentPage,this.itemsPerPage)
+  }
   public loadscript()
   {
     
@@ -55,21 +54,26 @@ export class BrandsComponent implements OnInit {
   });
 
   }
-
-
-  public editBrand(id){
-    this.router.navigate(['/editbrand/'+id]);
+  public getNext(page: any){
+    this.currentPage = page;
+    this.getData(this.currentPage,this.itemsPerPage);
   }
-
-  public deleteBrand(id){
-   let a = confirm("Are you Sure you want to delete this Brand ?")
-   if (a == false){
-    this.router.navigate(['brands']);
-   }else{
-    this._dataService.deleteBrand({"brandId": id});
-   }
+  getData(pageNo: any,maxResults: any){
+    
+    this._dataService.getSocial();
+}
+public editSocial(id){
+  this.router.navigate(['/editsocial/'+id]);
+}
+public deleteSocial(id){
+  let a = confirm("Are you Sure you want to delete this social link ?")
+  if (a == false){
+   this.router.navigate(['social']);
+  }else{
+   this._dataService.deleteSocial({"socialId": id});
   }
+ }
 
-  
+
 
 }
