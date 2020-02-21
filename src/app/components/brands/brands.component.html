@@ -23,7 +23,8 @@
                         <table class="table row-border hover" datatable [dtOptions]="dtOptions"  *ngIf=" _dataService.is_response" >
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th  *ngIf="_dataService.brandslist && _dataService.brandslist.length==0" style="min-width: 250px;">Id</th>
+									<th  *ngIf="_dataService.brandslist && _dataService.brandslist.length > 0">Id</th>
                                     <th>Name</th>
                                     <th>Url</th>
                                     <th>Countries</th>

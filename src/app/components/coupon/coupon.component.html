@@ -14,13 +14,12 @@
                 <div class="col-sm-8 text-right costommm_select">
                     <div class="filters" style="float: right;">
                         <form  [formGroup]="addFilterForm" (ngSubmit)="filterCoupon()" name="addFilterForm"> 
-                            <select class="custom-select" formControlName="country" style="margin-right: 10px;" >
+                            <select class="custom-select" formControlName="country" style="margin-right: 10px;" (change)="filterCoupon()">
                                 <option value="">Choose your Country</option>
                                 <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" >{{city.name}}</option>
                             </select>
 
-
-                            <select class="custom-select" formControlName="brand" >
+                            <select class="custom-select" formControlName="brand" (change)="filterCoupon()">
                                 <option value="">Choose your Brand</option>
                                 <option *ngFor="let city of _dataService.brandslist" [ngValue]="city.id" >{{city.name}}</option>
                             </select>
@@ -29,7 +28,6 @@
                     </div>
                 </div>
                 <div class="col-sm-2">
-
                 <!-- <h4 class="page_heading">Coupon List</h4> -->
                 <button class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light" routerLink="/coupon/addNew" >Add New Coupon</button>
             </div>
@@ -56,10 +54,11 @@
                         </form>
                     </div> -->
                     <div class="table-responsive">
-                        <table class="table row-border hover" datatable [dtOptions]="dtOptions"  *ngIf="  _dataService.couponslist.length>0" >
+                        <table class="table row-border hover" datatable [dtOptions]="dtOptions"  *ngIf=" _dataService.is_response"  >
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th  *ngIf="_dataService.couponslist && _dataService.couponslist.length==0" style="min-width: 250px;">Id</th>
+									<th  *ngIf="_dataService.couponslist && _dataService.couponslist.length > 0">Id</th>
                                     <th>CouponCode</th>
                                     <th>Brand</th>
                                     <th>Country</th>
@@ -89,7 +88,7 @@
                                     </td>
                                 </tr>
                             </tbody>
-                            <!-- <div *ngIf="_dataService.couponslist && _dataService.couponslist.length==0"><tbody><h2>No Coupon Found.</h2></tbody></div> -->
+                            <div *ngIf="_dataService.couponslist && _dataService.couponslist.length==0"><tbody><h2>No Coupon Found.</h2></tbody></div>
                         </table>
                         <!--pagination-controls class="pagination" (pageChange)="currentPage=$event"></pagination-controls> -->
                     </div>

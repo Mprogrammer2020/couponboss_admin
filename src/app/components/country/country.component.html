@@ -24,7 +24,8 @@
                         
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th  *ngIf="_dataService.countrieslist && _dataService.countrieslist.length==0" style="min-width: 250px;">Id</th>
+									<th  *ngIf="_dataService.countrieslist && _dataService.countrieslist.length > 0">Id</th>
                                     <th>Name</th>
                                     <th>Flag</th>
                                     <th>Actions</th>
@@ -53,6 +54,5 @@
     </div>
     <!-- /.container-fluid -->
 </div>
-
 <app-footer></app-footer>
 
