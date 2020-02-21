@@ -23,7 +23,7 @@
                                 <label class="text-uppercase">Title</label>
                                 <input value="" class="form-control" formControlName="title" type="text" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
                                     <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-                                            <div *ngIf="f.title.errors.required">Title field is required</div>
+                                            <div *ngIf="f.title.errors.required && !touched">Title field is required</div>
                                     </div>
                                     <div *ngIf="error_msg && touched" class="invalid-feedback">
                                         <div *ngIf="error_msg && touched">Empty Value is Not Valid</div>
@@ -37,7 +37,7 @@
                                         <label class="text-uppercase">Headline</label>
                                         <input value="" class="form-control " formControlName="headline" type="text" [ngClass]="{ 'is-invalid': submitted && f.headline.errors }">
                                         <div *ngIf="submitted && f.headline.errors" class="invalid-feedback">
-                                                <div *ngIf="f.headline.errors.required">Headline field is required</div>
+                                                <div *ngIf="f.headline.errors.required  && !touched">Headline field is required</div>
                                         </div>
                                         <div *ngIf="error_msg2 && touched" class="invalid-feedback">
                                             <div *ngIf="error_msg2 && touched">Empty Value is Not Valid</div>
@@ -64,7 +64,7 @@
                                         <label class="text-uppercase">Code</label>
                                         <input value="" class="form-control " formControlName="code" type="text" [ngClass]="{ 'is-invalid': submitted && f.code.errors }">
                                         <div *ngIf="submitted && f.code.errors" class="invalid-feedback">
-                                                <div *ngIf="f.code.errors.required">Code field is required</div>
+                                                <div *ngIf="f.code.errors.required  && !touched">Code field is required</div>
                                         </div>
                                         <div *ngIf="error_msg3 && touched" class="invalid-feedback">
                                             <div *ngIf="error_msg3 && touched">Empty Value is Not Valid</div>
@@ -79,7 +79,7 @@
                                         <label class="text-uppercase">Discount</label>
                                         <input value="" class="form-control " formControlName="discount" type="number" [ngClass]="{ 'is-invalid': submitted && f.discount.errors }">
                                         <div *ngIf="submitted && f.discount.errors" class="invalid-feedback">
-                                                <div *ngIf="f.discount.errors.required">Discount field is required</div>
+                                                <div *ngIf="f.discount.errors.required  && !touched">Discount field is required</div>
                                         </div>
                                         <div *ngIf="error_msg4 && touched" class="invalid-feedback">
                                             <div *ngIf="error_msg4 && touched">Empty Value is Not Valid</div>
@@ -94,7 +94,7 @@
                                         <label class="text-uppercase">Description</label>
                                         <input value="" class="form-control " formControlName="description" type="text" [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
                                         <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-                                                <div *ngIf="f.description.errors.required">Description field is required</div>
+                                                <div *ngIf="f.description.errors.required  && !touched">Description field is required</div>
                                         </div>
                                         <div *ngIf="error_msg5 && touched" class="invalid-feedback">
                                             <div *ngIf="error_msg5 && touched">Empty Value is Not Valid</div>
@@ -121,7 +121,7 @@
                                         <label class="text-uppercase">Store Link</label>
                                         <input value="" class="form-control " formControlName="store_link" type="text" [ngClass]="{ 'is-invalid': submitted && f.store_link.errors }">
                                         <div *ngIf="submitted && f.store_link.errors" class="invalid-feedback">
-                                                <div *ngIf="f.store_link.errors.required">Store Link field is required</div>
+                                                <div *ngIf="f.store_link.errors.required  && !touched">Store Link field is required</div>
                                         </div>
                                         <div *ngIf="error_msg6 && touched" class="invalid-feedback">
                                             <div *ngIf="error_msg6 && touched">Empty Value is Not Valid</div>
@@ -140,7 +140,7 @@
                                             <option value="False">FALSE</option>
                                         </select>
                                         <div *ngIf="submitted && f.is_featured.errors" class="invalid-feedback">
-                                                <div *ngIf="f.is_featured.errors.required">Is Featured field is required</div>
+                                                <div *ngIf="f.is_featured.errors.required ">Is Featured field is required</div>
                                         </div>
                                 </div>
                             </aside>
@@ -152,7 +152,7 @@
                                         <label class="text-uppercase">Video Link</label>
                                         <input value="" class="form-control " formControlName="video_link" type="text" [ngClass]="{ 'is-invalid': submitted && f.video_link.errors }">
                                         <div *ngIf="submitted && f.video_link.errors" class="invalid-feedback">
-                                                <div *ngIf="f.video_link.errors.required">Video Link field is required</div>
+                                                <div *ngIf="f.video_link.errors.required  && !touched">Video Link field is required</div>
                                         </div>
                                         <div *ngIf="error_msg7 && touched" class="invalid-feedback">
                                             <div *ngIf="error_msg7 && touched">Empty Value is Not Valid</div>
