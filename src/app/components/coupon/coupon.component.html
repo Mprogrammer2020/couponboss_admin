@@ -59,26 +59,28 @@
                                 <tr>
                                     <th  *ngIf="_dataService.couponslist && _dataService.couponslist.length==0" style="min-width: 250px;">Id</th>
 									<th  *ngIf="_dataService.couponslist && _dataService.couponslist.length > 0">Id</th>
-                                    <th>CouponCode</th>
-                                    <th>Brand</th>
+                                    
                                     <th>Country</th>
+                                    <th>Brand</th>
+                                    <th>CouponCode</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="myTable">
                                 <tr *ngFor="let coup of _dataService.couponslist">
                                     <td>{{coup.id}}</td>
-                                    <td>{{coup.code}}</td>
-                                    <td class="brand">
-                                        <ul *ngFor="let brandss of coup.brand; let myIndex1 = index1">
-                                        <li>{{brandss.name}}</li> 
-                                        </ul>
-                                    </td>
                                     <td class="coupon_countries">
                                         <ul *ngFor="let country of coup.coupon_countries; let myIndex1 = index1">
                                         <li>{{country.name}}</li> 
                                         </ul>
                                     </td>
+                                    <td class="brand">
+                                        <ul *ngFor="let brandss of coup.brand; let myIndex1 = index1">
+                                        <li>{{brandss.name}}</li> 
+                                        </ul>
+                                    </td>
+
+                                    <td>{{coup.code}}</td>                                   
                                     
                                     <td>
                                         <a class="icons" (click)="ViewCoupon(coup.id)" ><i class="fa fa-eye"  aria-hidden="true"></i>

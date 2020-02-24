@@ -21,8 +21,8 @@
                                 <div class="form-group" *ngIf=" _dataService.currentadmin">
                                 <label class="text-uppercase">First Name</label>
                                 <input id="name_input" value="" class="form-control" formControlName="first_name"  [(ngModel)]="_dataService.currentadmin.first_name" type="text" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }">
-                                    <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
-                                            <div *ngIf="f.first_name.errors.required">This field is required</div>
+                                    <div *ngIf="submitted && f.first_name.errors && !touched" class="invalid-feedback">
+                                            <div *ngIf="f.first_name.errors.required && !touched">This field is required</div>
                                     </div>
                                     <div *ngIf="error_msg && touched" class="invalid-feedback">
                                         <div *ngIf="error_msg && touched">Empty Value is Not Valid</div>
@@ -36,8 +36,8 @@
                                 <div class="form-group"  *ngIf=" _dataService.currentadmin" >
                                 <label class="text-uppercase">Last Name</label>
                                 <input id="name_input" value="" class="form-control" formControlName="last_name" type="text"  [(ngModel)]="_dataService.currentadmin.last_name"  [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }">
-                                    <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
-                                            <div *ngIf="f.last_name.errors.required">This field is required</div>
+                                    <div *ngIf="submitted && f.last_name.errors && !touched" class="invalid-feedback">
+                                            <div *ngIf="f.last_name.errors.required && !touched">This field is required</div>
                                     </div>
                                     <div *ngIf="error_msg2 && touched" class="invalid-feedback">
                                         <div *ngIf="error_msg2 && touched">Empty Value is Not Valid</div>
@@ -51,8 +51,8 @@
                                 <div class="form-group" *ngIf="_dataService.currentadmin">
                                         <label class="text-uppercase">Email</label>
                                         <input value="" class="form-control " formControlName="email" type="email" [(ngModel)]="_dataService.currentadmin.email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
-                                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                                                <div *ngIf="f.email.errors.required">This field is required</div>
+                                        <div *ngIf="submitted && f.email.errors && !touched" class="invalid-feedback">
+                                                <div *ngIf="f.email.errors.required && !touched">This field is required</div>
                                         </div>
                                         <div *ngIf="error_msg3 && touched" class="invalid-feedback">
                                             <div *ngIf="error_msg3 && touched">Empty Value is Not Valid</div>
