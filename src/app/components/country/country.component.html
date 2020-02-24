@@ -27,16 +27,18 @@
                                     <th  *ngIf="_dataService.countrieslist && _dataService.countrieslist.length==0" style="min-width: 250px;">Id</th>
 									<th  *ngIf="_dataService.countrieslist && _dataService.countrieslist.length > 0">Id</th>
                                     <th>Name</th>
+                                    
                                     <th>Flag</th>
+                                    <th>Name</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="myTable">
                                 <tr *ngFor="let cntry of _dataService.countrieslist ">
                                     <td>{{cntry.id}}</td>
-                                    <td>{{cntry.name}}</td>
                                     <td> <img [attr.src]= 'cntry.image == "" ? current_location+"/media/countryimages/No-image-found.jpg" : current_location+cntry.image' style="width: 12%;"/></td>
-                                    <!-- <td>{{cntry.image != "" ? image =cntry.image : image= "/assets/profile_image.jpg"}} <img src=""/></td> -->
+                                    <td>{{cntry.name}}</td>
+                                   <!-- <td>{{cntry.image != "" ? image =cntry.image : image= "/assets/profile_image.jpg"}} <img src=""/></td> -->
                                     <td>
                                         <a  class="icons" (click)="deleteCountry(cntry.id)"><i class="fa fa-trash" aria-hidden="true"></i>
                                         </a>
