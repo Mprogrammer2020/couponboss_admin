@@ -106,7 +106,6 @@ export class AddcouponComponent implements OnInit {
       return
     }else{this.error_msg3 = false;}
 
-
     if (this.addFilterForm.value.discount == null){
      
       // this.addFilterForm.value.discount= ""
@@ -155,11 +154,14 @@ export class AddcouponComponent implements OnInit {
     if (this.addFilterForm.value.video_link != ""){
      
       //const a = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g;
-        const a = /^(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})?$/g;
+      // const a = /^(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})?$/g;
+
+      const a = /http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?/g;
+
       let is_match = this.addFilterForm.value.video_link.match(a);
  
      if (is_match == null){
-       alert("Enter valid video link")
+       alert("Enter valid You Tube link")
        return
      }
  
