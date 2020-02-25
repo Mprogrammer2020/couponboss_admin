@@ -71,6 +71,9 @@ export class NotificationsComponent implements OnInit {
   backClicked() {
     this._location.back();
   }
+  getUsersByCountry(){
+    this._dataService.getUsersByCountry(this.addFilterForm.value.countryId)
+  }
 
   onSubmit() {
     this.submitted = true;

@@ -80,7 +80,7 @@
                                     <div class="form-group">
                                             <label class="text-uppercase">Select Country</label>
     
-                                            <select class="custom-select" formControlName="countryId" >
+                                            <select class="custom-select" formControlName="countryId" (change)="getUsersByCountry()">
                                                 <option value="" selected="">Choose your country</option>
                                                 <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" >{{city.name}}</option>
                                             </select>

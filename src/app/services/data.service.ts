@@ -655,6 +655,22 @@ export class DataService {
   }
 
 
-  
+  public getUsersByCountry(data){
+    this.http.post(API_URL+'getusersbycountry',{"countryId":data}, this.authhttpOptions).subscribe(
+      (data: any)  => {
+        this.userslist = data.response
+        // window.location.href = '/brands'
+        this.branddetail = data.brand;
+        this.brandcountries = data.brands_country
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        alert("Something Went Wrong.")
+        this.errors = err.error.message;
+        // localStorage.clear();
+        // this.router.navigate(['']);
+      }
+    );
+  }
 
 }
