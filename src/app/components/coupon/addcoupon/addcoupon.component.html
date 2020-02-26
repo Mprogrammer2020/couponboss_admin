@@ -21,7 +21,7 @@
                             <aside class="col-sm-10">
                                 <div class="form-group">
                                 <label class="text-uppercase">Title</label>
-                                <input value="" class="form-control" formControlName="title" type="text" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                                <input value="" class="form-control" formControlName="title" maxlength="100" type="text" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
                                     <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
                                             <div *ngIf="f.title.errors.required && !touched">Title field is required</div>
                                     </div>
@@ -35,7 +35,7 @@
                             <aside class="col-sm-10">
                                 <div class="form-group">
                                         <label class="text-uppercase">Headline</label>
-                                        <input value="" class="form-control " formControlName="headline" type="text" [ngClass]="{ 'is-invalid': submitted && f.headline.errors }">
+                                        <input value="" class="form-control" maxlength="200" formControlName="headline" type="text" [ngClass]="{ 'is-invalid': submitted && f.headline.errors }">
                                         <div *ngIf="submitted && f.headline.errors" class="invalid-feedback">
                                                 <div *ngIf="f.headline.errors.required  && !touched">Headline field is required</div>
                                         </div>
@@ -62,7 +62,7 @@
                             <aside class="col-sm-10">
                                 <div class="form-group">
                                         <label class="text-uppercase">Code</label>
-                                        <input value="" class="form-control " formControlName="code" type="text" [ngClass]="{ 'is-invalid': submitted && f.code.errors }">
+                                        <input value="" class="form-control" maxlength="25" formControlName="code" type="text" [ngClass]="{ 'is-invalid': submitted && f.code.errors }">
                                         <div *ngIf="submitted && f.code.errors" class="invalid-feedback">
                                                 <div *ngIf="f.code.errors.required  && !touched">Code field is required</div>
                                         </div>
@@ -92,7 +92,7 @@
                             <aside class="col-sm-10">
                                 <div class="form-group">
                                         <label class="text-uppercase">Description</label>
-                                        <input value="" class="form-control " formControlName="description" type="text" [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
+                                        <input value="" class="form-control" maxlength="200" formControlName="description" type="text" [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
                                         <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
                                                 <div *ngIf="f.description.errors.required  && !touched">Description field is required</div>
                                         </div>
@@ -180,8 +180,8 @@
                                     <div class="form-group">
                                             <label class="text-uppercase">Image</label>
                                             <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" />
-                                            <div *ngIf="submitted && f.logo.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.logo.errors.required">Image field is required</div>
+                                            <div *ngIf="image_error" class="invalid-feedback">
+                                                <div *ngIf="image_error">Image field is required</div>
                                             </div>
                                     </div>
                                 </aside>
