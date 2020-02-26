@@ -19,7 +19,7 @@
                             <aside class="col-md-6">
                                 <div class="form-group">
                                 <label class="text-uppercase">Title</label>
-                                <input value="" class="form-control" formControlName="title" type="text" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                                <input value="" class="form-control" maxlength="100" formControlName="title" type="text" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
                                     <div *ngIf="submitted && f.title.errors  && !touched " class="invalid-feedback">
                                             <div *ngIf="f.title.errors.required && !touched">Title field is required</div>
                                     </div>
@@ -31,7 +31,7 @@
                             <aside class="col-md-6">
                                 <div class="form-group">
                                 <label class="text-uppercase">Title in Arabic</label>
-                                <input value="" class="form-control" formControlName="title_ar" type="text" [ngClass]="{ 'is-invalid': submitted && f.title_ar.errors }">
+                                <input value="" class="form-control" maxlength="150" formControlName="title_ar" type="text" [ngClass]="{ 'is-invalid': submitted && f.title_ar.errors }">
                                     <div *ngIf="submitted && f.title_ar.errors && !touched" class="invalid-feedback">
                                             <div *ngIf="f.title_ar.errors.required && !touched">Title in Arabic field is required</div>
                                     </div>
@@ -43,7 +43,7 @@
                             <aside class="col-md-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Description</label>
-                                        <input value="" class="form-control " formControlName="description" type="textarea" [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
+                                        <input value="" class="form-control " maxlength="200" formControlName="description" type="textarea" [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
                                         <div *ngIf="submitted && f.description.errors && !touched" class="invalid-feedback">
                                                 <div *ngIf="f.description.errors.required && !touched">Description field is required</div>
                                         </div>
@@ -55,7 +55,7 @@
                             <aside class="col-md-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Description in Arabic</label>
-                                        <input value="" class="form-control " formControlName="description_ar" type="textarea" [ngClass]="{ 'is-invalid': submitted && f.description_ar.errors }">
+                                        <input value="" class="form-control " maxlength="200" formControlName="description_ar" type="textarea" [ngClass]="{ 'is-invalid': submitted && f.description_ar.errors }">
                                         <div *ngIf="submitted && f.description_ar.errors && !touched" class="invalid-feedback">
                                                 <div *ngIf="f.description_ar.errors.required && !touched">Description in Arabic field is required</div>
                                         </div>

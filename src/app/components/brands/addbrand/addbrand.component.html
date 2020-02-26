@@ -19,7 +19,7 @@
                             <aside class="col-sm-10">
                                 <div class="form-group">
                                 <label class="text-uppercase"> Brand Name</label>
-                                <input  oninput="InvalidMsg(this);" id="name_input" value="" class="form-control" formControlName="name" type="text" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                                <input  oninput="InvalidMsg(this);" id="name_input" maxlength="100" value="" class="form-control" formControlName="name" type="text" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
                                     <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
                                             <div *ngIf="f.name.errors.required  && !touched">Name field is required</div>
                                     </div>
@@ -33,7 +33,7 @@
                             <aside class="col-sm-10">
                                 <div class="form-group">
                                         <label class="text-uppercase">Website Url </label>
-                                        <input value="" class="form-control " formControlName="website_url" type="text" [ngClass]="{ 'is-invalid': submitted && f.website_url.errors }">
+                                        <input value="" class="form-control" maxlength="150" formControlName="website_url" type="text" [ngClass]="{ 'is-invalid': submitted && f.website_url.errors }">
                                         <div *ngIf="submitted && f.website_url.errors" class="invalid-feedback">
                                                 <div *ngIf="f.website_url.errors.required">Website Url field is required</div>
                                         </div>

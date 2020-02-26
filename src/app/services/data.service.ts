@@ -284,13 +284,14 @@ export class DataService {
       var is_file=notdata["is_file"]
     this.http.post(API_URL+'sendnotification',JSON.stringify(notdata), this.authhttpOptions).subscribe(
       (data: any)  => {
-        if(data['notification'].length){
+        if(data['notification'].length > 0){
           formdata.append('id',data["notification"][0]);
           if(is_file == true)
           {
             this.upload_file(formdata,"sendnotifications", "")
-          }}
-          else{
+          }
+        }
+        else{
           alert("Notification Send Successfully");
           this.router.navigate(['sendnotifications']);
         }
