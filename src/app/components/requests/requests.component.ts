@@ -86,7 +86,7 @@ export class RequestsComponent implements OnInit {
   
     this.customData=this.addFilterForm.value;
     // this.customData['profile_pic']=this.filePreview;
-    this._dataService.sendResponse(this.customData);
+    this._dataService.sendResponsee(this.customData);
 
 
   }

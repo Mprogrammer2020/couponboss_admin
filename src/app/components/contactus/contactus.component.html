@@ -17,12 +17,12 @@
                         <table class="table row-border hover" datatable [dtOptions]="dtOptions"  *ngIf=" _dataService.is_response" >
                             <thead>
                                 <tr>
-                                    <th  *ngIf="_dataService.is_response && _dataService.brandslist.length==0" style="min-width: 250px;">Id</th>
-									<th  *ngIf="_dataService.brandslist && _dataService.brandslist.length > 0">Id</th>
+                                    <th style="min-width: 250px;">Id</th>
+									<!-- <th  *ngIf="_dataService.brandslist && _dataService.brandslist.length > 0">Id</th> -->
                                     <th>Email</th>
                                     <th>Subject</th>
                                     <th>Message</th>
-                                    <th>Action</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody id="myTable" >
@@ -32,14 +32,14 @@
                                     <td>{{item.subject}}</td>
                                     <td>{{item.message}}</td>
                                     <!-- <td><button (click)="editBrand(item.id)" >Send Response</button  ></td> -->
-                                    <td><button type="button"  data-toggle="modal" [attr.data-target]="'#exampleModal' + item.id">
+                                    <!--<td><button type="button"  data-toggle="modal" [attr.data-target]="'#exampleModal' + item.id">
                                         Send Response
                                           </button>
-                                    </td>
+                                    </td>-->
 
 
                                 <!-- Modal Start -->
-                                <div class="modal fade" [attr.id]="'exampleModal' + item.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <!--<div class="modal fade" [attr.id]="'exampleModal' + item.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header model_close">
@@ -72,12 +72,12 @@
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+                                         <button type="button" class="btn btn-primary">Save changes</button>
                                         </div>
                                     </div>
                                     </div>
-                                </div>
+                                </div>-->
                                 <!-- Modal End -->
                                 </tr>
                             

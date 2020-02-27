@@ -21,14 +21,17 @@ img {
 	float: right !important;
 	 margin-right: 0px; 
 }
-.navbar-header {
+/* .navbar-header {
 	background: #c2272b;
+} */
+.navbar-header {
+	background: #c2272b !important;
 }
 .light-logo {
-	height: 56px;
+	height: 70px;
 }
 .logo b {
-	height: 60px;
+	height: 80px;
 	 float: inherit; 
 	padding-left: 10px;
 	width: auto;

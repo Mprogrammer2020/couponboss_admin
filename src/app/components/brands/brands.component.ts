@@ -31,7 +31,7 @@ export class BrandsComponent implements OnInit {
 
 
   ngOnInit() {
-    this.current_location = "http://157.245.218.104:8000";
+    this.current_location = "http://159.89.49.231:8000";
     this._dataService.getBrandsList();
     $('#brand_sidebar').addClass('active');
     this.dtOptions = {

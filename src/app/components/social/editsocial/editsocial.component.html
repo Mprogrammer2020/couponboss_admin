@@ -19,7 +19,7 @@
                             <aside class="col-sm-10">
                                 <div class="form-group">
                                 <label class="text-uppercase"> Social Name</label>
-                                <input class="form-control" formControlName="name" type="text"  [(ngModel)]="_dataService.socialdetail.name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                                <input class="form-control" formControlName="name" type="text"  [(ngModel)]="_dataService.socialdetail.name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" readonly="readonly">
                                     <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
                                             <div *ngIf="f.name.errors.required">Name field is required</div>
                                     </div>

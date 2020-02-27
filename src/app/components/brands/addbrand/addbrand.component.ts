@@ -27,6 +27,7 @@ export class AddbrandComponent implements OnInit {
   error_msg:boolean = false;
   touched:boolean;
   error_msg2:boolean = false;
+  error_msg3:boolean = false;
   image_error:boolean = false;
 
 
@@ -38,6 +39,7 @@ export class AddbrandComponent implements OnInit {
 
     this.addFilterForm = this.formBuilder.group({
       name: ['',[Validators.required]],
+      name_ar: ['',[Validators.required]],
       website_url: ['',[Validators.required]],
       logo: [''],
       country: ['', [Validators.required]]
@@ -77,6 +79,14 @@ export class AddbrandComponent implements OnInit {
       this.touched = this.addFilterForm.controls.name.touched
       return
     }else{this.error_msg = false;}
+
+    if (this.addFilterForm.value.name_ar.replace(/\s/g,"") == ""){
+     
+      this.addFilterForm.value.name_ar= ""
+      this.error_msg3 = true;
+      this.touched = this.addFilterForm.controls.name_ar.touched
+      return
+    }else{this.error_msg3 = false;}
 
 
     if (this.addFilterForm.value.website_url.replace(/\s/g,"") == ""){

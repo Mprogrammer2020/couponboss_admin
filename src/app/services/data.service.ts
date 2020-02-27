@@ -5,8 +5,8 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 
-//const API_URL="http://157.245.218.104:8000/apis/"; 
-const API_URL="http://0.0.0.0:8000/apis/"; 
+const API_URL="http://159.89.49.231:8000/apis/"; 
+//const API_URL="http://0.0.0.0:8000/apis/"; 
 
 //const API_URL="http://68.183.133.217:8000/apis/"; 
 
@@ -85,7 +85,7 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Something Went Wrong.")
+        alert("Session expired please login again.")
         localStorage.clear();
         this.router.navigate(['']);
       }
@@ -103,7 +103,7 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Something Went Wrong.")
+        alert("Session expired please login again.")
         localStorage.clear();
         this.router.navigate(['']);
         //  this.router.navigate(['']);
@@ -112,7 +112,7 @@ export class DataService {
   }
 
 
-  public getCoupon(data){
+  public getCoupon(data){  
     this.http.post(API_URL+'dc',{"couponId":data}, this.authhttpOptions).subscribe(
       (data: any)  => {
         this.branddetail = data.coupon;
@@ -121,7 +121,7 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Something Went Wrong.")
+        alert("Session expired please login again.")
         // localStorage.clear();
         // this.router.navigate(['']);
         //  this.router.navigate(['']);
@@ -149,7 +149,7 @@ export class DataService {
 
         //  this.router.navigate(['']);
 
-        alert("Something Went Wrong.")
+        alert("Session expired please login again.")
         // localStorage.clear();
         // this.router.navigate(['']);
       }
@@ -165,7 +165,7 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Something Went Wrong.")
+        alert("Session expired please login again.")
         // localStorage.clear();
         // this.router.navigate(['']);
       }
@@ -200,7 +200,7 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Something Went Wrong.")
+        alert("Session expired please login again.")
         // localStorage.clear();
         // this.router.navigate(['']);
       }
@@ -229,7 +229,7 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Something Went Wrong");
+        alert("Session expired please login again.");
         // localStorage.clear();
         // this.router.navigate(['']);
       }
@@ -253,7 +253,7 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Something Went Wrong.")
+        alert("Session expired please login again.")
         // localStorage.clear();
         // this.router.navigate(['']);
       }
@@ -271,7 +271,7 @@ export class DataService {
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
-        alert("Something Went Wrong.")
+        alert("Session expired please login again.")
         this.errors = err.error.message;
         // localStorage.clear();
         // this.router.navigate(['']);
@@ -300,7 +300,7 @@ export class DataService {
         console.log("errrrrrr"+err.error.message)
         alert(err.error.Message)
         if (err.error.Message == undefined){
-          alert("Something Went Wrong.")
+          alert("Session expired please login again.")
           this.router.navigate(['sendnotifications']);
         }
         // window.location.href = '/sendnotifications'
@@ -330,6 +330,22 @@ export class DataService {
       (data: any)  => {
         alert("Response Send Successfully")
         window.location.href = '/contactus'
+        // this.router.navigate(['contactus']);
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        alert(err.error.Message)
+        this.router.navigate(['']);
+      }
+    );
+
+  }
+
+  public sendResponsee(data){
+    this.http.post(API_URL+'sendresponse',JSON.stringify(data), this.authhttpOptions).subscribe(
+      (data: any)  => {
+        alert("Response Send Successfully")
+        window.location.href = '/requests'
         // this.router.navigate(['contactus']);
       },
       (err:any)  => {
@@ -452,7 +468,7 @@ export class DataService {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
         //  this.router.navigate(['']);
-        alert("Something Went Wrong.")
+        alert("Invalid Data Error")
       }
     );     
   }
@@ -509,7 +525,7 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Something Went Wrong")
+        alert("Session expired please login again.")
         // this.router.navigate(['']);
       }
     );
@@ -547,7 +563,7 @@ export class DataService {
         //  this.router.navigate(['']);
       },
       (err:any) => {
-        alert("Something Went Wrong.")
+        alert("Session expired please login again.")
       }
     );     
   }
@@ -617,7 +633,7 @@ export class DataService {
 
         //  this.router.navigate(['']);
 
-        alert("Something Went Wrong.")
+        alert("Session expired please login again.")
       }
     );     
   }
@@ -631,7 +647,7 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Something Went Wrong.")
+        alert("Session expired please login again.")
         this.router.navigate(['']);
       }
     );
@@ -647,7 +663,7 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Something Went Wrong.")
+        alert("Session expired please login again.")
         localStorage.clear();
         this.router.navigate(['']);
         //  this.router.navigate(['']);

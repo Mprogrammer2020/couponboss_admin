@@ -21,7 +21,7 @@ export class ViewcouponComponent implements OnInit {
   constructor(public datepipe: DatePipe, public httpClient: HttpClient,public router: Router,public _Activatedroute:ActivatedRoute,public _dataService:DataService,public _location: Location) { 
     this.selectedId=this._Activatedroute.snapshot.paramMap.get("id");
     this._dataService.getCoupon(this.selectedId);
-    this.current_location = "http://157.245.218.104:8000";
+    this.current_location = "http://159.89.49.231:8000";
   }
 
   ngOnInit() {

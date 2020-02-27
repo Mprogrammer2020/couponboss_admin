@@ -2,7 +2,7 @@
 <app-sidebar></app-sidebar>
 <div id="page-wrapper">
 
-<div class="container-fluid">
+<div class="container-fluid">   
     <!-- <div class="row bg-title">
         <h2 class="page_heading">Edit Coupon</h2>
     </div> -->
@@ -18,7 +18,7 @@
                 <div class="add_formarea">
                     <form   [formGroup]="addFilterForm" (ngSubmit)="onSubmit()" name="addFilterForm">               
                         <div class="row">
-                            <aside class="col-sm-10">
+                            <aside class="col-sm-6">
                                 <div class="form-group">
                                 <label class="text-uppercase">Title</label>
                                 <input class="form-control" formControlName="title" type="text" maxlength="100"  [(ngModel)]="_dataService.branddetail.title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
@@ -30,9 +30,19 @@
                                     </div>
                                 </div>
                             </aside>
-                        </div>
-                        <div class="row">
-                            <aside class="col-sm-10">
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                <label class="text-uppercase">Title In Arabic</label>
+                                <input class="form-control" formControlName="title_ar" type="text" maxlength="100"  [(ngModel)]="_dataService.branddetail.title_ar" [ngClass]="{ 'is-invalid': submitted && f.title_ar.errors }">
+                                    <div *ngIf="submitted && f.title_ar.errors" class="invalid-feedback">
+                                            <div *ngIf="f.title_ar.errors.required">Title field is required</div>
+                                    </div>
+                                    <div *ngIf="error_msg && touched" class="invalid-feedback">
+                                        <div *ngIf="error_msg && touched">Empty Value is Not Valid</div>
+                                    </div>
+                                </div>
+                            </aside>
+                            <aside class="col-sm-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Headline</label>
                                         <input value="" class="form-control " formControlName="headline" maxlength="200"  [(ngModel)]="_dataService.branddetail.headline" type="text" [ngClass]="{ 'is-invalid': submitted && f.headline.errors }">
@@ -44,11 +54,19 @@
                                         </div>
                                 </div>
                             </aside>
-        
-                        </div>
-                        
-                        <div class="row">
-                            <aside class="col-sm-10">
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                        <label class="text-uppercase">Headline in Arabic</label>
+                                        <input value="" class="form-control " formControlName="headline_ar" maxlength="200"  [(ngModel)]="_dataService.branddetail.headline_ar" type="text" [ngClass]="{ 'is-invalid': submitted && f.headline_ar.errors }">
+                                        <div *ngIf="submitted && f.headline_ar.errors" class="invalid-feedback">
+                                                <div *ngIf="f.headline_ar.errors.required">Headline field is required</div>
+                                        </div>
+                                        <div *ngIf="error_msg2 && touched" class="invalid-feedback">
+                                            <div *ngIf="error_msg2 && touched">Empty Value is Not Valid</div>
+                                        </div>
+                                </div>
+                            </aside>
+                            <aside class="col-sm-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Code</label>
                                         <input value="" class="form-control " formControlName="code" maxlength="25"  [(ngModel)]="_dataService.branddetail.code" type="text" [ngClass]="{ 'is-invalid': submitted && f.code.errors }">
@@ -60,10 +78,19 @@
                                         </div>
                                 </div>
                             </aside>
-        
-                        </div>
-                        <div class="row">
-                            <aside class="col-sm-10">
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                        <label class="text-uppercase">Code In Arabic</label>
+                                        <input value="" class="form-control " formControlName="code_ar" maxlength="25"  [(ngModel)]="_dataService.branddetail.code_ar" type="text" [ngClass]="{ 'is-invalid': submitted && f.code_ar.errors }">
+                                        <div *ngIf="submitted && f.code_ar.errors" class="invalid-feedback">
+                                                <div *ngIf="f.code_ar.errors.required">Code field is required</div>
+                                        </div>
+                                        <div *ngIf="error_msg3 && touched" class="invalid-feedback">
+                                            <div *ngIf="error_msg3 && touched">Empty Value is Not Valid</div>
+                                        </div>
+                                </div>
+                            </aside>
+                            <aside class="col-sm-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Discount</label>
                                         <input value="" class="form-control " formControlName="discount"  [(ngModel)]="_dataService.branddetail.discount" type="number" [ngClass]="{ 'is-invalid': submitted && f.discount.errors }">
@@ -75,10 +102,19 @@
                                         </div>
                                 </div>
                             </aside>
-        
-                        </div>
-                        <div class="row">
-                            <aside class="col-sm-10">
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                        <label class="text-uppercase">Discount In Arabic</label>
+                                        <input value="" class="form-control " formControlName="discount_ar"  [(ngModel)]="_dataService.branddetail.discount_ar" type="number" [ngClass]="{ 'is-invalid': submitted && f.discount_ar.errors }">
+                                        <div *ngIf="submitted && f.discount_ar.errors" class="invalid-feedback">
+                                                <div *ngIf="f.discount_ar.errors.required">Discount field is required</div>
+                                        </div>
+                                        <div *ngIf="error_msg4 && touched" class="invalid-feedback">
+                                            <div *ngIf="error_msg4 && touched">Empty Value is Not Valid</div>
+                                        </div>
+                                </div>
+                            </aside>
+                            <aside class="col-sm-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Description</label>
                                         <input value="" class="form-control " formControlName="description" maxlength="200"  [(ngModel)]="_dataService.branddetail.description" type="text" [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
@@ -90,11 +126,19 @@
                                         </div>
                                 </div>
                             </aside>
-        
-                        </div>
-                        
-                        <div class="row">
-                            <aside class="col-sm-10">
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                        <label class="text-uppercase">Description In Arabic</label>
+                                        <input value="" class="form-control " formControlName="description_ar" maxlength="200"  [(ngModel)]="_dataService.branddetail.description_ar" type="text" [ngClass]="{ 'is-invalid': submitted && f.description_ar.errors }">
+                                        <div *ngIf="submitted && f.description_ar.errors" class="invalid-feedback">
+                                                <div *ngIf="f.description_ar.errors.required">Description field is required</div>
+                                        </div>
+                                        <div *ngIf="error_msg5 && touched" class="invalid-feedback">
+                                            <div *ngIf="error_msg5 && touched">Empty Value is Not Valid</div>
+                                        </div>
+                                </div>
+                            </aside>
+                            <aside class="col-sm-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Store Link</label>
                                         <input value="" class="form-control " formControlName="store_link"  [(ngModel)]="_dataService.branddetail.store_link" type="text" [ngClass]="{ 'is-invalid': submitted && f.store_link.errors }">
@@ -106,10 +150,19 @@
                                         </div>
                                 </div>
                             </aside>
-        
-                        </div>
-                        <div class="row">
-                            <aside class="col-sm-10">
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                        <label class="text-uppercase">Store Link In Arabic</label>
+                                        <input value="" class="form-control " formControlName="store_link_ar"  [(ngModel)]="_dataService.branddetail.store_link_ar" type="text" [ngClass]="{ 'is-invalid': submitted && f.store_link_ar.errors }">
+                                        <div *ngIf="submitted && f.store_link_ar.errors" class="invalid-feedback">
+                                                <div *ngIf="f.store_link_ar.errors.required">Store Link field is required</div>
+                                        </div>
+                                        <div *ngIf="error_msg6 && touched" class="invalid-feedback">
+                                            <div *ngIf="error_msg6 && touched">Empty Value is Not Valid</div>
+                                        </div>
+                                </div>
+                            </aside>
+                            <aside class="col-sm-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Video Link</label>
                                         <input value="" class="form-control " formControlName="video_link"  [(ngModel)]="_dataService.branddetail.video_link" type="text" [ngClass]="{ 'is-invalid': submitted && f.video_link.errors }">
@@ -121,34 +174,69 @@
                                         </div>
                                 </div>
                             </aside>
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                        <label class="text-uppercase">Video Link In Arabic</label>
+                                        <input value="" class="form-control " formControlName="video_link_ar"  [(ngModel)]="_dataService.branddetail.video_link_ar" type="text" [ngClass]="{ 'is-invalid': submitted && f.video_link_ar.errors }">
+                                        <div *ngIf="submitted && f.video_link_ar.errors" class="invalid-feedback">
+                                                <div *ngIf="f.video_link.errors_ar.required">Video Link field is required</div>
+                                        </div>
+                                        <div *ngIf="error_msg7 && touched" class="invalid-feedback">
+                                            <div *ngIf="error_msg7 && touched">Empty Value is Not Valid</div>
+                                        </div>
+                                </div>
+                            </aside>
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                        <label class="text-uppercase">Expiry Date</label>
+                                        <input value="" class="form-control " [min]="min" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" formControlName="expiry_date" [(ngModel)]="_dataService.branddetail.expiry_date" type="datetime" [ngClass]="{ 'is-invalid': submitted && f.expiry_date.errors }">
+                                        <owl-date-time #dt1></owl-date-time>
+                                        <div *ngIf="submitted && f.expiry_date.errors" class="invalid-feedback">
+                                                <div *ngIf="f.expiry_date.errors.required">Expiry Date field is required</div>
+                                        </div>
+                                </div>
+                            </aside> 
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                        <label class="text-uppercase">Image</label>
+                                        <input type="file" class="form-control" [(ngModel)]="_dataService.branddetail.image" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" />
+                                        <div *ngIf="image_error" class="invalid-feedback">
+                                            <div *ngIf="image_error">Image field is required</div>
+                                        </div>
+                                </div>
+                            </aside>
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                        <label class="text-uppercase">Is Featured</label>
+                                        <select formControlName="is_featured"  [(ngModel)]="_dataService.branddetail.is_featured">
+                                            <option value="">Options</option>
+                                            <option value="True">TRUE</option>
+                                            <option value="False">FALSE</option>
+                                        </select>
+                                        <div *ngIf="submitted && f.is_featured.errors" class="invalid-feedback">
+                                                <div *ngIf="f.is_featured.errors.required">Is Featured field is required</div>
+                                        </div>
+                                </div>
+                            </aside>
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                        <label class="text-uppercase">Select Brand</label>
+
+                                        <select formControlName="brand" [(ngModel)]="_dataService.branddetail.coupon_brand.id">
+                                            <option value="">Choose your brand</option>
+                                            <option *ngFor="let brandd of _dataService.brandslist" [ngValue]="brandd.id" >{{brandd.name}}</option>
+                                        </select>
+                                        <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
+                                        <div *ngIf="submitted && f.brand.errors" class="invalid-feedback">
+                                                <div *ngIf="f.brand.errors.required">Brand field is required</div>
+                                        </div>
+                                </div>
+                            </aside>
                         </div>
-                        <div class="row">
-                                <aside class="col-sm-10">
-                                    <div class="form-group">
-                                            <label class="text-uppercase">Image</label>
-                                            <input type="file" class="form-control" [(ngModel)]="_dataService.branddetail.image" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" />
-                                            <div *ngIf="image_error" class="invalid-feedback">
-                                                <div *ngIf="image_error">Image field is required</div>
-                                            </div>
-                                    </div>
-                                </aside>
-            
-                            </div>
-                            <div class="row">
-                                <aside class="col-sm-10">
-                                    <div class="form-group">
-                                            <label class="text-uppercase">Is Featured</label>
-                                            <select formControlName="is_featured"  [(ngModel)]="_dataService.branddetail.is_featured">
-                                                <option value="">Options</option>
-                                                <option value="True">TRUE</option>
-                                                <option value="False">FALSE</option>
-                                            </select>
-                                            <div *ngIf="submitted && f.is_featured.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.is_featured.errors.required">Is Featured field is required</div>
-                                            </div>
-                                    </div>
-                                </aside>
-                            </div>
+                            
+                                
+                                
+
                             <div class="row">
                                 <aside class="col-sm-10">
                                     <div class="form-group">
@@ -165,22 +253,7 @@
                                     </div>
                                 </aside>
                             </div>
-                            <div class="row">
-                                <aside class="col-sm-10">
-                                    <div class="form-group">
-                                            <label class="text-uppercase">Select Brand</label>
-
-                                            <select formControlName="brand" [(ngModel)]="_dataService.branddetail.coupon_brand.id">
-                                                <option value="">Choose your brand</option>
-                                                <option *ngFor="let brandd of _dataService.brandslist" [ngValue]="brandd.id" >{{brandd.name}}</option>
-                                            </select>
-                                            <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
-                                            <div *ngIf="submitted && f.brand.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.brand.errors.required">Brand field is required</div>
-                                            </div>
-                                    </div>
-                                </aside>
-                            </div>
+                                
             
         
                         

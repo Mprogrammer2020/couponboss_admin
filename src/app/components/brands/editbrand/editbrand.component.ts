@@ -32,6 +32,7 @@ export class EditbrandComponent implements OnInit {
   error_msg:boolean = false;
   touched:boolean;
   error_msg2:boolean = false;
+  error_msg3:boolean = false;
 
   
 
@@ -47,6 +48,7 @@ export class EditbrandComponent implements OnInit {
   ngOnInit() {
     this.addFilterForm = this.formBuilder.group({
       name: ['',[Validators.required]],
+      name_ar: ['',[Validators.required]],
       website_url: ['',[Validators.required]],
       logo:[''],
       country: ['', [Validators.required]],
@@ -95,6 +97,14 @@ export class EditbrandComponent implements OnInit {
       console.log(this.addFilterForm.controls.name.touched)
       return
     }else{this.error_msg = false;}
+
+    if (this.addFilterForm.value.name_ar.replace(/\s/g,"") == ""){
+      this.addFilterForm.value.name_ar= ""
+      this.error_msg3 = true;
+      this.touched = this.addFilterForm.controls.name_ar.touched
+      console.log(this.addFilterForm.controls.name_ar.touched)
+      return
+    }else{this.error_msg3 = false;}
 
 
     if (this.addFilterForm.value.website_url.replace(/\s/g,"") == ""){
