@@ -3,8 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
-const API_URL="http://159.89.49.231:8000/apis/"; 
-//const API_URL="http://0.0.0.0:8000/apis/"; 
+//const API_URL="http://159.89.49.231:8000/apis/"; 
+const API_URL="http://0.0.0.0:8000/apis/"; 
 //const API_URL="http://68.183.133.217:8000/apis/"; 
 
 @Injectable({

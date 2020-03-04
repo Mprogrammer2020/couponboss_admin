@@ -33,6 +33,9 @@ export class EditbrandComponent implements OnInit {
   touched:boolean;
   error_msg2:boolean = false;
   error_msg3:boolean = false;
+  dropdownList:any;
+  selectedItems:any;
+  dropdownSettings:any;
 
   
 
@@ -56,7 +59,30 @@ export class EditbrandComponent implements OnInit {
     });
 
     this._dataService.getCountries();
+    this.dropdownSettings = { 
+      singleSelection: false, 
+      text:"Select Countries",
+      selectAllText:'Select All',
+      unSelectAllText:'UnSelect All',
+      enableSearchFilter: true,
+      classes:"myclass custom-class"
+    }; 
   }
+
+  onItemSelect(item:any){
+    console.log(item);
+    // console.log(this.selectedItems);
+}
+OnItemDeSelect(item:any){
+    console.log(item);
+    // console.log(this.selectedItems);
+}
+onSelectAll(items: any){
+    console.log(items);
+}
+onDeSelectAll(items: any){
+    console.log(items);
+}
 
   backClicked() {
     this._location.back();

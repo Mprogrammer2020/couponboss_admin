@@ -41,6 +41,9 @@ export class AddcouponComponent implements OnInit {
   error_msg14:boolean = false;
   min;
   image_error:boolean = false;
+  dropdownList:any;
+  selectedItems:any;
+  dropdownSettings:any;
   
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];
@@ -73,7 +76,30 @@ export class AddcouponComponent implements OnInit {
 
     this._dataService.getCountries();
     this._dataService.getBrandsList();
+
+    this.dropdownSettings = { 
+      singleSelection: false, 
+      text:"Select Countries",
+      selectAllText:'Select All',
+      unSelectAllText:'UnSelect All',
+      enableSearchFilter: true,
+      classes:"myclass custom-class"
+    }; 
   }
+  onItemSelect(item:any){
+    console.log(item);
+    // console.log(this.selectedItems);
+}
+OnItemDeSelect(item:any){
+    console.log(item);
+    // console.log(this.selectedItems);
+}
+onSelectAll(items: any){
+    console.log(items);
+}
+onDeSelectAll(items: any){
+    console.log(items);
+}
 
   get f() { return this.addFilterForm.controls; }
 

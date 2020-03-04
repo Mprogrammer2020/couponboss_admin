@@ -20,8 +20,8 @@ import {ViewcouponComponent} from './components/coupon/viewcoupon/viewcoupon.com
 import { MyprofileComponent } from './components/myprofile/myprofile.component';
 import { EditprofileComponent } from './components/myprofile/editprofile/editprofile.component';
 import { SocialComponent } from './components/social/social.component';
-import { AddsocialComponent } from './components/social/addsocial/addsocial.component';
 import { EditsocialComponent } from './components/social/editsocial/editsocial.component';
+
 
  
 
@@ -125,11 +125,6 @@ const routes: Routes = [
   {
     path: 'social',
     component: SocialComponent,
-    canActivate: [AuthGuard] 
-  },
-  {
-    path: 'addsocial/new',
-    component: AddsocialComponent,
     canActivate: [AuthGuard] 
   },
   {

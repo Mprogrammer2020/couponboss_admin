@@ -29,6 +29,9 @@ export class AddbrandComponent implements OnInit {
   error_msg2:boolean = false;
   error_msg3:boolean = false;
   image_error:boolean = false;
+  dropdownList:any;
+  selectedItems:any;
+  dropdownSettings:any;
 
 
 
@@ -46,7 +49,29 @@ export class AddbrandComponent implements OnInit {
     });
 
     this._dataService.getCountries();
+    this.dropdownSettings = { 
+      singleSelection: false, 
+      text:"Select Countries",
+      selectAllText:'Select All',
+      unSelectAllText:'UnSelect All',
+      enableSearchFilter: true,
+      classes:"myclass custom-class"
+    };  
   }
+  onItemSelect(item:any){
+    console.log(item);
+    // console.log(this.selectedItems);
+}
+OnItemDeSelect(item:any){
+    console.log(item);
+    // console.log(this.selectedItems);
+}
+onSelectAll(items: any){
+    console.log(items);
+}
+onDeSelectAll(items: any){
+    console.log(items);
+}
 
   get f() { return this.addFilterForm.controls; }
 

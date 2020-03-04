@@ -71,13 +71,34 @@
                             <div class="row">
                                     <aside class="col-sm-10">
                                         <div class="form-group">
-                                            <div class="select_country_content">
+                                            <!-- <div class="select_country_content">
                                                 <label class="text-uppercase">Select Country</label>
 
                                              <select multiple class="custom-select" formControlName="country">
                                                     <option value="">Choose your city</option>
                                                     <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" >{{city.name}}</option>
                                                 </select> 
+                                                </div> -->
+                                                <div class="select_country_content" *ngIf="_dataService.countrieslist ">
+                                                    <label class="text-uppercase">Select Country</label>
+                                                    
+                                                    <angular2-multiselect [data]="_dataService.countrieslist" 
+                                                        [settings]="dropdownSettings" 
+                                                        (onSelect)="onItemSelect($event)" 
+                                                        (onDeSelect)="OnItemDeSelect($event)"
+                                                        (onSelectAll)="onSelectAll($event)"
+                                                        formControlName="country"
+                                                        (onDeSelectAll)="onDeSelectAll($event)"></angular2-multiselect>
+    
+                                                    <!-- <angular2-multiselect [data]="_dataService.countrieslist" class="form-control" formControlName="country" [(ngModel)]="_dataService.countrieslist" 
+                                                        [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)"
+                                                        (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)">
+                                                    </angular2-multiselect> -->
+    
+                                                    <!-- <select multiple class="custom-select" formControlName="country">
+                                                        <option value="">Choose your city</option>
+                                                        <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" >{{city.name}}</option>
+                                                    </select> -->
                                                 </div>
 
                                                 

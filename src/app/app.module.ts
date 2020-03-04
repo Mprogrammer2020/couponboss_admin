@@ -37,8 +37,9 @@ import { DataTablesModule } from 'angular-datatables';
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule  } from 'ng-pick-datetime';
 import { SocialComponent } from './components/social/social.component';
-import { AddsocialComponent } from './components/social/addsocial/addsocial.component';
 import { EditsocialComponent } from './components/social/editsocial/editsocial.component';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+
 
 
 // import { FileUploadModule } from 'ng2-file-upload';
@@ -80,7 +81,6 @@ const JWT_Module_Options: JwtModuleOptions = {
     MyprofileComponent,
     EditprofileComponent,
     SocialComponent,
-    AddsocialComponent,
     EditsocialComponent
   ],
   imports: [
@@ -93,7 +93,8 @@ const JWT_Module_Options: JwtModuleOptions = {
     NgxPaginationModule,
     DataTablesModule,
     OwlDateTimeModule,
-    OwlNativeDateTimeModule
+    OwlNativeDateTimeModule,
+    AngularMultiSelectModule,
 
     // FileUploadModule
   ],
