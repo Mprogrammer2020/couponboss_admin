@@ -65,7 +65,7 @@
                                 <aside class="col-sm-10">
                                     <div class="form-group">
                                             <label class="text-uppercase">Image</label>
-                                            <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.image.errors }" />
+                                            <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.image.errors }" accept='image/*'/>
                                             <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
                                                     <div *ngIf="f.image.errors.required">This field is required</div>
                                             </div>

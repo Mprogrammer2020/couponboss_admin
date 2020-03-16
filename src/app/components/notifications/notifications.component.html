@@ -10,7 +10,7 @@
     </div>
     <!-- /.row -->
     <!-- .row -->
-    <div class="row">
+    <div class="row input_form-box">
         <div class="col-md-12 col-xs-12">
             <div class="white-box"> 
                 <div class="add_formarea">
@@ -67,7 +67,7 @@
                             <aside class="col-md-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Image</label>
-                                        <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.image.errors }" />
+                                        <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.image.errors }" accept='image/*'/>
                                         <div *ngIf="submitted && f.image.errors && !touched" class="invalid-feedback">
                                                 <div *ngIf="f.image.errors.required && !touched">Image field is required</div>
                                         </div>
@@ -110,31 +110,50 @@
                            
                         </div>                     
 
-                            <div class="row">           
-                             
-                                <aside class="col-md-6">
-                                    <div class="form-group">
-                                        <div class="multiple_select_main select-user-box">
-                                            <label class="text-uppercase">Select Users</label>
-                                            <select multiple class="custom-select" formControlName="userId" >
-                                                <option *ngFor="let city of _dataService.userslist" [ngValue]="city.id" >{{city.device_id}}</option>
-                                            </select>
-                                        </div>
-                                           
-                                            <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
-                                            <div *ngIf="submitted && f.userId.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.userId.errors.required">Users field is required</div>
-                                            </div>
+                        <div class="row">           
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <!-- <div class="multiple_select_main select-user-box">
+                                        <label class="text-uppercase">Select Users</label>
+                                        <select multiple class="custom-select" formControlName="userId" >
+                                            <option *ngFor="let city of _dataService.userslist" [ngValue]="city.id" >{{city.device_id}}</option>
+                                        </select>
+                                    </div> -->
+                                    <div class="select_country_content notification_users" *ngIf="_dataService.userslist">
+                                        <label class="text-uppercase">Select Users</label>
+                                        
+                                        <angular2-multiselect [data]="_dataService.userslist" 
+                                            [settings]="dropdownSettings" 
+                                            (onSelect)="onItemSelect($event)" 
+                                            (onDeSelect)="OnItemDeSelect($event)"
+                                            (onSelectAll)="onSelectAll($event)"
+                                            formControlName="userId"
+                                            (onDeSelectAll)="onDeSelectAll($event)"></angular2-multiselect>
+
+                                        <!-- <angular2-multiselect [data]="_dataService.countrieslist" class="form-control" formControlName="country" [(ngModel)]="_dataService.countrieslist" 
+                                            [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)"
+                                            (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)">
+                                        </angular2-multiselect> -->
+
+                                        <!-- <select multiple class="custom-select" formControlName="country">
+                                            <option value="">Choose your city</option>
+                                            <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" >{{city.name}}</option>
+                                        </select> -->
                                     </div>
-                                </aside>
+
+                                    
+                                        
+                                        <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
+                                        <div *ngIf="submitted && f.userId.errors" class="invalid-feedback">
+                                                <div *ngIf="f.userId.errors.required">Users field is required</div>
+                                        </div>
+                                </div>
                             </div>
-            
-        
-                        
-        
+                        </div>
                         <div class="row">
         
-                        <aside class="col-sm-5">
+                        <aside class="col-sm-10">
                             <button type="submit" id="upload" class="blue_btn yellow_btn big_yellow text-uppercase red_custom_btn">Send Notification</button>
         
                         </aside>
@@ -148,3 +167,9 @@
 </div>
 </div>
 <app-footer></app-footer>
+<style>
+    .selected-list .c-list {
+    height: 70px;
+    overflow: auto;
+}
+</style>

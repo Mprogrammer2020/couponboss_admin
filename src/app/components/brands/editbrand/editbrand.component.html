@@ -10,7 +10,7 @@
         </div>
     <!-- /.row -->
     <!-- .row -->
-    <div class="row">
+    <div class="row input_form-box">
         <div class="col-md-12 col-xs-12">
             <div class="white-box"> 
                 <div class="add_formarea">
@@ -60,7 +60,7 @@
                                 <aside class="col-sm-10">
                                     <div class="form-group">
                                             <label class="text-uppercase">Image</label>
-                                            <input type="file" class="form-control" [(ngModel)]="_dataService.branddetail.image" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" [ngModelOptions]="{standalone: true}" />
+                                            <input type="file" class="form-control" [(ngModel)]="_dataService.branddetail.image" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" [ngModelOptions]="{standalone: true}" accept='image/*'/>
                                             <div *ngIf="submitted && f.logo.errors" class="invalid-feedback">
                                                     <div *ngIf="f.logo.errors.required">Image field is required</div>
                                             </div>

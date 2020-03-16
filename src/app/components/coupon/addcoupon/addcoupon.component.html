@@ -12,12 +12,12 @@
         <h4 _ngcontent-qcb-c15="" class="page_heading">Add Coupon</h4></div>
     <!-- /.row -->
     <!-- .row -->
-    <div class="row">
+    <div class="row input_form-box">
         <div class="col-md-12 col-xs-12">
             <div class="white-box"> 
                 <div class="add_formarea">
                     <form   [formGroup]="addFilterForm" (ngSubmit)="onSubmit()" name="addFilterForm">               
-                        <div class="row">
+                        <div class="row input_form-box">
                             <aside class="col-sm-6">
                                 <div class="form-group">
                                 <label class="text-uppercase">Title</label>
@@ -179,7 +179,7 @@
                                         <label class="text-uppercase">Video Link  In Arabic</label>
                                         <input value="" class="form-control " formControlName="video_link_ar" type="text" [ngClass]="{ 'is-invalid': submitted && f.video_link_ar.errors }">
                                         <div *ngIf="submitted && f.video_link_ar.errors" class="invalid-feedback">
-                                                <div *ngIf="f.video_link_ar.errors.required  && !touched">Video Link In Arabic field is required</div>
+                                                <div *ngIf="f.video_link_ar.errors.required">Video Link In Arabic field is required</div>
                                         </div>
                                         <div *ngIf="error_msg14 && touched" class="invalid-feedback">
                                             <div *ngIf="error_msg14 && touched">Empty Value is Not Valid</div>
@@ -199,7 +199,7 @@
                             <aside class="col-sm-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Image</label>
-                                        <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" />
+                                        <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" accept='image/*' />
                                         <div *ngIf="image_error" class="invalid-feedback">
                                             <div *ngIf="image_error">Image field is required</div>
                                         </div>

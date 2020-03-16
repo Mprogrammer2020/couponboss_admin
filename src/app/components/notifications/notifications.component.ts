@@ -30,6 +30,9 @@ export class NotificationsComponent implements OnInit {
   error_msg2:boolean = false;
   error_msg3:boolean = false;
   error_msg4:boolean = false;
+  dropdownList:any;
+  selectedItems:any;
+  dropdownSettings:any;
 
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];  
@@ -51,9 +54,35 @@ export class NotificationsComponent implements OnInit {
 
     this._dataService.getCountries();
     this._dataService.getBrandsList();
-    this._dataService.getUsers();
+    // this._dataService.getUsers();
     $('#notification_sidebar').addClass('active');
+
+    
+
+    this.dropdownSettings = { 
+      singleSelection: false, 
+      text:"Select Users",
+      selectAllText:'Select All',
+      unSelectAllText:'UnSelect All',
+      enableSearchFilter: true,
+      classes:"myclass custom-class"
+    };
   }
+  onItemSelect(item:any){
+    
+    item = item.id
+    // console.log(this.selectedItems);
+}
+OnItemDeSelect(item:any){
+    console.log(item);
+    // console.log(this.selectedItems);
+}
+onSelectAll(items: any){
+    console.log(items);
+}
+onDeSelectAll(items: any){
+    console.log(items);
+}
 
   get f() { return this.addFilterForm.controls; }
 
@@ -72,6 +101,7 @@ export class NotificationsComponent implements OnInit {
     this._location.back();
   }
   getUsersByCountry(){
+    // this.addFilterForm.patchValue({userId:[]})
     this._dataService.getUsersByCountry(this.addFilterForm.value.countryId)
   }
 
@@ -116,12 +146,16 @@ export class NotificationsComponent implements OnInit {
     if (this.addFilterForm.invalid) {
         return;
     }
+    
     let formData = new FormData();
     formData.append('file' ,  this.filePreview);
     formData.append('type' , "notifications");
     this.customData=this.addFilterForm.value;
     this.customData['profile_pic']=this.filePreview;
     this.customData['is_file']= this.is_file;
+    var arr = this.customData.userId
+    this.customData.userId = []
+    for(var i=0; i < arr.length; i++){ console.log(arr[i].id); this.customData.userId.push(arr[i].id)}
     this._dataService.sendNotification(this.customData, formData);
 
 

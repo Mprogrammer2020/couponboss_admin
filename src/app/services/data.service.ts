@@ -37,6 +37,7 @@ export class DataService {
   public sociallist:any;
   public socialdetail:any;
   public is_response:boolean = false;
+  public is_coupon_response:boolean = false;
 
   
 
@@ -65,6 +66,7 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr----->"+err.error.message)
         this.errors = err.error.message;
+        alert("Something Went Wrong, Please login again.")
         localStorage.clear();
         this.router.navigate(['']);
       }
@@ -85,8 +87,7 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Session expired please login again.")
-        localStorage.clear();
+        
         this.router.navigate(['']);
       }
     );
@@ -103,8 +104,7 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Session expired please login again.")
-        localStorage.clear();
+     
         this.router.navigate(['']);
         //  this.router.navigate(['']);
       }
@@ -121,10 +121,8 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Session expired please login again.")
-        // localStorage.clear();
-        // this.router.navigate(['']);
-        //  this.router.navigate(['']);
+        
+        this.router.navigate(['']);
       }
     );
   }
@@ -140,7 +138,8 @@ export class DataService {
           this.upload_file(formdata, "brands", "Added")
         }else{
           alert("Brand Added Successfully");
-          this.router.navigate(['brands']);
+          window.location.href = '/brands'
+          // this.router.navigate(['brands']);
         }
       },
       (err:any)  => {
@@ -149,9 +148,8 @@ export class DataService {
 
         //  this.router.navigate(['']);
 
-        alert("Session expired please login again.")
-        // localStorage.clear();
-        // this.router.navigate(['']);
+        
+        this.router.navigate(['']);
       }
     );     
   }
@@ -165,9 +163,8 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Session expired please login again.")
-        // localStorage.clear();
-        // this.router.navigate(['']);
+        
+        this.router.navigate(['']);
       }
     );
   }
@@ -177,32 +174,46 @@ export class DataService {
       (data: any)  => {
         if(redirect_url == "sendnotifications"){ 
           alert("Notification Send Successfully.")
+          window.location.href = '/sendnotifications';
         }
         else if(redirect_url == "myProfile"){ 
           alert("Profile Updated Successfully.")
+
+          // this.router.navigate([redirect_url]);
+          window.location.href = '/'+redirect_url
         }
         else if(redirect_url == "brands"){
           alert("Brand" + " "+ operation +" Successfully.")
+
+          // this.router.navigate([redirect_url]);
+          window.location.href = '/'+redirect_url
         }
         else if(redirect_url == "country"){
           alert("Country" + " "+ operation +" Successfully.")
+
+          // this.router.navigate([redirect_url]);
+          window.location.href = '/'+redirect_url
         }
         else if(redirect_url == "coupon"){
           alert("Coupon" + " "+ operation +" Successfully.")
+
+          // this.router.navigate([redirect_url]);
+          window.location.href = '/'+redirect_url
         }
         else{
           alert(redirect_url.charAt(0).toUpperCase() + " "+ operation +" Successfully")
+
+          // this.router.navigate([redirect_url]);
+          window.location.href = '/'+redirect_url
         }
           
         
-          this.router.navigate([redirect_url]);
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Session expired please login again.")
-        // localStorage.clear();
-        // this.router.navigate(['']);
+        
+        this.router.navigate(['']);
       }
     );
 
@@ -223,15 +234,15 @@ export class DataService {
         {
           alert("User edited Successfully")
           this.router.navigate(['myProfile']);
+          window.location.href = '/myProfile'
         }
        
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Session expired please login again.");
-        // localStorage.clear();
-        // this.router.navigate(['']);
+        
+        this.router.navigate(['']);
       }
     );
   }
@@ -247,15 +258,15 @@ export class DataService {
           this.upload_file(formdata, "brands", "Edited")
         }else{
           alert("Brand edited Successfully");
-          this.router.navigate(['brands']);
+          // this.router.navigate(['brands']);
+          window.location.href = '/brands'
         }
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Session expired please login again.")
-        // localStorage.clear();
-        // this.router.navigate(['']);
+       
+        this.router.navigate(['']);
       }
     );
   }
@@ -273,8 +284,8 @@ export class DataService {
         console.log("errrrrrr"+err.error.message)
         alert("Session expired please login again.")
         this.errors = err.error.message;
-        // localStorage.clear();
-        // this.router.navigate(['']);
+        
+        this.router.navigate(['']);
       }
     );
      
@@ -282,28 +293,36 @@ export class DataService {
 
    public sendNotification(notdata, formdata){
       var is_file=notdata["is_file"]
+      debugger
     this.http.post(API_URL+'sendnotification',JSON.stringify(notdata), this.authhttpOptions).subscribe(
       (data: any)  => {
         if(data['notification'].length > 0){
-          formdata.append('id',data["notification"][0]);
+          formdata.append('id',data["notification"]);
           if(is_file == true)
           {
             this.upload_file(formdata,"sendnotifications", "")
           }
+          else{
+            alert("Notification Send Successfully");
+            window.location.href = '/sendnotifications'
+          }
         }
         else{
           alert("Notification Send Successfully");
-          this.router.navigate(['sendnotifications']);
+          window.location.href = '/sendnotifications';
         }
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
-        alert(err.error.Message)
-        if (err.error.Message == undefined){
-          alert("Session expired please login again.")
-          this.router.navigate(['sendnotifications']);
-        }
+        // alert(err.error.Message)
+        // if (err.error.Message == undefined){
+        //   alert("Session expired please login again.")
+        //   this.router.navigate(['sendnotifications']);
+        // }
         // window.location.href = '/sendnotifications'
+        this.errors = err.error.message;
+       
+        this.router.navigate(['']);
       }
     );
   }
@@ -319,7 +338,8 @@ export class DataService {
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
-        alert(err.error.Message)
+       
+        this.router.navigate(['']);
         // window.location.href = '/sendnotifications'
       }
     );
@@ -334,7 +354,7 @@ export class DataService {
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
-        alert(err.error.Message)
+        
         this.router.navigate(['']);
       }
     );
@@ -350,7 +370,7 @@ export class DataService {
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
-        alert(err.error.Message)
+       
         this.router.navigate(['']);
       }
     );
@@ -368,7 +388,9 @@ export class DataService {
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
-        alert(err.error.Message)
+        // alert(err.error.Message)
+       
+        this.router.navigate(['']);
         // window.location.href = '/sendnotifications'
       }
     );
@@ -388,6 +410,8 @@ export class DataService {
     (err:any)  => {
       console.log("errrrrrr"+err.error.message)
       this.errors = err.error.message;
+      
+      this.router.navigate(['']);
     }
   );
 }
@@ -407,18 +431,24 @@ export class DataService {
             this.upload_file(formdata,"country", "Added")
           }else{
             alert("Country Added Successfully.");
-            this.router.navigate(['country']);
+            
+            // this.router.navigate(['country']);
+            window.location.href = '/country'
           }
         }
         else{
           alert("Country Already Added.");
-          this.router.navigate(['country']);
+          // this.router.navigate(['country']);
+          window.location.href = '/country'
 
         }
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
+       
+        this.router.navigate(['']);
+
       }
     );
   }
@@ -432,6 +462,8 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
+       
+        this.router.navigate(['']);
       }
     );
   }
@@ -440,11 +472,13 @@ export class DataService {
     this.http.get(API_URL+'get_coupons',this.authhttpOptions).subscribe(
       (data: any) => {
         this.couponslist = data.response
-        this.is_response = true;
+        this.is_coupon_response = true;
       },
       (err:any) => {
         console.log("error"+err.error.message)
         this.errors = err.error.message;
+       
+        this.router.navigate(['']);
       }
     );
   }
@@ -461,14 +495,16 @@ export class DataService {
         else
         {
           alert("Coupon Added Successfully");
-          this.router.navigate(['coupon']);
+          // this.router.navigate(['coupon']);
+          window.location.href = '/coupon'
         }
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
         //  this.router.navigate(['']);
-        alert("Invalid Data Error")
+       
+        this.router.navigate(['']);
       }
     );     
   }
@@ -484,6 +520,8 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
+        
+        this.router.navigate(['']);
       }
     );
   }
@@ -518,14 +556,16 @@ export class DataService {
         else
         {
           alert("coupon edited Successfully")
-          this.router.navigate(['coupon']);
+          window.location.href = '/coupon'
+          // this.router.navigate(['coupon']);
         }
        
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Session expired please login again.")
+        
+        this.router.navigate(['']);
         // this.router.navigate(['']);
       }
     );
@@ -547,6 +587,8 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
+       
+        this.router.navigate(['']);
       }
     );
   }
@@ -563,7 +605,8 @@ export class DataService {
         //  this.router.navigate(['']);
       },
       (err:any) => {
-        alert("Session expired please login again.")
+        
+        this.router.navigate(['']);
       }
     );     
   }
@@ -603,6 +646,8 @@ export class DataService {
       (err:any) => {
         console.log("error"+err.error.message)
         this.errors = err.error.message;
+       
+        this.router.navigate(['']);
       }
     );
   }
@@ -616,6 +661,8 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
+        
+        this.router.navigate(['']);
       }
     );
   }
@@ -633,7 +680,8 @@ export class DataService {
 
         //  this.router.navigate(['']);
 
-        alert("Session expired please login again.")
+       
+        this.router.navigate(['']);
       }
     );     
   }
@@ -647,7 +695,7 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Session expired please login again.")
+        
         this.router.navigate(['']);
       }
     );
@@ -663,8 +711,7 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
         this.errors = err.error.message;
-        alert("Session expired please login again.")
-        localStorage.clear();
+        
         this.router.navigate(['']);
         //  this.router.navigate(['']);
       }
@@ -682,10 +729,8 @@ export class DataService {
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
-        alert("Something Went Wrong.")
         this.errors = err.error.message;
-        // localStorage.clear();
-        // this.router.navigate(['']);
+        this.router.navigate(['']);
       }
     );
   }

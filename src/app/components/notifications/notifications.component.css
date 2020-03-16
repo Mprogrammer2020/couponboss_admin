@@ -1,0 +1,4 @@
+.selected-list .c-list {
+    height: 70px !important;
+    overflow: auto;
+}

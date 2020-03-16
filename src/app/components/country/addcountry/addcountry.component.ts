@@ -35,9 +35,9 @@ export class AddcountryComponent implements OnInit {
   lat:string = "";
   long:string = "";
   countryname:any;
-
+  touched:boolean;
   image_error:boolean = false;
-
+  error_msg2:boolean = false;
 
 
 
@@ -61,7 +61,8 @@ export class AddcountryComponent implements OnInit {
       logo:[''],
       lat:'',
       long:'',
-      countryName: ['',[Validators.required]]
+      countryName: ['',[Validators.required]],
+      countryName_ar: ['',[Validators.required]]
     });
     
 
@@ -121,7 +122,13 @@ export class AddcountryComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    debugger
+    if (this.addFilterForm.value.countryName_ar.replace(/\s/g,"") == ""){
+     
+      this.addFilterForm.value.countryName_ar= ""
+      this.error_msg2 = true;
+      this.touched = this.addFilterForm.controls.countryName_ar.touched
+      return
+    }else{this.error_msg2 = false;}
     // stop here if form is invalid
     if (this.addFilterForm.invalid) {
         return;

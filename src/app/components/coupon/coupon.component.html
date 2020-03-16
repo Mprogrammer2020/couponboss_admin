@@ -54,18 +54,20 @@
                         </form>
                     </div> -->
                     <div class="table-responsive">
-                        <table class="table row-border hover" datatable [dtOptions]="dtOptions"  *ngIf=" _dataService.is_response"  >
+                        <table class="table row-border hover flag" datatable [dtOptions]="dtOptions"  *ngIf=" _dataService.is_coupon_response"  >
                             <thead>
                                 <tr>
 
-                                    <th style="min-width: 250px;">Id</th>
+                                    <!-- <th style="min-width: 250px;width: 377px;">Id</th> -->
+                                    <th  *ngIf=" _dataService.couponslist.length == 0"  style="min-width: 250px ">Id</th>
+                                    <th  *ngIf=" _dataService.couponslist.length > 0">Id</th>
 
                                     <!-- <th  *ngIf="_dataService.couponslist && _dataService.couponslist.length==0" style="min-width: 250px;">Id</th> -->
 									<!-- <th  *ngIf="_dataService.couponslist && _dataService.couponslist.length > 0">Id</th> -->
                        
-                                    <th>Country</th>
-                                    <th>Brand</th>
-                                    <th>CouponCode</th>
+                                    <th >Country</th>
+                                    <th >Brand</th>
+                                    <th >CouponCode</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -95,6 +97,7 @@
                             </tbody>
                             <div *ngIf="_dataService.couponslist && _dataService.couponslist.length==0"><tbody><h2>No Coupon Found.</h2></tbody></div>
                         </table>
+
                         <!--pagination-controls class="pagination" (pageChange)="currentPage=$event"></pagination-controls> -->
                     </div>
                 </div>
