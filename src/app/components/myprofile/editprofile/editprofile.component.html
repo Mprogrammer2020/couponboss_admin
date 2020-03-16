@@ -22,10 +22,10 @@
                                 <label class="text-uppercase">First Name</label>
                                 <input id="name_input" value="" maxlength="100" class="form-control" formControlName="first_name"  [(ngModel)]="_dataService.currentadmin.first_name" type="text" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }">
                                     <div *ngIf="submitted && f.first_name.errors && !touched" class="invalid-feedback">
-                                            <div *ngIf="f.first_name.errors.required && !touched">This field is required</div>
+                                            <div style="color: red;" *ngIf="f.first_name.errors.required && !touched">This field is required</div>
                                     </div>
                                     <div *ngIf="error_msg && touched" class="invalid-feedback">
-                                        <div *ngIf="error_msg && touched">Empty Value is Not Valid</div>
+                                        <div style="color: red;" *ngIf="error_msg && touched">Empty Value is Not Valid</div>
                                     </div>
                                 </div>
                             </aside>
@@ -36,12 +36,7 @@
                                 <div class="form-group"  *ngIf=" _dataService.currentadmin" >
                                 <label class="text-uppercase">Last Name</label>
                                 <input id="name_input" value="" maxlength="100" class="form-control" formControlName="last_name" type="text"  [(ngModel)]="_dataService.currentadmin.last_name"  [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }">
-                                    <div *ngIf="submitted && f.last_name.errors && !touched" class="invalid-feedback">
-                                            <div *ngIf="f.last_name.errors.required && !touched">This field is required</div>
-                                    </div>
-                                    <div *ngIf="error_msg2 && touched" class="invalid-feedback">
-                                        <div *ngIf="error_msg2 && touched">Empty Value is Not Valid</div>
-                                    </div>
+                                   
                                 </div>
                             </aside>
                         </div>
@@ -51,11 +46,11 @@
                                 <div class="form-group" *ngIf="_dataService.currentadmin">
                                         <label class="text-uppercase">Email</label>
                                         <input value="" class="form-control " maxlength="200" formControlName="email" type="email" [(ngModel)]="_dataService.currentadmin.email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
-                                        <div *ngIf="submitted && f.email.errors && !touched" class="invalid-feedback">
+                                        <div style="color: red;" *ngIf="submitted && f.email.errors && !touched" class="invalid-feedback">
                                                 <div *ngIf="f.email.errors.required && !touched">This field is required</div>
                                         </div>
                                         <div *ngIf="error_msg3 && touched" class="invalid-feedback">
-                                            <div *ngIf="error_msg3 && touched">Empty Value is Not Valid</div>
+                                            <div style="color: red;" *ngIf="error_msg3 && touched">Empty Value is Not Valid</div>
                                         </div>
                                 </div>
                             </aside>
@@ -67,7 +62,7 @@
                                             <label class="text-uppercase">Image</label>
                                             <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.image.errors }" accept='image/*'/>
                                             <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.image.errors.required">This field is required</div>
+                                                    <div style="color: red;" *ngIf="f.image.errors.required">This field is required</div>
                                             </div>
                                     </div>
                                 </aside>
@@ -96,13 +91,13 @@
                             <input class="form-control" maxlength="200" formControlName="currentPassword" type="password"  [ngClass]="{ 'is-invalid': field_error && passf.currentPassword.errors }" required >
                            <p class="errorMsg" id="currenPassMsg"></p>
                            <div *ngIf="field_error && passf.currentPassword.errors" class="invalid-feedback">
-                              <div *ngIf="passf.currentPassword.errors.required">Current Password is required</div>
+                              <div style="color: red;" *ngIf="passf.currentPassword.errors.required">Current Password is required</div>
                       
                             </div>
                            <label for="id_new_password">New password:</label>
                             <input class="form-control" maxlength="200" type="password"  formControlName="newPassword" [ngClass]="{ 'is-invalid': field_error && passf.newPassword.errors }" required >
                             <div *ngIf="field_error && passf.newPassword.errors" class="invalid-feedback">
-                              <div *ngIf="passf.newPassword.errors.required">New Password is required</div>
+                              <div style="color: red;" *ngIf="passf.newPassword.errors.required">New Password is required</div>
   
                             </div>
                             <p class="errorMsg" id="newPassMsg"></p>
@@ -110,12 +105,12 @@
                             <input class="form-control" maxlength="200" type="password"  formControlName="confirmPassword" [ngClass]="{ 'is-invalid': field_error && passf.confirmPassword.errors }" required >
                            <p class="errorMsg" id="confirmPassMsg"></p>
                            <div *ngIf="field_error && passf.confirmPassword.errors" class="invalid-feedback">
-                              <div *ngIf="passf.confirmPassword.errors.required" id="" >Confirm Password is required</div>
+                              <div style="color: red;" *ngIf="passf.confirmPassword.errors.required" id="" >Confirm Password is required</div>
                       
                             </div>
 
                             <div  *ngIf="wrong_field_error" class="invalid-feedback">
-                                <div *ngIf="wrong_field_error" id="" >New password & confirm password didn't match.</div>
+                                <div style="color: red;" *ngIf="wrong_field_error" id="" >New password & confirm password didn't match.</div>
                         
                               </div>
                             <p id="idErrorr" class="errorMsg"></p>

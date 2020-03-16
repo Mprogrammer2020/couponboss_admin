@@ -104,6 +104,10 @@ onDeSelectAll(items: any){
     // this.addFilterForm.patchValue({userId:[]})
     this._dataService.getUsersByCountry(this.addFilterForm.value.countryId)
   }
+  getCountriesByBrand(){
+    this._dataService.counpon_countries = []
+    this._dataService.getCountriesByBrand(this.addFilterForm.value.brandId)
+  }
 
   onSubmit() {
     this.submitted = true;

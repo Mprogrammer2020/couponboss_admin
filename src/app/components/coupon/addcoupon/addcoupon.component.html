@@ -23,10 +23,10 @@
                                 <label class="text-uppercase">Title</label>
                                 <input value="" class="form-control" formControlName="title" maxlength="100" type="text" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
                                     <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-                                            <div *ngIf="f.title.errors.required && !touched">Title field is required</div>
+                                            <div  style="color: red;" *ngIf="f.title.errors.required && !touched">Title field is required</div>
                                     </div>
                                     <div *ngIf="error_msg && touched" class="invalid-feedback">
-                                        <div *ngIf="error_msg && touched">Empty Value is Not Valid</div>
+                                        <div  style="color: red;" *ngIf="error_msg && touched">Empty Value is Not Valid</div>
                                     </div>
                                 </div>
                             </aside>
@@ -35,10 +35,10 @@
                                 <label class="text-uppercase">Title In Arabic</label>
                                 <input value="" class="form-control" formControlName="title_ar" maxlength="100" type="text" [ngClass]="{ 'is-invalid': submitted && f.title_ar.errors }">
                                     <div *ngIf="submitted && f.title_ar.errors" class="invalid-feedback">
-                                            <div *ngIf="f.title_ar.errors.required && !touched">Title in Arabic field is required</div>
+                                            <div  style="color: red;" *ngIf="f.title_ar.errors.required && !touched">Title in Arabic field is required</div>
                                     </div>
                                     <div *ngIf="error_msg2 && touched" class="invalid-feedback">
-                                        <div *ngIf="error_msg2 && touched">Empty Value is Not Valid</div>
+                                        <div  style="color: red;" *ngIf="error_msg2 && touched">Empty Value is Not Valid</div>
                                     </div>
                                 </div>
                             </aside>
@@ -47,10 +47,10 @@
                                         <label class="text-uppercase">Headline</label>
                                         <input value="" class="form-control" maxlength="200" formControlName="headline" type="text" [ngClass]="{ 'is-invalid': submitted && f.headline.errors }">
                                         <div *ngIf="submitted && f.headline.errors" class="invalid-feedback">
-                                                <div *ngIf="f.headline.errors.required  && !touched">Headline field is required</div>
+                                                <div  style="color: red;" *ngIf="f.headline.errors.required  && !touched">Headline field is required</div>
                                         </div>
                                         <div *ngIf="error_msg3 && touched" class="invalid-feedback">
-                                            <div *ngIf="error_msg3 && touched">Empty Value is Not Valid</div>
+                                            <div  style="color: red;" *ngIf="error_msg3 && touched">Empty Value is Not Valid</div>
                                         </div>
                                 </div>
                             </aside>
@@ -58,11 +58,11 @@
                                 <div class="form-group">
                                         <label class="text-uppercase">Headline In Arabic</label>
                                         <input value="" class="form-control " maxlength="200" formControlName="headline_ar" type="text" [ngClass]="{ 'is-invalid': submitted && f.headline_ar.errors }">
-                                        <div *ngIf="submitted && f.headline_ar.errors" class="invalid-feedback">
-                                                <div *ngIf="f.headline_ar.errors.required">Headline In Arabic required</div>
+                                        <div  *ngIf="submitted && f.headline_ar.errors" class="invalid-feedback">
+                                                <div  style="color: red;" *ngIf="f.headline_ar.errors.required">Headline In Arabic required</div>
                                         </div>
                                         <div *ngIf="error_msg4 && touched" class="invalid-feedback">
-                                            <div *ngIf="error_msg4 && touched">Empty Value is Not Valid</div>
+                                            <div  style="color: red;" *ngIf="error_msg4 && touched">Empty Value is Not Valid</div>
                                         </div>
                                 </div>
                             </aside>
@@ -71,10 +71,10 @@
                                         <label class="text-uppercase">Code</label>
                                         <input value="" class="form-control" maxlength="25" formControlName="code" type="text" [ngClass]="{ 'is-invalid': submitted && f.code.errors }">
                                         <div *ngIf="submitted && f.code.errors" class="invalid-feedback">
-                                                <div *ngIf="f.code.errors.required  && !touched">Code field is required</div>
+                                                <div  style="color: red;" *ngIf="f.code.errors.required  && !touched">Code field is required</div>
                                         </div>
                                         <div *ngIf="error_msg5 && touched" class="invalid-feedback">
-                                            <div *ngIf="error_msg5 && touched">Empty Value is Not Valid</div>
+                                            <div  style="color: red;" *ngIf="error_msg5 && touched">Empty Value is Not Valid</div>
                                         </div>
                                 </div>
                             </aside>
@@ -83,10 +83,10 @@
                                         <label class="text-uppercase">Code In Arabic</label>
                                         <input value="" class="form-control" maxlength="25" formControlName="code_ar" type="text" [ngClass]="{ 'is-invalid': submitted && f.code_ar.errors }">
                                         <div *ngIf="submitted && f.code_ar.errors" class="invalid-feedback">
-                                                <div *ngIf="f.code_ar.errors.required  && !touched">Code In Arabic field is required</div>
+                                                <div  style="color: red;" *ngIf="f.code_ar.errors.required  && !touched">Code In Arabic field is required</div>
                                         </div>
                                         <div *ngIf="error_msg6 && touched" class="invalid-feedback">
-                                            <div *ngIf="error_msg6 && touched">Empty Value is Not Valid</div>
+                                            <div  style="color: red;" *ngIf="error_msg6 && touched">Empty Value is Not Valid</div>
                                         </div>
                                 </div>
                             </aside>
@@ -95,10 +95,10 @@
                                         <label class="text-uppercase">Discount</label>
                                         <input value="" class="form-control " formControlName="discount" type="number" [ngClass]="{ 'is-invalid': submitted && f.discount.errors }">
                                         <div *ngIf="submitted && f.discount.errors" class="invalid-feedback">
-                                                <div *ngIf="f.discount.errors.required  && !touched">Discount field is required</div>
+                                                <div  style="color: red;" *ngIf="f.discount.errors.required  && !touched">Discount field is required</div>
                                         </div>
                                         <div *ngIf="error_msg7 && touched" class="invalid-feedback">
-                                            <div *ngIf="error_msg7 && touched">number Value is Not Valid</div>
+                                            <div  style="color: red;" *ngIf="error_msg7 && touched">number Value is Not Valid</div>
                                         </div>
                                 </div>
                             </aside>
@@ -107,10 +107,10 @@
                                         <label class="text-uppercase">Discount In Arabic</label>
                                         <input value="" class="form-control "  formControlName="discount_ar" type="number" [ngClass]="{ 'is-invalid': submitted && f.discount_ar.errors }">
                                         <div *ngIf="submitted && f.discount_ar.errors" class="invalid-feedback">
-                                                <div *ngIf="f.discount_ar.errors.required  && !touched">Discount In Arabic field is required</div>
+                                                <div  style="color: red;" *ngIf="f.discount_ar.errors.required  && !touched">Discount In Arabic field is required</div>
                                         </div>
                                         <div *ngIf="error_msg8 && touched" class="invalid-feedback">
-                                            <div *ngIf="error_msg8 && touched">number Value is Not Valid</div>
+                                            <div  style="color: red;" *ngIf="error_msg8 && touched">number Value is Not Valid</div>
                                         </div>
                                 </div>
                             </aside>
@@ -119,10 +119,10 @@
                                         <label class="text-uppercase">Description</label>
                                         <input value="" class="form-control" maxlength="200" formControlName="description" type="text" [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
                                         <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-                                                <div *ngIf="f.description.errors.required  && !touched">Description field is required</div>
+                                                <div   style="color: red;" *ngIf="f.description.errors.required  && !touched">Description field is required</div>
                                         </div>
                                         <div *ngIf="error_msg9 && touched" class="invalid-feedback">
-                                            <div *ngIf="error_msg9 && touched">Empty Value is Not Valid</div>
+                                            <div  style="color: red;" *ngIf="error_msg9 && touched">Empty Value is Not Valid</div>
                                         </div>
                                 </div>
                             </aside>
@@ -131,10 +131,10 @@
                                         <label class="text-uppercase">Description In Arabic</label>
                                         <input value="" class="form-control" maxlength="200" formControlName="description_ar" type="text" [ngClass]="{ 'is-invalid': submitted && f.description_ar.errors }">
                                         <div *ngIf="submitted && f.description_ar.errors" class="invalid-feedback">
-                                                <div *ngIf="f.description_ar.errors.required  && !touched">Description In Arabic field is required</div>
+                                                <div  style="color: red;" *ngIf="f.description_ar.errors.required  && !touched">Description In Arabic field is required</div>
                                         </div>
                                         <div *ngIf="error_msg10 && touched" class="invalid-feedback">
-                                            <div *ngIf="error_msg10 && touched">Empty Value is Not Valid</div>
+                                            <div  style="color: red;" *ngIf="error_msg10 && touched">Empty Value is Not Valid</div>
                                         </div>
                                 </div>
                             </aside>
@@ -143,10 +143,10 @@
                                         <label class="text-uppercase">Store Link</label>
                                         <input value="" class="form-control " formControlName="store_link" type="text" [ngClass]="{ 'is-invalid': submitted && f.store_link.errors }">
                                         <div *ngIf="submitted && f.store_link.errors" class="invalid-feedback">
-                                                <div *ngIf="f.store_link.errors.required  && !touched">Store Link field is required</div>
+                                                <div  style="color: red;" *ngIf="f.store_link.errors.required  && !touched">Store Link field is required</div>
                                         </div>
                                         <div *ngIf="error_msg11 && touched" class="invalid-feedback">
-                                            <div *ngIf="error_msg11 && touched">Empty Value is Not Valid</div>
+                                            <div  style="color: red;" *ngIf="error_msg11 && touched">Empty Value is Not Valid</div>
                                         </div>
                                 </div>
                             </aside>
@@ -155,10 +155,10 @@
                                         <label class="text-uppercase">Store Link In Arabic</label>
                                         <input value="" class="form-control " formControlName="store_link_ar" type="text" [ngClass]="{ 'is-invalid': submitted && f.store_link_ar.errors }">
                                         <div *ngIf="submitted && f.store_link_ar.errors" class="invalid-feedback">
-                                                <div *ngIf="f.store_link_ar.errors.required  && !touched">Store Link In Arabic field is required</div>
+                                                <div  style="color: red;" *ngIf="f.store_link_ar.errors.required  && !touched">Store Link In Arabic field is required</div>
                                         </div>
                                         <div *ngIf="error_msg12 && touched" class="invalid-feedback">
-                                            <div *ngIf="error_msg12 && touched">Empty Value is Not Valid</div>
+                                            <div  style="color: red;" *ngIf="error_msg12 && touched">Empty Value is Not Valid</div>
                                         </div>
                                 </div>
                             </aside>
@@ -167,10 +167,10 @@
                                         <label class="text-uppercase">Video Link</label>
                                         <input value="" class="form-control " formControlName="video_link" type="text" [ngClass]="{ 'is-invalid': submitted && f.video_link.errors }">
                                         <div *ngIf="submitted && f.video_link.errors" class="invalid-feedback">
-                                                <div *ngIf="f.video_link.errors.required  && !touched">Video Link field is required</div>
+                                                <div style="color: red;"  *ngIf="f.video_link.errors.required  && !touched">Video Link field is required</div>
                                         </div>
                                         <div *ngIf="error_msg13 && touched" class="invalid-feedback">
-                                            <div *ngIf="error_msg13 && touched">Empty Value is Not Valid</div>
+                                            <div  style="color: red;" *ngIf="error_msg13 && touched">Empty Value is Not Valid</div>
                                         </div>
                                 </div>
                             </aside>
@@ -179,10 +179,10 @@
                                         <label class="text-uppercase">Video Link  In Arabic</label>
                                         <input value="" class="form-control " formControlName="video_link_ar" type="text" [ngClass]="{ 'is-invalid': submitted && f.video_link_ar.errors }">
                                         <div *ngIf="submitted && f.video_link_ar.errors" class="invalid-feedback">
-                                                <div *ngIf="f.video_link_ar.errors.required">Video Link In Arabic field is required</div>
+                                                <div  style="color: red;" *ngIf="f.video_link_ar.errors.required">Video Link In Arabic field is required</div>
                                         </div>
                                         <div *ngIf="error_msg14 && touched" class="invalid-feedback">
-                                            <div *ngIf="error_msg14 && touched">Empty Value is Not Valid</div>
+                                            <div  style="color: red;" *ngIf="error_msg14 && touched">Empty Value is Not Valid</div>
                                         </div>
                                 </div>
                             </aside>
@@ -192,7 +192,7 @@
                                         <input value="" class="form-control " [min]="min" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" formControlName="expiry_date" type="datetime" [ngClass]="{ 'is-invalid': submitted && f.expiry_date.errors }">
                                         <owl-date-time #dt1></owl-date-time>
                                         <div *ngIf="submitted && f.expiry_date.errors" class="invalid-feedback">
-                                                <div *ngIf="f.expiry_date.errors.required">Expiry Date field is required</div>
+                                                <div  style="color: red;" *ngIf="f.expiry_date.errors.required">Expiry Date field is required</div>
                                         </div>
                                 </div>
                             </aside> 
@@ -201,7 +201,7 @@
                                         <label class="text-uppercase">Image</label>
                                         <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" accept='image/*' />
                                         <div *ngIf="image_error" class="invalid-feedback">
-                                            <div *ngIf="image_error">Image field is required</div>
+                                            <div  style="color: red;" *ngIf="image_error">Image field is required</div>
                                         </div>
                                 </div>
                             </aside>
@@ -214,7 +214,7 @@
                                             <option value="False">FALSE</option>
                                         </select>
                                         <div *ngIf="submitted && f.is_featured.errors" class="invalid-feedback">
-                                                <div *ngIf="f.is_featured.errors.required ">Is Featured field is required</div>
+                                                <div *ngIf="f.is_featured.errors.required " style="color: red;">Is Featured field is required</div>
                                         </div>
                                 </div>
                             </aside>
@@ -222,13 +222,13 @@
                                 <div class="form-group main_select">
                                         <label class="text-uppercase">Select Brand</label>
 
-                                        <select formControlName="brand" *ngIf="_dataService.brandslist">
+                                        <select formControlName="brand" *ngIf="_dataService.brandslist" (change)="getCountriesByBrand()">
                                             <option value="">Choose your Brand</option>
                                             <option *ngFor="let brandd of _dataService.brandslist" [ngValue]="brandd.id" >{{brandd.name}}</option>
                                         </select>
                                         <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
                                         <div *ngIf="submitted && f.brand.errors" class="invalid-feedback">
-                                                <div *ngIf="f.brand.errors.required">Brand field is required</div>
+                                                <div  style="color: red;" *ngIf="f.brand.errors.required">Brand field is required</div>
                                         </div>
                                 </div>
                             </aside>
@@ -253,10 +253,18 @@
                                                 </select>
                                             </div> -->
 
-                                            <div class="select_country_content" *ngIf="_dataService.countrieslist ">
+                                            <div class="select_country_content" *ngIf="_dataService.countries_by_brand ">
                                                 <label class="text-uppercase">Select Country</label>
                                                 
-                                                <angular2-multiselect [data]="_dataService.countrieslist" 
+                                                <!-- <angular2-multiselect [data]="_dataService.countrieslist" 
+                                                    [settings]="dropdownSettings" 
+                                                    (onSelect)="onItemSelect($event)" 
+                                                    (onDeSelect)="OnItemDeSelect($event)"
+                                                    (onSelectAll)="onSelectAll($event)"
+                                                    formControlName="country"
+                                                    (onDeSelectAll)="onDeSelectAll($event)"></angular2-multiselect> -->
+
+                                                    <angular2-multiselect [data]="_dataService.countries_by_brand" 
                                                     [settings]="dropdownSettings" 
                                                     (onSelect)="onItemSelect($event)" 
                                                     (onDeSelect)="OnItemDeSelect($event)"
@@ -276,8 +284,8 @@
                                             </div>
                                                 
                                                 <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
-                                                <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
-                                                        <div *ngIf="f.country.errors.required">Country field is required</div>
+                                                <div *ngIf="submitted && f.country.errors && f.brand.touched" class="invalid-feedback">
+                                                        <div   style="color: red;" *ngIf="f.country.errors.required">Country field is required</div>
                                                 </div>
                                         </div>
                                     </aside>

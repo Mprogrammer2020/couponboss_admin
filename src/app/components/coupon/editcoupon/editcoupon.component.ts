@@ -278,6 +278,10 @@ onDeSelectAll(items: any){
  
     }
 
+
+    if (this.addFilterForm.value.country == ""){
+      return
+    }
     // if (!this.filePreview){
     //   this.image_error = true;
     //   return

@@ -101,6 +101,11 @@ onDeSelectAll(items: any){
     console.log(items);
 }
 
+getCountriesByBrand(){
+  this._dataService.counpon_countries = []
+  this._dataService.getCountriesByBrand(this.addFilterForm.value.brand)
+}
+
   get f() { return this.addFilterForm.controls; }
 
   onFileChange(event:any) {

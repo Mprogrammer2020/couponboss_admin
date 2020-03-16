@@ -1,3 +1,6 @@
 #viewProfileImage {
     width: 50% !important;
 }
+#upload:hover {
+    color: white;
+}

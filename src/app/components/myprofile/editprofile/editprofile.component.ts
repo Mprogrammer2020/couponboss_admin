@@ -45,7 +45,7 @@ export class EditprofileComponent implements OnInit {
 
     this.addFilterForm = this.formBuilder.group({
       first_name: ['',[Validators.required]],
-      last_name: ['',[Validators.required]],
+      last_name: [''],
       email: ['',[Validators.required]],
       image:['']
     });
@@ -97,13 +97,13 @@ export class EditprofileComponent implements OnInit {
     }else{this.error_msg = false;}
 
 
-    if (this.addFilterForm.value.last_name.replace(/\s/g,"") == ""){
+    // if (this.addFilterForm.value.last_name.replace(/\s/g,"") == ""){
      
-      this.addFilterForm.value.last_name= ""
-      this.error_msg2 = true
-      this.touched = this.addFilterForm.controls.last_name.touched
-      return
-    }else{this.error_msg2 = false;}
+    //   this.addFilterForm.value.last_name= ""
+    //   this.error_msg2 = true
+    //   this.touched = this.addFilterForm.controls.last_name.touched
+    //   return
+    // }else{this.error_msg2 = false;}
 
     if (this.addFilterForm.value.email.replace(/\s/g,"") == ""){
      

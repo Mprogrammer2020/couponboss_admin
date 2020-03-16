@@ -21,10 +21,10 @@
                                 <label class="text-uppercase">Title</label>
                                 <input value="" class="form-control" maxlength="100" formControlName="title" type="text" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
                                     <div *ngIf="submitted && f.title.errors  && !touched " class="invalid-feedback">
-                                            <div *ngIf="f.title.errors.required && !touched">Title field is required</div>
+                                            <div style="color: red;" *ngIf="f.title.errors.required && !touched">Title field is required</div>
                                     </div>
                                     <div *ngIf="error_msg && touched" class="invalid-feedback">
-                                        <div *ngIf="error_msg && touched">Empty Value is Not Valid</div>
+                                        <div style="color: red;" *ngIf="error_msg && touched">Empty Value is Not Valid</div>
                                     </div>
                                 </div>
                             </aside>
@@ -33,10 +33,10 @@
                                 <label class="text-uppercase">Title in Arabic</label>
                                 <input value="" class="form-control" maxlength="150" formControlName="title_ar" type="text" [ngClass]="{ 'is-invalid': submitted && f.title_ar.errors }">
                                     <div *ngIf="submitted && f.title_ar.errors && !touched" class="invalid-feedback">
-                                            <div *ngIf="f.title_ar.errors.required && !touched">Title in Arabic field is required</div>
+                                            <div style="color: red;" *ngIf="f.title_ar.errors.required && !touched">Title in Arabic field is required</div>
                                     </div>
                                     <div *ngIf="error_msg2 && touched" class="invalid-feedback">
-                                        <div *ngIf="error_msg2 && touched">Empty Value is Not Valid</div>
+                                        <div style="color: red;" *ngIf="error_msg2 && touched">Empty Value is Not Valid</div>
                                     </div>
                                 </div>
                             </aside>
@@ -45,10 +45,10 @@
                                         <label class="text-uppercase">Description</label>
                                         <input value="" class="form-control " maxlength="200" formControlName="description" type="textarea" [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
                                         <div *ngIf="submitted && f.description.errors && !touched" class="invalid-feedback">
-                                                <div *ngIf="f.description.errors.required && !touched">Description field is required</div>
+                                                <div style="color: red;" *ngIf="f.description.errors.required && !touched">Description field is required</div>
                                         </div>
                                         <div *ngIf="error_msg3 && touched" class="invalid-feedback">
-                                            <div *ngIf="error_msg3 && touched">Empty Value is Not Valid</div>
+                                            <div style="color: red;" *ngIf="error_msg3 && touched">Empty Value is Not Valid</div>
                                         </div>
                                 </div>
                             </aside>
@@ -57,10 +57,10 @@
                                         <label class="text-uppercase">Description in Arabic</label>
                                         <input value="" class="form-control " maxlength="200" formControlName="description_ar" type="textarea" [ngClass]="{ 'is-invalid': submitted && f.description_ar.errors }">
                                         <div *ngIf="submitted && f.description_ar.errors && !touched" class="invalid-feedback">
-                                                <div *ngIf="f.description_ar.errors.required && !touched">Description in Arabic field is required</div>
+                                                <div style="color: red;" *ngIf="f.description_ar.errors.required && !touched">Description in Arabic field is required</div>
                                         </div>
                                         <div *ngIf="error_msg4 && touched" class="invalid-feedback">
-                                            <div *ngIf="error_msg4 && touched">Empty Value is Not Valid</div>
+                                            <div style="color: red;" *ngIf="error_msg4 && touched">Empty Value is Not Valid</div>
                                         </div>
                                 </div>
                             </aside>
@@ -69,37 +69,39 @@
                                         <label class="text-uppercase">Image</label>
                                         <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.image.errors }" accept='image/*'/>
                                         <div *ngIf="submitted && f.image.errors && !touched" class="invalid-feedback">
-                                                <div *ngIf="f.image.errors.required && !touched">Image field is required</div>
+                                                <div style="color: red;" *ngIf="f.image.errors.required && !touched">Image field is required</div>
                                         </div>
                                 </div>
                             </aside>
                             <div class="col-md-6 brand_box">
                                 <div class="row"> 
-
-                                <aside class="col-md-6">
-                                    <div class="form-group">
-                                            <label class="text-uppercase">Select Country</label>
-    
-                                            <select class="custom-select" formControlName="countryId" (change)="getUsersByCountry()">
-                                                <option value="" selected="">Choose your country</option>
-                                                <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" >{{city.name}}</option>
-                                            </select>
-                                            <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
-                                            <div *ngIf="submitted && f.countryId.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.countryId.errors.required">Country field is required</div>
-                                            </div>
-                                    </div>
-                                </aside>
                                 <aside class="col-md-6">
                                     <div class="form-group">
                                             <label class="text-uppercase">Select Brand</label>    
-                                            <select  class="custom-select" formControlName="brandId" >
+                                            <select  class="custom-select" formControlName="brandId" (change)="getCountriesByBrand()">
                                                 <option value="" selected="">Choose your Brand</option>
                                                 <option *ngFor="let city of _dataService.brandslist" [ngValue]="city.id" >{{city.name}}</option>
                                             </select>
                                             <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
                                             <div *ngIf="submitted && f.brandId.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.brandId.errors.required">Brand field is required</div>
+                                                    <div style="color: red;" *ngIf="f.brandId.errors.required">Brand field is required</div>
+                                            </div>
+                                    </div>
+                                </aside>
+
+
+
+                                <aside class="col-md-6">
+                                    <div class="form-group" *ngIf="_dataService.countries_by_brand">
+                                            <label class="text-uppercase">Select Country</label>
+    
+                                            <select class="custom-select"   formControlName="countryId" (change)="getUsersByCountry()">
+                                                <option value="" selected="">Choose your country</option>
+                                                <option *ngFor="let city of _dataService.countries_by_brand" [ngValue]="city.id" >{{city.name}}</option>
+                                            </select>
+                                            <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
+                                            <div *ngIf="submitted && f.countryId.errors && f.brandId.touched" class="invalid-feedback">
+                                                    <div style="color: red;" *ngIf="f.countryId.errors.required">Country field is required</div>
                                             </div>
                                     </div>
                                 </aside>
@@ -145,8 +147,8 @@
                                     
                                         
                                         <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
-                                        <div *ngIf="submitted && f.userId.errors" class="invalid-feedback">
-                                                <div *ngIf="f.userId.errors.required">Users field is required</div>
+                                        <div *ngIf="submitted && f.userId.errors  && f.countryId.touched" class="invalid-feedback">
+                                                <div style="color: red;" *ngIf="f.userId.errors.required">Users field is required</div>
                                         </div>
                                 </div>
                             </div>

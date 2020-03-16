@@ -121,6 +121,7 @@ public countries_by_brand:any;
       (data: any)  => {
        
         this.countries_by_brand = data.response
+
         // this.counpon_countries = []
         // _dataService.branddetail.coupon_countries
         console.log("scdgsavef")
