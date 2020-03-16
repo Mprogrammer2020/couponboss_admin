@@ -84,6 +84,7 @@ export class EditcouponComponent implements OnInit {
 
     this._dataService.getCountries();
     this._dataService.getBrandsList();
+    
 
     this.dropdownSettings = { 
       singleSelection: false, 
@@ -95,6 +96,7 @@ export class EditcouponComponent implements OnInit {
     }; 
   }
   onItemSelect(item:any){
+  
     console.log(item);
     // console.log(this.selectedItems);
 }
@@ -121,14 +123,21 @@ onDeSelectAll(items: any){
     }
   }
 
+  getCountriesByBrand(){
+    this._dataService.counpon_countries = []
+    this._dataService.getCountriesByBrand(this.addFilterForm.value.brand)
+  }
+
   backClicked() {
     this._location.back();
   }
 
+  public selectedMoment = new Date();
+
   onSubmit() {
     this.submitted = true;
     this.selectedId=this._Activatedroute.snapshot.paramMap.get("id");
-
+    
     if (this.addFilterForm.value.title.replace(/\s/g,"") == ""){
      
       this.addFilterForm.value.title= ""
@@ -269,14 +278,14 @@ onDeSelectAll(items: any){
  
     }
 
-    if (!this.filePreview){
-      this.image_error = true;
-      return
-    }
+    // if (!this.filePreview){
+    //   this.image_error = true;
+    //   return
+    // }
     // stop here if form is invalid
-    if (this.addFilterForm.invalid) {
-        return;
-    }
+    // if (this.addFilterForm.invalid) {
+    //     return;
+    // }
     
     let formData = new FormData();
     formData.append('file' ,  this.filePreview);

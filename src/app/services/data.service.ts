@@ -93,12 +93,14 @@ export class DataService {
     );
    }
 
+   public selected_brandcountries:any;
    public getBrand(data){
     this.http.post(API_URL+'show_brand',{"brandId":data}, this.authhttpOptions).subscribe(
       (data: any)  => {
         this.branddetail = data.brand;
+        this.selected_brandcountries = data;
         this.brandcountries = data.brands_country
-        
+        console.log(data)
         console.log("scdgsavef")
       },
       (err:any)  => {
@@ -111,12 +113,41 @@ export class DataService {
     );
   }
 
+public countries_by_brand:any;
+
+  public getCountriesByBrand(brand){
+
+    this.http.post(API_URL+'getcountriesbybrands',{"brandId":brand}, this.authhttpOptions).subscribe(
+      (data: any)  => {
+       
+        this.countries_by_brand = data.response
+        // this.counpon_countries = []
+        // _dataService.branddetail.coupon_countries
+        console.log("scdgsavef")
+      },
+      (err:any)  => {
+        console.log("errrrrrr"+err.error.message)
+        this.errors = err.error.message;
+     
+        this.router.navigate(['']);
+        //  this.router.navigate(['']);
+      }
+    );
+
+  }
+
+  public expiry_date:Date;
+  public counpon_countries:any;
 
   public getCoupon(data){  
     this.http.post(API_URL+'dc',{"couponId":data}, this.authhttpOptions).subscribe(
       (data: any)  => {
         this.branddetail = data.coupon;
-        this.couponcountries = data.cop_con
+        this.couponcountries = data.cop_con;
+        this.counpon_countries = data.coupon.coupon_countries
+        console.log(data)
+        this.getCountriesByBrand(data.coupon.brand)
+        this.expiry_date = new Date(data.coupon.expire_date);
       },
       (err:any)  => {
         console.log("errrrrrr"+err.error.message)
@@ -293,7 +324,7 @@ export class DataService {
 
    public sendNotification(notdata, formdata){
       var is_file=notdata["is_file"]
-      debugger
+      
     this.http.post(API_URL+'sendnotification',JSON.stringify(notdata), this.authhttpOptions).subscribe(
       (data: any)  => {
         if(data['notification'].length > 0){

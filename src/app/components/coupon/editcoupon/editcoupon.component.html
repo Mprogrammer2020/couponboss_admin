@@ -189,8 +189,10 @@
                             <aside class="col-sm-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Expiry Date</label>
-                                        <input value="" class="form-control " [min]="min" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" formControlName="expiry_date" [(ngModel)]="_dataService.branddetail.expiry_date" type="datetime" [ngClass]="{ 'is-invalid': submitted && f.expiry_date.errors }">
+                                        <input formControlName="expiry_date" class="form-control" [min]="min" [(ngModel)]="_dataService.expiry_date" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" [ngClass]="{ 'is-invalid': submitted && f.expiry_date.errors }">
                                         <owl-date-time #dt1></owl-date-time>
+                                        <!-- <input class="form-control" [min]="min" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" formControlName="expiry_date" [(ngModel)]="_dataService.branddetail.expiry_date" type="datetime" [ngClass]="{ 'is-invalid': submitted && f.expiry_date.errors }">
+                                        <owl-date-time #dt1></owl-date-time> -->
                                         <div *ngIf="submitted && f.expiry_date.errors" class="invalid-feedback">
                                                 <div *ngIf="f.expiry_date.errors.required">Expiry Date field is required</div>
                                         </div>
@@ -200,9 +202,9 @@
                                 <div class="form-group">
                                         <label class="text-uppercase">Image</label>
                                         <input type="file" class="form-control" [(ngModel)]="_dataService.branddetail.image" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" accept='image/*'/>
-                                        <div *ngIf="image_error" class="invalid-feedback">
+                                        <!-- <div *ngIf="image_error" class="invalid-feedback">
                                             <div *ngIf="image_error">Image field is required</div>
-                                        </div>
+                                        </div> -->
                                 </div>
                             </aside>
                             <aside class="col-sm-6">
@@ -210,8 +212,8 @@
                                         <label class="text-uppercase">Is Featured</label>
                                         <select formControlName="is_featured"  [(ngModel)]="_dataService.branddetail.is_featured">
                                             <option value="">Options</option>
-                                            <option value="True">TRUE</option>
-                                            <option value="False">FALSE</option>
+                                            <option value="true">TRUE</option>
+                                            <option value="false">FALSE</option>
                                         </select>
                                         <div *ngIf="submitted && f.is_featured.errors" class="invalid-feedback">
                                                 <div *ngIf="f.is_featured.errors.required">Is Featured field is required</div>
@@ -222,7 +224,7 @@
                                 <div class="form-group">
                                         <label class="text-uppercase">Select Brand</label>
 
-                                        <select formControlName="brand" [(ngModel)]="_dataService.branddetail.coupon_brand.id">
+                                        <select formControlName="brand" [(ngModel)]="_dataService.branddetail.coupon_brand.id" (change)="getCountriesByBrand()">
                                             <option value="">Choose your brand</option>
                                             <option *ngFor="let brandd of _dataService.brandslist" [ngValue]="brandd.id" >{{brandd.name}}</option>
                                         </select>
@@ -235,10 +237,8 @@
                         </div>
                             
                                 
-                                
-
                             <div class="row">
-                                <aside class="col-sm-10">
+                                <aside class="col-sm-6">
                                     <div class="form-group">
                                             <!-- <label class="text-uppercase">Select Country</label>
 
@@ -246,12 +246,13 @@
                                                 <option value="">Choose your city</option>
                                                 <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" >{{city.name}}</option>
                                             </select>
-                                            <!-- <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
+                                         <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
 
-                                            <div class="select_country_content" *ngIf="_dataService.countrieslist ">
+                                            <div class="select_country_content" *ngIf="_dataService.countries_by_brand || _dataService.counpon_countries ">
                                                 <label class="text-uppercase">Select Country</label>
                                                 
-                                                <angular2-multiselect [data]="_dataService.countrieslist" 
+                                                <angular2-multiselect [data]="_dataService.countries_by_brand" 
+                                                    [(ngModel)]="_dataService.counpon_countries"
                                                     [settings]="dropdownSettings" 
                                                     (onSelect)="onItemSelect($event)" 
                                                     (onDeSelect)="OnItemDeSelect($event)"

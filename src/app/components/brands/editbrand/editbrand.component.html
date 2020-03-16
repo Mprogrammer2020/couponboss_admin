@@ -80,10 +80,11 @@
                                             </select>
                                         </div> -->
 
-                                        <div class="select_country_content" *ngIf="_dataService.countrieslist ">
+                                        <div class="select_country_content" *ngIf="_dataService.countrieslist && _dataService.selected_brandcountries.selected_country ">
                                             <label class="text-uppercase">Select Country</label>
                                             
                                             <angular2-multiselect [data]="_dataService.countrieslist" 
+                                                [(ngModel)]="_dataService.selected_brandcountries.selected_country"
                                                 [settings]="dropdownSettings" 
                                                 (onSelect)="onItemSelect($event)" 
                                                 (onDeSelect)="OnItemDeSelect($event)"
