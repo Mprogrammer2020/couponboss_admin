@@ -43,7 +43,7 @@
                             <aside class="col-sm-6">
                                 <div class="form-group">
                                     <label class="text-uppercase"> Brand Description </label>
-                                    <input class="form-control" maxlength="100" formControlName="discription" type="text"  [(ngModel)]="_dataService.branddetail.discription" [ngClass]="{ 'is-invalid': submitted && f.discription.errors }">
+                                    <input class="form-control" maxlength="160" formControlName="discription" type="text"  [(ngModel)]="_dataService.branddetail.discription" [ngClass]="{ 'is-invalid': submitted && f.discription.errors }">
                                         <div *ngIf="submitted && f.discription.errors && !touched" class="invalid-feedback">
                                                 <div style="color: red;" *ngIf="f.discription.errors.required && !touched"> Brand Description field is required</div>
                                         </div>
@@ -55,7 +55,7 @@
                             <aside class="col-sm-6">
                                 <div class="form-group">
                                     <label class="text-uppercase"> Brand Description In Arabic</label>
-                                    <input class="form-control" maxlength="100" formControlName="discription_ar" type="text"  [(ngModel)]="_dataService.branddetail.discription_ar" [ngClass]="{ 'is-invalid': submitted && f.discription_ar.errors }">
+                                    <input class="form-control" maxlength="160" formControlName="discription_ar" type="text"  [(ngModel)]="_dataService.branddetail.discription_ar" [ngClass]="{ 'is-invalid': submitted && f.discription_ar.errors }">
                                         <div *ngIf="submitted && f.discription_ar.errors && !touched" class="invalid-feedback">
                                                 <div style="color: red;" *ngIf="f.discription_ar.errors.required && !touched"> Brand Description In Arabic field is required</div>
                                         </div>
