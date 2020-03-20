@@ -35,7 +35,10 @@
                                     >
 
                                     <div *ngIf="submitted && f.countryName.errors" class="invalid-feedback">
-                                        <div *ngIf="f.countryName.errors.required">Name field is required</div>
+                                        <div style="color: red;" *ngIf="f.countryName.errors.required">Name field is required</div>
+                                    </div>
+                                    <div *ngIf="error_msg3 && touched" class="invalid-feedback">
+                                        <div style="color: red;" *ngIf="error_msg3 && touched">Empty Value is Not Valid</div>
                                     </div>
                                 <!-- <input [attr.value]="" class="form-control" formControlName="country_name" type="text" [ngClass]="{ 'is-invalid': submitted && f.country_name.errors }" id="testing" onfocus="geolocate(this.id)" [ngModel]="country_name">
                                     <div *ngIf="submitted && f.country_name.errors" class="invalid-feedback">
@@ -48,10 +51,10 @@
                                 <label class="text-uppercase">Country Name In Arabic</label>
                                 <input value="" class="form-control" formControlName="countryName_ar" maxlength="100" type="text" [ngClass]="{ 'is-invalid': submitted && f.countryName_ar.errors }">
                                     <div *ngIf="submitted && f.countryName_ar.errors" class="invalid-feedback">
-                                            <div *ngIf="f.countryName_ar.errors.required && !touched">Country Name In Arabic field is required</div>
+                                            <div style="color: red;" *ngIf="f.countryName_ar.errors.required && !touched">Country Name In Arabic field is required</div>
                                     </div>
                                     <div *ngIf="error_msg2 && touched" class="invalid-feedback">
-                                        <div *ngIf="error_msg2 && touched">Empty Value is Not Valid</div>
+                                        <div style="color: red;" *ngIf="error_msg2 && touched">Empty Value is Not Valid</div>
                                     </div>
                                 </div>
                             </aside>
@@ -61,9 +64,9 @@
                                 <aside class="col-sm-10">
                                     <div class="form-group">
                                             <label class="text-uppercase">Image</label>
-                                            <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" accept='image/*'/>
+                                            <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" accept=".png, .jpg, .jpeg" />
                                             <div *ngIf="submitted && image_error" class="invalid-feedback">
-                                                    <div *ngIf="image_error">Image field is required</div>
+                                                    <div style="color: red;" *ngIf="image_error">Image field is required</div>
                                             </div>
                                     </div>
                                 </aside>

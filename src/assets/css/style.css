@@ -834,6 +834,7 @@ label {
     border: 0
 }
 
+
 .media {
     border: 1px solid rgba(120, 130, 140, .13);
     margin-bottom: 10px;
@@ -12584,3 +12585,6 @@ ul.pro-amenities li span i {
         width: 300px
     }
 }
+
+
+

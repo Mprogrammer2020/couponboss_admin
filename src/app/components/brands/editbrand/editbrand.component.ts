@@ -142,6 +142,22 @@ onDeSelectAll(items: any){
     }else{this.error_msg2 = false;}
 
 
+
+   if (this.addFilterForm.value.website_url != ""){
+     
+    //  const a = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g;
+    const a = /^(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})?$/g;
+     
+     let is_match = this.addFilterForm.value.website_url.match(a);
+
+    if (is_match == null){
+      alert("Enter valid website url")
+      return
+    }
+
+   }
+
+
     // stop here if form is invalid
     if (this.addFilterForm.invalid) {
         return;

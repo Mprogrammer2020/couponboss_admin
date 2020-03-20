@@ -71,7 +71,12 @@ export class CouponComponent implements OnInit {
   }
 
   public deleteCoupon(id){
+    let a = confirm("Are you Sure you want to delete this Coupon ?")
+    if (a == false){
+      this.router.navigate(['coupon']);
+    }else{
     this._dataService.deleteCoupon({"id": id})
+    }
   }
 
   public ViewCoupon(id){

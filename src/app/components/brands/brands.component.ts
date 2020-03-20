@@ -21,7 +21,9 @@ export class BrandsComponent implements OnInit {
   public itemsPerPage:any=5; // we are showing 10 items per page
   current_location:any
 
-  dtOptions: DataTables.Settings = {};
+  dtOptions: DataTables.Settings = {"columnDefs": [
+    { "orderable": false, "targets": 0 }
+    ]};
 
   constructor(public _dataService: DataService,public router: Router,public _location: Location) {}
 
@@ -40,6 +42,7 @@ export class BrandsComponent implements OnInit {
     this.loadscript();
 
   }
+  
   
 
   public loadscript()

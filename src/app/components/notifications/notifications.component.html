@@ -14,14 +14,14 @@
         <div class="col-md-12 col-xs-12">
             <div class="white-box"> 
                 <div class="add_formarea">
-                    <form   [formGroup]="addFilterForm" (ngSubmit)="onSubmit()" name="addFilterForm">               
+                    <form  class="hh" [formGroup]="addFilterForm" (ngSubmit)="onSubmit()" name="addFilterForm">               
                         <div class="row">
                             <aside class="col-md-6">
                                 <div class="form-group">
                                 <label class="text-uppercase">Title</label>
                                 <input value="" class="form-control" maxlength="100" formControlName="title" type="text" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
                                     <div *ngIf="submitted && f.title.errors  && !touched " class="invalid-feedback">
-                                            <div style="color: red;" *ngIf="f.title.errors.required && !touched">Title field is required</div>
+                                        <div style="color: red;" *ngIf="f.title.errors.required && !touched">Title field is required</div>
                                     </div>
                                     <div *ngIf="error_msg && touched" class="invalid-feedback">
                                         <div style="color: red;" *ngIf="error_msg && touched">Empty Value is Not Valid</div>
@@ -31,7 +31,7 @@
                             <aside class="col-md-6">
                                 <div class="form-group">
                                 <label class="text-uppercase">Title in Arabic</label>
-                                <input value="" class="form-control" maxlength="150" formControlName="title_ar" type="text" [ngClass]="{ 'is-invalid': submitted && f.title_ar.errors }">
+                                <input value="" class="form-control" maxlength="100" formControlName="title_ar" type="text" [ngClass]="{ 'is-invalid': submitted && f.title_ar.errors }">
                                     <div *ngIf="submitted && f.title_ar.errors && !touched" class="invalid-feedback">
                                             <div style="color: red;" *ngIf="f.title_ar.errors.required && !touched">Title in Arabic field is required</div>
                                     </div>
@@ -43,7 +43,7 @@
                             <aside class="col-md-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Description</label>
-                                        <input value="" class="form-control " maxlength="200" formControlName="description" type="textarea" [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
+                                        <input value="" class="form-control " maxlength="150" formControlName="description" type="textarea" [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
                                         <div *ngIf="submitted && f.description.errors && !touched" class="invalid-feedback">
                                                 <div style="color: red;" *ngIf="f.description.errors.required && !touched">Description field is required</div>
                                         </div>
@@ -55,7 +55,7 @@
                             <aside class="col-md-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Description in Arabic</label>
-                                        <input value="" class="form-control " maxlength="200" formControlName="description_ar" type="textarea" [ngClass]="{ 'is-invalid': submitted && f.description_ar.errors }">
+                                        <input value="" class="form-control " maxlength="150" formControlName="description_ar" type="textarea" [ngClass]="{ 'is-invalid': submitted && f.description_ar.errors }">
                                         <div *ngIf="submitted && f.description_ar.errors && !touched" class="invalid-feedback">
                                                 <div style="color: red;" *ngIf="f.description_ar.errors.required && !touched">Description in Arabic field is required</div>
                                         </div>
@@ -67,7 +67,7 @@
                             <aside class="col-md-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Image</label>
-                                        <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.image.errors }" accept='image/*'/>
+                                        <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.image.errors }" accept=".png, .jpg, .jpeg" />
                                         <div *ngIf="submitted && f.image.errors && !touched" class="invalid-feedback">
                                                 <div style="color: red;" *ngIf="f.image.errors.required && !touched">Image field is required</div>
                                         </div>
@@ -78,7 +78,7 @@
                                 <aside class="col-md-6">
                                     <div class="form-group">
                                             <label class="text-uppercase">Select Brand</label>    
-                                            <select  class="custom-select" formControlName="brandId" (change)="getCountriesByBrand()">
+                                            <select id='iFunction' class="custom-select" formControlName="brandId" style="width:80%!important;" (change)="getCountriesByBrand()">
                                                 <option value="" selected="">Choose your Brand</option>
                                                 <option *ngFor="let city of _dataService.brandslist" [ngValue]="city.id" >{{city.name}}</option>
                                             </select>
@@ -92,10 +92,10 @@
 
 
                                 <aside class="col-md-6">
-                                    <div class="form-group" *ngIf="_dataService.countries_by_brand">
+                                    <div class="form-group" >
                                             <label class="text-uppercase">Select Country</label>
     
-                                            <select class="custom-select"   formControlName="countryId" (change)="getUsersByCountry()">
+                                            <select id="database" name="database" class="custom-select" class="errorpopup"  formControlName="countryId" (change)="getUsersByCountry()">
                                                 <option value="" selected="">Choose your country</option>
                                                 <option *ngFor="let city of _dataService.countries_by_brand" [ngValue]="city.id" >{{city.name}}</option>
                                             </select>

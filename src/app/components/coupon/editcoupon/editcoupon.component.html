@@ -201,7 +201,7 @@
                             <aside class="col-sm-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Image</label>
-                                        <input type="file" class="form-control" [(ngModel)]="_dataService.branddetail.image" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" accept='image/*'/>
+                                        <input type="file" class="form-control" [(ngModel)]="_dataService.branddetail.image" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" accept=".png, .jpg, .jpeg" />
                                         <!-- <div *ngIf="image_error" class="invalid-feedback">
                                             <div *ngIf="image_error">Image field is required</div>
                                         </div> -->
@@ -224,7 +224,7 @@
                                 <div class="form-group">
                                         <label class="text-uppercase">Select Brand</label>
 
-                                        <select formControlName="brand" [(ngModel)]="_dataService.branddetail.coupon_brand.id" (change)="getCountriesByBrand()">
+                                        <select formControlName="brand" style="width:35%!important;" [(ngModel)]="_dataService.branddetail.coupon_brand.id" (change)="getCountriesByBrand()">
                                             <option value="">Choose your brand</option>
                                             <option *ngFor="let brandd of _dataService.brandslist" [ngValue]="brandd.id" >{{brandd.name}}</option>
                                         </select>
@@ -248,7 +248,7 @@
                                             </select>
                                          <input value="" class="form-control" formControlName="replaceWord" type="text" [ngClass]="{ 'is-invalid': submitted && f.replaceWord.errors }"> -->
 
-                                            <div class="select_country_content" *ngIf="_dataService.countries_by_brand || _dataService.counpon_countries ">
+                                            <div class="select_country_content" *ngIf="_dataService.countries_by_brand || _dataService.counpon_countries.selected_country">
                                                 <label class="text-uppercase">Select Country</label>
                                                 
                                                 <angular2-multiselect [data]="_dataService.countries_by_brand" 

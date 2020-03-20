@@ -31,6 +31,7 @@ export class EditprofileComponent implements OnInit {
   touched:boolean;
   error_msg2:boolean = false;
   error_msg3:boolean = false;
+  
 
   field_error:boolean = false;
   wrong_field_error:boolean = false;
@@ -53,7 +54,9 @@ export class EditprofileComponent implements OnInit {
     this.changePasswordForm = this.formBuilder.group({
       
       currentPassword: ['', [Validators.required]],
-      newPassword: ['', [Validators.required]],
+      newPassword: ['', [Validators.required,Validators.compose([
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)
+     ])]],                 
      confirmPassword: ['', [Validators.required]],
 
   });
@@ -130,6 +133,7 @@ export class EditprofileComponent implements OnInit {
 
   onPassSubmit() {
     
+    
     if(this.changePasswordForm.value['newPassword']!= this.changePasswordForm.value['confirmPassword']){
       // this.passtouched = this.changePasswordForm.controls.last_name.touched
       this.wrong_field_error = true
@@ -145,6 +149,7 @@ export class EditprofileComponent implements OnInit {
     this._dataService.changePassword(this.changePasswordForm.value).subscribe(
       (res:any)=>{
       alert(res['message']);
+      localStorage.clear();
       this.router.navigate(['']);
     },
     (error:any)=>{

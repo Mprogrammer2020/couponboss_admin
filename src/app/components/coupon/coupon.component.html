@@ -14,12 +14,12 @@
                 <div class="col-sm-8 text-right costommm_select">
                     <div class="filters" style="float: right;">
                         <form  [formGroup]="addFilterForm" (ngSubmit)="filterCoupon()" name="addFilterForm"> 
-                            <select class="custom-select" formControlName="country" style="margin-right: 10px;" (change)="filterCoupon()">
+                            <select class="custom-select" formControlName="country" style="margin-right: 5px; width: 50%;" (change)="filterCoupon()">
                                 <option value="">Choose your Country</option>
                                 <option *ngFor="let city of _dataService.countrieslist" [ngValue]="city.id" >{{city.name}}</option>
                             </select>
 
-                            <select class="custom-select" formControlName="brand" (change)="filterCoupon()">
+                            <select class="custom-select" formControlName="brand" style="width: 48%" (change)="filterCoupon()">
                                 <option value="">Choose your Brand</option>
                                 <option *ngFor="let city of _dataService.brandslist" [ngValue]="city.id" >{{city.name}}</option>
                             </select>
@@ -68,7 +68,7 @@
                                     <th >Country</th>
                                     <th >Brand</th>
                                     <th >CouponCode</th>
-                                    <th>Actions</th>
+                                    <th class="actions_th">Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="myTable">

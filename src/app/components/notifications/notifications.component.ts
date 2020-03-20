@@ -43,9 +43,9 @@ export class NotificationsComponent implements OnInit {
   ngOnInit() {
     this.addFilterForm = this.formBuilder.group({
       title: ['',[Validators.required]],
-      title_ar: [''],
+      title_ar: ['',[Validators.required]],
       description: ['',[Validators.required]],
-      description_ar: [''],
+      description_ar: ['',[Validators.required]],
       image:[''],
       brandId: ['', [Validators.required]],
       countryId: ['', [Validators.required]],
@@ -106,7 +106,12 @@ onDeSelectAll(items: any){
   }
   getCountriesByBrand(){
     this._dataService.counpon_countries = []
-    this._dataService.getCountriesByBrand(this.addFilterForm.value.brandId)
+    if (this.addFilterForm.value.brandId != ""){
+      this._dataService.getCountriesByBrand(this.addFilterForm.value.brandId)      
+    }
+    else{
+      this._dataService.countries_by_brand =[]
+    }
   }
 
   onSubmit() {
@@ -146,6 +151,9 @@ onDeSelectAll(items: any){
       return
     }else{this.error_msg4 = false;}
 
+
+    
+
     // stop here if form is invalid
     if (this.addFilterForm.invalid) {
         return;
@@ -157,6 +165,7 @@ onDeSelectAll(items: any){
     this.customData=this.addFilterForm.value;
     this.customData['profile_pic']=this.filePreview;
     this.customData['is_file']= this.is_file;
+    debugger
     var arr = this.customData.userId
     this.customData.userId = []
     for(var i=0; i < arr.length; i++){ console.log(arr[i].id); this.customData.userId.push(arr[i].id)}

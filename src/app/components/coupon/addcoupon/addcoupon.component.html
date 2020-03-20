@@ -199,7 +199,7 @@
                             <aside class="col-sm-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Image</label>
-                                        <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" accept='image/*' />
+                                        <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" accept=".png, .jpg, .jpeg" />
                                         <div *ngIf="image_error" class="invalid-feedback">
                                             <div  style="color: red;" *ngIf="image_error">Image field is required</div>
                                         </div>
@@ -222,7 +222,7 @@
                                 <div class="form-group main_select">
                                         <label class="text-uppercase">Select Brand</label>
 
-                                        <select formControlName="brand" *ngIf="_dataService.brandslist" (change)="getCountriesByBrand()">
+                                        <select formControlName="brand" style="width:35%!important;" *ngIf="_dataService.brandslist" (change)="getCountriesByBrand()">
                                             <option value="">Choose your Brand</option>
                                             <option *ngFor="let brandd of _dataService.brandslist" [ngValue]="brandd.id" >{{brandd.name}}</option>
                                         </select>

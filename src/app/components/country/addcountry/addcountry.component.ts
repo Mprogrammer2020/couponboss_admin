@@ -38,6 +38,8 @@ export class AddcountryComponent implements OnInit {
   touched:boolean;
   image_error:boolean = false;
   error_msg2:boolean = false;
+  error_msg3:boolean = false;
+
 
 
 
@@ -122,6 +124,13 @@ export class AddcountryComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    if (this.addFilterForm.value.countryName.replace(/\s/g,"") == ""){
+     
+      this.addFilterForm.value.countryName= ""
+      this.error_msg3 = true;
+      this.touched = this.addFilterForm.controls.countryName.touched
+      return
+    }else{this.error_msg3 = false;}
     if (this.addFilterForm.value.countryName_ar.replace(/\s/g,"") == ""){
      
       this.addFilterForm.value.countryName_ar= ""

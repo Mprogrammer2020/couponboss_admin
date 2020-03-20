@@ -66,8 +66,12 @@ export class DataService {
       (err:any)  => {
         console.log("errrrrrr----->"+err.error.message)
         this.errors = err.error.message;
-        alert("Something Went Wrong, Please login again.")
-        localStorage.clear();
+        if(err.statusText == "Unauthorized"){
+          alert("Session Expired!, Please login again.")
+        }else{
+          alert("Something Went Wrong, Please login again.")
+        }
+          localStorage.clear();
         this.router.navigate(['']);
       }
     );
@@ -264,7 +268,7 @@ public countries_by_brand:any;
         }
         else
         {
-          alert("User edited Successfully")
+          alert("Profile Updated Sucessfully")
           this.router.navigate(['myProfile']);
           window.location.href = '/myProfile'
         }
@@ -499,6 +503,8 @@ public countries_by_brand:any;
       }
     );
   }
+
+  
    
   public getCoupons(){
     this.http.get(API_URL+'get_coupons',this.authhttpOptions).subscribe(

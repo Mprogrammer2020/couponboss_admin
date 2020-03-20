@@ -166,7 +166,65 @@
 <script>
   $(document).ready(function(){
     setTimeout(function(){ 
-    $('#side-menu li a').removeClass('active');});
+    $('#side-menu li a').removeClass('active');
+    $(".hh").on('click', '.errorpopup', function(e) { 
+      $(".custom-select").prop("disabled", this.checked);
+      if(0 === document.getElementById("iFunction").selectedIndex){
+        alert('Please select Brand First !');
+        return;
+    }
+});
+    
+    
+  });
+
+  setTimeout(function(){ 
+
+    if(top.location.pathname == "/country"){
+      $(".country_flag_th ").removeClass("sorting");
+    }
+
+    $(".actions_th ").removeClass("sorting");
+  }, 600);
+
+
+  setTimeout(function(){ 
+if(top.location.pathname == "/brands"){
+  $('#brand_sidebar').addClass('active');
+}
+if(top.location.pathname == "/sendnotifications"){
+  $('#notification_sidebar').addClass('active');
+}
+
+if(top.location.pathname == "/contactus"){
+  $('#contact_sidebar').addClass('active');
+}
+
+if(top.location.pathname == "/dashboard"){
+  $('#dashboard_sidebar').addClass('active');
+}
+
+if(top.location.pathname == "/country"){
+  $('#country_sidebar').addClass('active');
+}
+
+if(top.location.pathname == "/coupon"){
+  $('#coupon_sidebar').addClass('active');
+}
+
+if(top.location.pathname == "/requests"){
+  $('#request_sidebar').addClass('active');
+}
+
+if(top.location.pathname == "/social"){
+  $('#social_sidebar').addClass('active');
+}
+}, 500);
+
+
+
+
+  
 
   })
 </script>
