@@ -33,6 +33,8 @@ export class EditbrandComponent implements OnInit {
   touched:boolean;
   error_msg2:boolean = false;
   error_msg3:boolean = false;
+  error_msg4:boolean = false;
+  error_msg5:boolean = false;
   dropdownList:any;
   selectedItems:any;
   dropdownSettings:any;
@@ -55,6 +57,8 @@ export class EditbrandComponent implements OnInit {
       website_url: ['',[Validators.required]],
       logo:[''],
       country: ['', [Validators.required]],
+      discription:[''],
+      discription_ar:[''],
       brandId:this.selectedId
     });
 
@@ -131,6 +135,23 @@ onDeSelectAll(items: any){
       console.log(this.addFilterForm.controls.name_ar.touched)
       return
     }else{this.error_msg3 = false;}
+
+    if (this.addFilterForm.value.discription.replace(/\s/g,"") == ""){
+     
+      this.addFilterForm.value.discription= ""
+      this.error_msg4 = true
+      this.touched = this.addFilterForm.controls.discription.touched
+      return
+    }else{this.error_msg4 = false;}
+
+
+    if (this.addFilterForm.value.discription_ar.replace(/\s/g,"") == ""){
+     
+      this.addFilterForm.value.discription_ar= ""
+      this.error_msg5 = true
+      this.touched = this.addFilterForm.controls.discription_ar.touched
+      return
+    }else{this.error_msg5 = false;}
 
 
     if (this.addFilterForm.value.website_url.replace(/\s/g,"") == ""){

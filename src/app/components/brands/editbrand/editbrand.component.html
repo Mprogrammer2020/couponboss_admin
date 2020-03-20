@@ -40,9 +40,33 @@
                                     </div>
                                 </div>
                             </aside>
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="text-uppercase"> Brand Description </label>
+                                    <input class="form-control" maxlength="100" formControlName="discription" type="text"  [(ngModel)]="_dataService.branddetail.discription" [ngClass]="{ 'is-invalid': submitted && f.discription.errors }">
+                                        <div *ngIf="submitted && f.discription.errors && !touched" class="invalid-feedback">
+                                                <div style="color: red;" *ngIf="f.discription.errors.required && !touched"> Brand Description field is required</div>
+                                        </div>
+                                        <div *ngIf="error_msg4 && touched" class="invalid-feedback">
+                                            <div style="color: red;" *ngIf="error_msg4 && touched">Empty Value is Not Valid in Brand Description Field</div>
+                                        </div>
+                                </div>
+                            </aside>
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="text-uppercase"> Brand Description In Arabic</label>
+                                    <input class="form-control" maxlength="100" formControlName="discription_ar" type="text"  [(ngModel)]="_dataService.branddetail.discription_ar" [ngClass]="{ 'is-invalid': submitted && f.discription_ar.errors }">
+                                        <div *ngIf="submitted && f.discription_ar.errors && !touched" class="invalid-feedback">
+                                                <div style="color: red;" *ngIf="f.discription_ar.errors.required && !touched"> Brand Description In Arabic field is required</div>
+                                        </div>
+                                        <div *ngIf="error_msg5 && touched" class="invalid-feedback">
+                                            <div style="color: red;" *ngIf="error_msg5 && touched">Empty Value is Not Valid in Brand Description In Arabic Field</div>
+                                        </div>
+                                </div>
+                            </aside>
                         </div>
                         <div class="row">
-                            <aside class="col-sm-10">
+                            <aside class="col-sm-6">
                                 <div class="form-group">
                                         <label class="text-uppercase">Website Url </label>
                                         <input value="" maxlength="200" class="form-control " formControlName="website_url"  [(ngModel)]="_dataService.branddetail.url" type="text" [ngClass]="{ 'is-invalid': submitted && f.website_url.errors }">
@@ -54,23 +78,19 @@
                                         </div>
                                 </div>
                             </aside>
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                        <label class="text-uppercase">Image</label>
+                                        <input type="file" class="form-control" [(ngModel)]="_dataService.branddetail.image" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" [ngModelOptions]="{standalone: true}" accept=".png, .jpg, .jpeg" />
+                                        <div *ngIf="submitted && f.logo.errors" class="invalid-feedback">
+                                                <div style="color: red;" *ngIf="f.logo.errors.required">Image field is required</div>
+                                        </div>
+                                </div>
+                            </aside>
         
                         </div>
-                        <div class="row">
-                                <aside class="col-sm-10">
-                                    <div class="form-group">
-                                            <label class="text-uppercase">Image</label>
-                                            <input type="file" class="form-control" [(ngModel)]="_dataService.branddetail.image" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" [ngModelOptions]="{standalone: true}" accept=".png, .jpg, .jpeg" />
-                                            <div *ngIf="submitted && f.logo.errors" class="invalid-feedback">
-                                                    <div style="color: red;" *ngIf="f.logo.errors.required">Image field is required</div>
-                                            </div>
-                                    </div>
-                                </aside>
-            
-
-                            </div>
                             <div class="row">
-                                <aside class="col-sm-10">
+                                <aside class="col-sm-6">
                                     <div class="form-group">
                                         <!-- <div class="edit_brand_select">
                                             <label class="text-uppercase">Select Country</label>

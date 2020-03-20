@@ -28,6 +28,8 @@ export class AddbrandComponent implements OnInit {
   touched:boolean;
   error_msg2:boolean = false;
   error_msg3:boolean = false;
+  error_msg4:boolean = false;
+  error_msg5:boolean = false;
   image_error:boolean = false;
   dropdownList:any;
   selectedItems:any;
@@ -45,7 +47,10 @@ export class AddbrandComponent implements OnInit {
       name_ar: ['',[Validators.required]],
       website_url: ['',[Validators.required]],
       logo: [''],
-      country: ['', [Validators.required]]
+      country: ['', [Validators.required]],
+      discription:[''],
+      discription_ar:[''],
+
     });
 
     this._dataService.getCountries();
@@ -121,6 +126,25 @@ onDeSelectAll(items: any){
       this.touched = this.addFilterForm.controls.website_url.touched
       return
     }else{this.error_msg2 = false;}
+
+
+    if (this.addFilterForm.value.discription.replace(/\s/g,"") == ""){
+     
+      this.addFilterForm.value.discription= ""
+      this.error_msg4 = true
+      this.touched = this.addFilterForm.controls.discription.touched
+      return
+    }else{this.error_msg4 = false;}
+
+
+    if (this.addFilterForm.value.discription_ar.replace(/\s/g,"") == ""){
+     
+      this.addFilterForm.value.discription_ar= ""
+      this.error_msg5 = true
+      this.touched = this.addFilterForm.controls.discription_ar.touched
+      return
+    }else{this.error_msg5 = false;}
+
 
 
 
